@@ -1,0 +1,29 @@
+# Dependencies
+markdown:         redcarpet
+highlighter:      rogue
+
+# Permalinks
+permalink:        pretty
+
+gems:
+  - jekyll-paginate
+  - jekyll-gist
+
+# Setup
+title:            Alex Richey
+tagline:          'A guy'
+description:      "I'm currently a student at <a href= 'http://appacademy.io/'>a/A</a> in NYC and formally a graduate student of philosophy at <a href= 'http://philosophy.columbia.edu/directories/student/alexander-richey'>Columbia</a>. I write about politics and code."
+url:              http://alexrichey.com
+baseurl:          /
+
+author:
+  name:           'Alex Richey'
+  url:            https://twitter.com/AlexanderRichey
+
+paginate:         5
+
+# Custom vars
+version:          2.1.0
+
+github:
+  repo:           https://github.com/poole/hyde

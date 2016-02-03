@@ -11,14 +11,15 @@ I'm currently a student at [a/A](http://appacademy.io/) in NYC, formally a gradu
 * [LinkedIn](https://www.linkedin.com/in/alexanderrichey)
 * [StackOverflow](http://stackoverflow.com/cv/alexrichey)
 * [Twitter](https://twitter.com/AlexanderRichey)
+* [Tumblr](http://grokeverything.com/)
 
-## About this Website
+## Website Setup
 
 Some fun facts about the setup of this website:
 
 * Built for [Jekyll](http://jekyllrb.com).
 * The theme is called [Hyde](http://hyde.getpoole.com/), which is based on [Poole](http://getpoole.com/) and made by [@mdo](https://twitter.com/mdo).
-* Developed on GitHub and hosted for free on [GitHub Pages](https://pages.github.com).
+* Developed on GitHub (with a little help from Lande's [blog post](http://joshualande.com/jekyll-github-pages-poole/)) and hosted for free on [GitHub Pages](https://pages.github.com).
 * Coded with [Atom](https://atom.io/).
 
 Thanks for reading!

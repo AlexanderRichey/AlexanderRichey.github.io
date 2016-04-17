@@ -4,7 +4,7 @@
  <title>Alex Richey</title>
  <link href="http://alexrichey.com/atom.xml" rel="self"/>
  <link href="http://alexrichey.com/"/>
- <updated>2016-04-17T19:05:44-04:00</updated>
+ <updated>2016-04-17T19:26:12-04:00</updated>
  <id>http://alexrichey.com</id>
  <author>
    <name>Alex Richey</name>
@@ -13,12 +13,11 @@
 
  
  <entry>
-   <title>Ski Free</title>
+   <title>SkiFree</title>
    <link href="http://alexrichey.com/2016/04/17/ski-free/"/>
    <updated>2016-04-17T00:00:00-04:00</updated>
    <id>http://alexrichey.com/2016/04/17/ski-free</id>
-   <content type="html">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
+   <content type="html">&lt;html&gt;
   &lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot;&gt;
     &lt;title&gt;SkiFree&lt;/title&gt;
@@ -35,13 +34,13 @@
   &lt;body&gt;
     &lt;div style=&quot;display:none;&quot;&gt;
      &lt;img id=&quot;obstacles&quot;
-      src=&quot;assets/obstacles.png&quot;&gt;
+      src=&quot;/assets/obstacles.png&quot;&gt;
      &lt;img id=&quot;skier&quot;
-      src=&quot;assets/skier.png&quot;&gt;
+      src=&quot;/assets/skier.png&quot;&gt;
     &lt;/div&gt;
     &lt;p&gt;Here&#39;s a clone of the classic game SkiFree that I made with Javascript Canvas as part of a/A&#39;s curriculum. Check out the repo on GitHub &lt;a href=&quot;https://github.com/AlexanderRichey/SkiFree&quot;&gt;here.&lt;/a&gt; &lt;strong&gt;Click to begin&lt;/strong&gt; and use the mouse to control your skier.&lt;/p&gt;
     &lt;canvas width=&quot;500&quot; height=&quot;500&quot; id=&quot;canvas&quot;&gt;&lt;/canvas&gt;
-    &lt;script type=&quot;text/javascript&quot; src=&quot;javascripts/bundle.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;/javascripts/bundle.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
   &lt;/body&gt;
 &lt;/html&gt;
 </content>

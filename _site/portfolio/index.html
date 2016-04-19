@@ -11,7 +11,7 @@
 
   <title>
     
-      SkiFree &middot; Alex Richey
+      Portfolio &middot; Alex Richey
     
   </title>
 
@@ -80,7 +80,7 @@
       
         
           
-            <a class="sidebar-nav-item" href="/portfolio/">Portfolio</a>
+            <a class="sidebar-nav-item active" href="/portfolio/">Portfolio</a>
           
         
       
@@ -100,72 +100,116 @@
 
 
     <div class="content container">
-      <div class="post">
-  <h1 class="post-title">SkiFree</h1>
-  <span class="post-date">17 Apr 2016</span>
+      <div class="page">
+  <h1 class="page-title">Portfolio</h1>
   <html>
   <head>
-    <meta charset="utf-8">
-    <title>SkiFree</title>
     <style>
-      #canvas {
+      .group:after {
+        content: "";
         display: block;
+        clear: both;
+      }
+      .project {
+        display: block;
+      }
+      .project p {
+        margin-bottom: 0.5rem;
+      }
+      ul.project {
+        padding: 0;
+        margin-top: 20px;
+      }
+      .project li {
+        display: block;
+        width: 800px;
+      }
+      .project h2 {
+        margin-top: 0;
+      }
+      .image-container {
+        display: block;
+        float: left;
+        width: 300px;
+        height: auto;
+      }
+      .image-container img {
         border: 1px solid #ccc;
-        border-radius: 6px;
-        width: 500px;
-        height: 500px;
-        background-image: url('/assets/ski-free-background.png');
-        background-size: contain;
+        margin-right: 20px;
+      }
+      .blurb-container {
+        display: block;
+        float: left;
+        width: 400px;
+        margin-left: 20px;
+      }
+      .links-container a {
+        font-weight: bold;
       }
     </style>
   </head>
   <body>
-    <div style="display:none;">
-     <img id="obstacles"
-      src="/assets/obstacles.png">
-     <img id="skier"
-      src="/assets/skier.png">
+    <div class="message">
+      These are projects that I made as part of the curriculum at a/A.
     </div>
-    <p>Here's a clone of the classic game SkiFree that I made with Javascript Canvas as part of a/A's curriculum. Check out the repo on GitHub <a href="https://github.com/AlexanderRichey/SkiFree">here.</a> <strong>Click to begin</strong> and use the mouse to control your skier.</p>
-    <canvas width="500" height="500" id="canvas"></canvas>
-    <script type="text/javascript" src="/javascripts/bundle.js" charset="utf-8"></script>
+    <ul class="project group">
+      <li class="group">
+        <div class="image-container">
+          <img src="/assets/newsjunkie.png">
+        </div>
+
+        <div class="blurb-container">
+          <h2>NewsJunkie</h2>
+          <p>
+            A clone of the news aggregator Feedly, built with Ruby on Rails and React.js.
+          </p>
+          <div class="links-container">
+            <a href="http://www.newsjunkie.in/">Live</a> |
+            <a href="https://github.com/AlexanderRichey/NewsJunkie">
+              GitHub Repo
+            </a>
+          </div>
+        </div>
+      </li>
+      <li class="group">
+        <div class="image-container">
+          <img src="/assets/skifree.png">
+        </div>
+
+        <div class="blurb-container">
+          <h2>SkiFree</h2>
+          <p>
+            A remake of the classic game SkiFree powered by JavaScript Canvas.
+          </p>
+          <div class="links-container">
+            <a href="http://www.newsjunkie.in/">Live</a> |
+            <a href="https://github.com/AlexanderRichey/NewsJunkie">
+              GitHub Repo
+            </a>
+          </div>
+        </div>
+      </li>
+      <li class="group">
+        <div class="image-container">
+          <img src="/assets/chess.png">
+        </div>
+
+        <div class="blurb-container">
+          <h2>RubyChess</h2>
+          <p>
+            Chess, coded in Ruby, playable in terminal.
+          </p>
+          <div class="links-container">
+            <a href="https://github.com/AlexanderRichey/NewsJunkie">
+              GitHub Repo
+            </a>
+          </div>
+        </div>
+      </li>
+    </ul>
   </body>
-</html>
+<html>
 
-</div>
-
-<div class="related">
-  <h2>Related Posts</h2>
-  <ul class="related-posts">
-    
-      <li>
-        <h3>
-          <a href="/2016/01/21/two-kinds-of-racism/">
-            Two Kinds of Racism
-            <small>21 Jan 2016</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/2015/12/06/ted-siders-solution-to-the-problem-of-radical-semantic-skepticism/">
-            Ted Sider’s Solution to the Problem of Radical Semantic Skepticism
-            <small>06 Dec 2015</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/2014/02/24/against-pessimism/">
-            Against Pessimism
-            <small>24 Feb 2014</small>
-          </a>
-        </h3>
-      </li>
-    
-  </ul>
 </div>
 
     </div>

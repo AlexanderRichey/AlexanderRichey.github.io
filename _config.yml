@@ -11,8 +11,8 @@ gems:
 
 # Setup
 title:            Alex Richey
-tagline:          'A guy'
-description:      "I'm currently a student at <a href= 'http://appacademy.io/'>a/A</a> in NYC and formally a graduate student of philosophy at <a href= 'http://philosophy.columbia.edu/directories/student/alexander-richey'>Columbia</a>. I write about politics and code."
+tagline:          'Web Developer'
+description:      "I'm a web developer and occasional columnist based in NYC. I write about politics and code."
 url:              http://alexrichey.com
 baseurl:          /
 
@@ -20,7 +20,7 @@ author:
   name:           'Alex Richey'
   url:            https://twitter.com/AlexanderRichey
 
-paginate:         5
+paginate:         3
 
 # Custom vars
 version:          2.1.0

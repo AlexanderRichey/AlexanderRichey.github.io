@@ -3,7 +3,7 @@ layout: page
 title: About
 ---
 
-I'm currently a student at [a/A](http://appacademy.io/) in NYC, formally a graduate student in philosophy at [Columbia](http://philosophy.columbia.edu/directories/student/alexander-richey), and an undergrad at [N.Y.U.](http://nyu.edu/) before that. This blog is mainly a repository for my published writing, which is mostly about politics, culture, and code. Connect below!
+I'm a web developer in NYC, formally a graduate student in philosophy at [Columbia](http://philosophy.columbia.edu/directories/student/alexander-richey), and an undergrad at [N.Y.U.](http://nyu.edu/) before that. This blog is mainly a repository for my published writing, which is mostly about politics, culture, and code. You can also check out some of my web development work in my [portfolio](/portfolio). Connect below!
 
 ## Networking
 

@@ -3,7 +3,7 @@ layout: post
 title: What the Science of Happiness Can Tell Us About Taxes
 ---
 <div class="message">
-  My article about the relationship between happiness and income, originally published on <a href="http://www.policymic.com/articles/53521/what-the-science-of-happiness-can-tell-us-about-taxes">PolicyMic</a>.
+  My article about the relationship between happiness and income, originally published on <a href="http://www.policymic.com/articles/53521/what-the-science-of-happiness-can-tell-us-about-taxes"><em>PolicyMic</em></a>.
 </div>
 
 Over the past few decades, a remarkable field of inquiry that seeks to understand the relation between income and happiness has developed in economics and psychology departments. It has revealed that happiness and income are in fact correlated and that the fiscal policies a country enacts can have a considerable effect on the happiness and wellbeing of its citizens.

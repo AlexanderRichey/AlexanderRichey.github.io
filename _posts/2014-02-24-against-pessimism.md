@@ -5,7 +5,7 @@ title: Against Pessimism
 <img src="/assets/half-full-half-empty.jpg">
 
 <div class="message">
-  My article about pessimism originally published on <a href="http://www.3quarksdaily.com/3quarksdaily/2014/02/against-pessimism.html">3QuarksDaily</a>.</em>
+  My article about pessimism originally published on <a href="http://www.3quarksdaily.com/3quarksdaily/2014/02/against-pessimism.html"><em>3QuarksDaily</em></a>.
 </div>
 
 Pessimism is on the rise among members of the older generation. According to a [2011 Gallup poll](http://www.gallup.com/poll/147350/optimism-future-youth-reaches-time-low.aspx), only 36% of Americans aged 50 to 64 believe that today's youth will have better lives than their parents. And another [poll conducted in 2013 by Rasmussen](http://www.rasmussenreports.com/public_content/politics/mood_of_america/america_s_best_days) says that just over half of Americans think that their country's best days are in the past.

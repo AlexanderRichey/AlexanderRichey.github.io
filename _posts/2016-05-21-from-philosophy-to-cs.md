@@ -5,18 +5,6 @@ title: From Philosophy to Computer Science
 ![image](/assets/philosophy.jpg)
 When I say that I’m a software developer with a background in academic philosophy, many people react with surprise, as if I had jumped between completely divergent fields. Philosophy and computer science are in fact closely related and it is easy to transition from one to the other. In this article I would like to highlight a few reasons why this is so, with the hopes of dispelling the common misperception that they are opposites and of giving some background for students of philosophy who are interested in transitioning to computer science.
 
-## Historical Development
-
-Before I consider the concrete similarities between philosophy and computer science, I would like to discuss the fascinating role that philosophy played in the historical development of computing.
-
-The conceptual work that made the advent of modern computing possible took place in the early seventeen hundreds, when the philosopher and mathematician G.W.Leibniz developed an algebraic logic. In this logic, ones and zeros represent true or false states. The reason this is significant is that Leibniz’s ones and zeros would later be rendered mechanically as on or off switches in the first primitive computers. Although it took several hundred more years and the work of countless other philosophers, mathematicians, and engineers to develop our modern notion of computing, its conceptual foundation can be traced back to Leibniz’s philosophical logic.
-
-The influence of philosophy on computer science did not stop at Leibniz, however. In the early nineteen hundreds, the philosophers Bertrand Russell and Alfred North Whitehead wrote *Principia Mathematica*, a nearly 2,000 page book written largely in formal logic that aimed to couch all of mathematics in terms of logic. Although the primary aim of this book was later demonstrated to be impossible by Gödel, the *Principia* also set out a theory of types that was later put to use by computer scientists. According to Constable’s brief history, Russell and Whitehead’s theory of types
-
-> …provided a basis for both a precise semantics and elegant programming logics. It was in this context that computer scientists and logicians created the type theories that are deeply connected to *Principia Mathematica* and serve now as comprehensive logical accounts of computing, computational mathematics, and programming logics ([Constable](https://www.srcf.ucam.org/principia/files/rc.pdf) 3).
-
-Today the influence of philosophy on computer science continues, especially in the ares of artificial intelligence, the representation of information, language, and other things.
-
 ## Logical Similarities
 
 The basis of both philosophy and computer science is logic. In philosophy, it’s often used to evaluate arguments, whereas in computer science, it is the means by which the processor is given instructions. Having a good grasp of logic’s core concepts is essential to do well in either.
@@ -86,3 +74,15 @@ In order to evaluate this code, we perform a *mental stack trace*, that is, we i
 As it turns out, both of these cases are deficient. The problem with utilitarianism (at least in its current crude form) is that it ends up implying that slavery is not wrong, on the grounds that the intense suffering of the few may result in the highest levels of happiness for the many. This is unacceptable, so the argument above obtains. Analogously, the checkmate function will misidentify checked boards as being checkmated. The fact that the current player's king can be captured just means that she must move her king out of check, not that its capture is inevitable.
 
 The point, however, is that both computer programming and philosophy involve analytically determining the consequences of one's statements; and both necessitate a certain creativity in subsequently modifying one's statements accordingly.
+
+## Historical Development
+
+Besides these concrete similarities, academic philosophy played a fascinating role in the historical development of computing.
+
+The conceptual work that made the advent of modern computing possible took place in the early seventeen hundreds, when the philosopher and mathematician G.W.Leibniz developed an algebraic logic. In this logic, ones and zeros represent true or false states. The reason this is significant is that Leibniz’s ones and zeros would later be rendered mechanically as on or off switches in the first primitive computers. Although it took several hundred more years and the work of countless other philosophers, mathematicians, and engineers to develop our modern notion of computing, its conceptual foundation can be traced back to Leibniz’s philosophical logic.
+
+The influence of philosophy on computer science did not stop at Leibniz, however. In the early nineteen hundreds, the philosophers Bertrand Russell and Alfred North Whitehead wrote *Principia Mathematica*, a nearly 2,000 page book written largely in formal logic that aimed to couch all of mathematics in terms of logic. Although the primary aim of this book was later demonstrated to be impossible by Gödel, the *Principia* also set out a theory of types that was later put to use by computer scientists. According to Constable’s brief history, Russell and Whitehead’s theory of types
+
+> …provided a basis for both a precise semantics and elegant programming logics. It was in this context that computer scientists and logicians created the type theories that are deeply connected to *Principia Mathematica* and serve now as comprehensive logical accounts of computing, computational mathematics, and programming logics ([Constable](https://www.srcf.ucam.org/principia/files/rc.pdf) 3).
+
+Today the influence of philosophy on computer science continues, especially in the ares of artificial intelligence, the representation of information, language, and other things.

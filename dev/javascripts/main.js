@@ -24,7 +24,7 @@ var projects = {
 };
 
 function fixHeight () {
-  $('header').css({"height":window.screen.availHeight});
+  $('header').css({"height":(window.screen.availHeight - 59)});
 
   var height = $('#middle').height();
   $('#left').css({"height":height});
@@ -38,7 +38,7 @@ function intro () {
   var lineTwo = '#line-two';
   var current = lineOne;
 
-  setInterval(automateTyping, 50);
+  var intervalToken = setInterval(automateTyping, 50);
 
   function automateTyping () {
     if (i === introText.length) { return arrowFadeIn(); }
@@ -48,6 +48,7 @@ function intro () {
   }
   function arrowFadeIn () {
     $('#arrow').animate({ opacity:1 }, 500);
+    clearInterval(intervalToken);
   }
 }
 

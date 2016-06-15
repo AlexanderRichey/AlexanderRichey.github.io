@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Friction Points in Django Pipeline Installation with AngularJS &middot; Alex Richey
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-73275866-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+  <body>
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">
+          Alex Richey
+        </a>
+      </h1>
+      <p class="lead">I'm a web developer and occasional columnist based in NYC. I write about politics and code.</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="/">Home</a>
+
+      
+
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/about/">About</a>
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+
+      <a class="sidebar-nav-item" href="/dev/">Portfolio</a>
+
+      <span class="sidebar-nav-item">Currently v2.1.0</span>
+    </nav>
+
+    <p>&copy; 2016. All rights reserved.</p>
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">Friction Points in Django Pipeline Installation with AngularJS</h1>
+  <span class="post-date">15 Jun 2016</span>
+  <p>Installing the Django Pipeline is a pain. Here’s a few things to watch out for that might save you some searching on Stack Overflow.</p>
+
+<h2 id="enable-the-pipeline">Enable The Pipeline</h2>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">PIPELINE</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'PIPELINE_ENABLED'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+    <span class="o">...</span>
+</code></pre>
+</div>
+
+<p>If your Pipeline config, which lives in <code class="highlighter-rouge">settings.py</code>, you have to remember to set the <code class="highlighter-rouge">PIPELINE_ENABLED</code> setting. If you forget to include it, contrary to what <a href="https://django-pipeline.readthedocs.io/en/latest/usage.html">the docs</a> say, <em>the pipeline won’t output anything in your templates!</em> If it’s set to <code class="highlighter-rouge">False</code>, your scripts are loaded on the page one-by-one in the order you specify in your config. Otherwise, the pipeline will load output scripts that point to your output files, which are only created after you run <code class="highlighter-rouge">$ python manage.py collectstatic</code>.</p>
+
+<h2 id="commas">Commas</h2>
+
+<p>Commas are required in odd places, even when there’s only one thing being listed.</p>
+
+<p><strong>BAD</strong></p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="s">'JAVASCRIPT'</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s">'libs'</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">'source_filenames'</span><span class="p">:</span> <span class="p">(</span>
+          <span class="s">'js/libs/jquery-2.1.3.min.js'</span>
+        <span class="p">),</span>
+        <span class="s">'output_filename'</span><span class="p">:</span> <span class="s">'js/libs.js'</span>
+    <span class="p">},</span>
+    <span class="o">...</span>
+</code></pre>
+</div>
+
+<p><strong>GOOD</strong></p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="s">'JAVASCRIPT'</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s">'libs'</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">'source_filenames'</span><span class="p">:</span> <span class="p">(</span>
+          <span class="s">'js/libs/jquery-2.1.3.min.js'</span><span class="p">,</span> <span class="o">&lt;=</span><span class="c"># wut?</span>
+        <span class="p">),</span>
+        <span class="s">'output_filename'</span><span class="p">:</span> <span class="s">'js/libs.js'</span><span class="p">,</span> <span class="o">&lt;=</span><span class="c"># why?</span>
+    <span class="p">},</span>
+    <span class="o">...</span>
+</code></pre>
+</div>
+
+<h2 id="angularjs-v-pipeline-compression">AngularJS v. Pipeline Compression</h2>
+
+<p>Angular does not do well with <a href="http://stackoverflow.com/questions/19671962/uncaught-error-injectorunpr-with-angular-after-deployment">modern compression</a>. The reason for this is that it interacts with your views very closely and compressors are not smart enough to look at your views to check if they reference any javascript functions, properties, etc. The usual solution to this problem is to set the <code class="highlighter-rouge">mangle</code> setting to <code class="highlighter-rouge">false</code> in your compressor config, but Django Pipeline doesn’t make this easy. Supposedly, you can pass in a command line argument to your compressor like so.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">PIPELINE</span><span class="p">[</span><span class="s">'UGLIFYJS_ARGUMENTS'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'--no-mangle'</span>
+</code></pre>
+</div>
+
+<p>But, of course, this <a href="http://stackoverflow.com/questions/37821790/uglifyjs-unknown-option-in-cli">doesn’t work</a> in certain environments. The solution here is to use a more bare-bones compressor, like <a href="http://www.crockford.com/javascript/jsmin.html">JSMin</a> or <a href="https://github.com/rspivak/slimit">SlimIt</a>, which don’t change the names of your functions, variables, etc.</p>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2016/05/21/from-philosophy-to-cs/">
+            From Philosophy to Computer Science
+            <small>21 May 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2016/04/17/ski-free/">
+            SkiFree
+            <small>17 Apr 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2016/01/21/two-kinds-of-racism/">
+            Two Kinds of Racism
+            <small>21 Jan 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+
+  </body>
+</html>

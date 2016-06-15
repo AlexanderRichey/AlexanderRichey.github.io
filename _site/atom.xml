@@ -4,13 +4,72 @@
  <title>Alex Richey</title>
  <link href="http://alexrichey.com/atom.xml" rel="self"/>
  <link href="http://alexrichey.com/"/>
- <updated>2016-06-09T11:02:18-04:00</updated>
+ <updated>2016-06-15T17:14:27-04:00</updated>
  <id>http://alexrichey.com</id>
  <author>
    <name>Alex Richey</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Friction Points in Django Pipeline Installation with AngularJS</title>
+   <link href="http://alexrichey.com/2016/06/15/installing-django-pipeline/"/>
+   <updated>2016-06-15T00:00:00-04:00</updated>
+   <id>http://alexrichey.com/2016/06/15/installing-django-pipeline</id>
+   <content type="html">&lt;p&gt;Installing the Django Pipeline is a pain. Here’s a few things to watch out for that might save you some searching on Stack Overflow.&lt;/p&gt;
+
+&lt;h2 id=&quot;enable-the-pipeline&quot;&gt;Enable The Pipeline&lt;/h2&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;PIPELINE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&#39;PIPELINE_ENABLED&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;If your Pipeline config, which lives in &lt;code class=&quot;highlighter-rouge&quot;&gt;settings.py&lt;/code&gt;, you have to remember to set the &lt;code class=&quot;highlighter-rouge&quot;&gt;PIPELINE_ENABLED&lt;/code&gt; setting. If you forget to include it, contrary to what &lt;a href=&quot;https://django-pipeline.readthedocs.io/en/latest/usage.html&quot;&gt;the docs&lt;/a&gt; say, &lt;em&gt;the pipeline won’t output anything in your templates!&lt;/em&gt; If it’s set to &lt;code class=&quot;highlighter-rouge&quot;&gt;False&lt;/code&gt;, your scripts are loaded on the page one-by-one in the order you specify in your config. Otherwise, the pipeline will load output scripts that point to your output files, which are only created after you run &lt;code class=&quot;highlighter-rouge&quot;&gt;$ python manage.py collectstatic&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;commas&quot;&gt;Commas&lt;/h2&gt;
+
+&lt;p&gt;Commas are required in odd places, even when there’s only one thing being listed.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;BAD&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;&#39;JAVASCRIPT&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&#39;libs&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&#39;source_filenames&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;&#39;js/libs/jquery-2.1.3.min.js&#39;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&#39;output_filename&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;js/libs.js&#39;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;GOOD&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;&#39;JAVASCRIPT&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&#39;libs&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&#39;source_filenames&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;&#39;js/libs/jquery-2.1.3.min.js&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# wut?&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&#39;output_filename&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;js/libs.js&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# why?&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;angularjs-v-pipeline-compression&quot;&gt;AngularJS v. Pipeline Compression&lt;/h2&gt;
+
+&lt;p&gt;Angular does not do well with &lt;a href=&quot;http://stackoverflow.com/questions/19671962/uncaught-error-injectorunpr-with-angular-after-deployment&quot;&gt;modern compression&lt;/a&gt;. The reason for this is that it interacts with your views very closely and compressors are not smart enough to look at your views to check if they reference any javascript functions, properties, etc. The usual solution to this problem is to set the &lt;code class=&quot;highlighter-rouge&quot;&gt;mangle&lt;/code&gt; setting to &lt;code class=&quot;highlighter-rouge&quot;&gt;false&lt;/code&gt; in your compressor config, but Django Pipeline doesn’t make this easy. Supposedly, you can pass in a command line argument to your compressor like so.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;PIPELINE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;UGLIFYJS_ARGUMENTS&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;--no-mangle&#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;But, of course, this &lt;a href=&quot;http://stackoverflow.com/questions/37821790/uglifyjs-unknown-option-in-cli&quot;&gt;doesn’t work&lt;/a&gt; in certain environments. The solution here is to use a more bare-bones compressor, like &lt;a href=&quot;http://www.crockford.com/javascript/jsmin.html&quot;&gt;JSMin&lt;/a&gt; or &lt;a href=&quot;https://github.com/rspivak/slimit&quot;&gt;SlimIt&lt;/a&gt;, which don’t change the names of your functions, variables, etc.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>From Philosophy to Computer Science</title>
@@ -140,7 +199,7 @@ By Modus Tollens: ¬A ∎
     &lt;/div&gt;
     &lt;p&gt;Here&#39;s a clone of the classic game SkiFree that I made with Javascript Canvas as part of a/A&#39;s curriculum. Check out the repo on GitHub &lt;a href=&quot;https://github.com/AlexanderRichey/SkiFree&quot;&gt;here.&lt;/a&gt; &lt;strong&gt;Click to begin&lt;/strong&gt; and use the mouse to control your skier.&lt;/p&gt;
     &lt;canvas width=&quot;500&quot; height=&quot;500&quot; id=&quot;canvas&quot;&gt;&lt;/canvas&gt;
-    &lt;script type=&quot;text/javascript&quot; src=&quot;/javascripts/bundle.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;/javascripts/skifree.min.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
   &lt;/body&gt;
 &lt;/html&gt;
 </content>

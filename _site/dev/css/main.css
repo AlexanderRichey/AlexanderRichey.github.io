@@ -320,18 +320,22 @@ footer {
   body .projects-container > section.projects > .project-container > .project {
     padding: 20px 0px; }
     body .projects-container > section.projects > .project-container > .project #left {
-      display: none; }
+      width: 15%; }
+      body .projects-container > section.projects > .project-container > .project #left i {
+        font-size: 40px; }
     body .projects-container > section.projects > .project-container > .project #right {
-      width: 10%; }
+      width: 15%; }
       body .projects-container > section.projects > .project-container > .project #right i {
-        font-size: 60px; }
+        font-size: 40px; }
     body .projects-container > section.projects > .project-container > .project .content {
       width: 70%;
-      padding-left: 10px; }
+      text-align: center; }
       body .projects-container > section.projects > .project-container > .project .content img, body .projects-container > section.projects > .project-container > .project .content .info {
         width: 100%;
         padding: 0;
         margin: 0; }
+        body .projects-container > section.projects > .project-container > .project .content img p, body .projects-container > section.projects > .project-container > .project .content img h4, body .projects-container > section.projects > .project-container > .project .content .info p, body .projects-container > section.projects > .project-container > .project .content .info h4 {
+          margin: 10px 0px 10px 0px; }
 
   .nav-container {
     display: none !important; } }

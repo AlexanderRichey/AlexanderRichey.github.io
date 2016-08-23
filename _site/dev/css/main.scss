@@ -408,21 +408,28 @@ footer {
   body .projects-container > section.projects > .project-container > .project {
     padding: 20px 0px;
 
-    #left { display: none; }
+    #left {
+      width: 15%;
+      i { font-size: 40px; }
+    }
 
     #right {
-      width: 10%;
-      i { font-size: 60px; }
+      width: 15%;
+      i { font-size: 40px; }
     }
 
     .content {
       width: 70%;
-      padding-left: 10px;
+      text-align: center;
 
       img, .info {
         width: 100%;
         padding: 0;
         margin: 0;
+
+        p, h4 {
+          margin: 10px 0px 10px 0px;
+        }
       }
 
     }

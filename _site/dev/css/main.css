@@ -90,7 +90,7 @@ body {
         padding: 20px 40px 20px 10px;
         cursor: pointer; }
       .nav-container nav ul li:last-child {
-        padding: 20px 10px 10px 10px; }
+        padding: 20px 10px 20px 10px; }
       .nav-container nav ul li:hover {
         text-decoration: underline; }
 
@@ -305,7 +305,10 @@ footer {
     display: block;
     padding: 20px; }
 
-@media (max-width: 595px) {
+@media (max-width: 736px) {
+  body > .nav-container > nav > ul > li {
+    padding: 20px 20px 20px 10px; } }
+@media (max-width: 630px) {
   body > section {
     margin: 0px 10px; }
 

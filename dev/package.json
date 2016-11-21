@@ -3,7 +3,9 @@
   "version": "1.0.1",
   "description": "My development portfolio",
   "main": "javascripts/main.js",
-  "scripts": {},
+  "scripts": {
+    "postinstall": "gulp"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AlexanderRichey/AlexanderRichey.github.io.git"

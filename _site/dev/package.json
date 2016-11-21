@@ -1,0 +1,33 @@
+{
+  "name": "alex-richey-dev",
+  "version": "1.0.1",
+  "description": "My development portfolio",
+  "main": "javascripts/main.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexanderRichey/AlexanderRichey.github.io.git"
+  },
+  "author": "Alexander Richey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexanderRichey/AlexanderRichey.github.io/issues"
+  },
+  "homepage": "https://github.com/AlexanderRichey/AlexanderRichey.github.io#readme",
+  "dependencies": {
+    "aos": "^2.1.1",
+    "jquery": "^3.1.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.0.13",
+    "gulp-concat": "^2.6.1",
+    "gulp-concat-css": "^2.3.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.2",
+    "gulp-sequence": "^0.4.6",
+    "gulp-uglify": "^2.0.0",
+    "webpack": "^1.13.3",
+    "webpack-stream": "^3.2.0"
+  }
+}

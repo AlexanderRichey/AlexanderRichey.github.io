@@ -3,8 +3,8 @@
  */
 @font-face {
   font-family: 'devicons';
-  src: url("./icons/devicons.eot?xqxft6");
-  src: url("./icons/devicons.eot?#iefixxqxft6") format("embedded-opentype"), url("./icons/devicons.woff?xqxft6") format("woff"), url("./icons/devicons.ttf?xqxft6") format("truetype"), url("./icons/devicons.svg?xqxft6#devicons") format("svg");
+  src: url("/dev/assets/icons/devicons.eot");
+  src: url("/dev/assets/icons/devicons.eot") format("embedded-opentype"), url("/dev/assets/icons/devicons.woff") format("woff"), url("/dev/assets/icons/devicons.ttf") format("truetype"), url("/dev/assets/icons/devicons.svg#devicons") format("svg");
   font-weight: normal;
   font-style: normal;
 }

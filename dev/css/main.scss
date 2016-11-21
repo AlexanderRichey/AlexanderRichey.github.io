@@ -26,19 +26,18 @@ span, article, footer, time, small {
 }
 
 // Fonts
-@import "devicons.css";
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 
 @font-face {
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
-  src: url(./icons/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: url(/dev/assets/icons/MaterialIcons-Regular.eot); /* For IE6-8 */
   src: local('Material Icons'),
        local('MaterialIcons-Regular'),
-       url(./icons/MaterialIcons-Regular.woff2) format('woff2'),
-       url(./icons/MaterialIcons-Regular.woff) format('woff'),
-       url(./icons/MaterialIcons-Regular.ttf) format('truetype');
+       url(/dev/assets/icons/MaterialIcons-Regular.woff2) format('woff2'),
+       url(/dev/assets/icons/MaterialIcons-Regular.woff) format('woff'),
+       url(/dev/assets/icons/MaterialIcons-Regular.ttf) format('truetype');
 }
 
 .material-icons {
@@ -120,6 +119,7 @@ body {
   position: fixed;
   width: 100%;
   background-color: $background-color;
+  z-index: 2;
 
   nav {
     width: auto;

@@ -1,4 +1,3 @@
-@import url(devicons.css);
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 html, body, header, nav, h1, a,
 ul, li, strong, main, button, i,
@@ -27,9 +26,10 @@ span, article, footer, time, small {
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
-  src: url(./icons/MaterialIcons-Regular.eot);
+  src: url(/dev/assets/icons/MaterialIcons-Regular.eot);
   /* For IE6-8 */
-  src: local("Material Icons"), local("MaterialIcons-Regular"), url(./icons/MaterialIcons-Regular.woff2) format("woff2"), url(./icons/MaterialIcons-Regular.woff) format("woff"), url(./icons/MaterialIcons-Regular.ttf) format("truetype"); }
+  src: local("Material Icons"), local("MaterialIcons-Regular"), url(/dev/assets/icons/MaterialIcons-Regular.woff2) format("woff2"), url(/dev/assets/icons/MaterialIcons-Regular.woff) format("woff"), url(/dev/assets/icons/MaterialIcons-Regular.ttf) format("truetype"); }
+
 .material-icons {
   font-family: 'Material Icons';
   font-weight: normal;
@@ -308,20 +308,18 @@ footer {
 @media (max-width: 736px) {
   body > .nav-container > nav > ul > li {
     padding: 20px 20px 20px 10px; } }
+
 @media (max-width: 630px) {
   body > section {
     margin: 0px 10px; }
-
   body > section > .container {
     margin: 0; }
     body > section > .container img {
       width: 100%; }
     body > section > .container p {
       width: 90%; }
-
   body .projects-container > section.projects > h3 {
     margin: 10px 10px; }
-
   body .projects-container > section.projects > .project-container > .project {
     padding: 20px 0px; }
     body .projects-container > section.projects > .project-container > .project #left {
@@ -341,8 +339,5 @@ footer {
         margin: 0; }
         body .projects-container > section.projects > .project-container > .project .content img p, body .projects-container > section.projects > .project-container > .project .content img h4, body .projects-container > section.projects > .project-container > .project .content .info p, body .projects-container > section.projects > .project-container > .project .content .info h4 {
           margin: 10px 0px 10px 0px; }
-
   .nav-container {
     display: none !important; } }
-
-/*# sourceMappingURL=main.css.map */

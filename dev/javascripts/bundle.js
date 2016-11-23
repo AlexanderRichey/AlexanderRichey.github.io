@@ -54,6 +54,9 @@
 	    duration: 600,
 	    delay: 200,
 	  });
+	  window.onload = function () {
+	    AOS.resetHard();
+	  };
 	  fixHeight();
 	  installListeners();
 	  intro();

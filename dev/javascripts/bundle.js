@@ -61,8 +61,6 @@
 	});
 
 	function fixHeight () {
-	  $('header').css({"height":(window.screen.availHeight - 59)});
-
 	  var height = $('#middle').height();
 	  $('#left').css({"height":height});
 	  $('#right').css({"height":height});

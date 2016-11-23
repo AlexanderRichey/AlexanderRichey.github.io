@@ -51,6 +51,8 @@
 	$(function () {
 	  AOS.init({
 	    duration: 600,
+	    disable: 'mobile',
+	    once: true
 	  });
 	  window.onload = function () {
 	    AOS.refreshHard();

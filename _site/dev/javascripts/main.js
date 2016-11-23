@@ -4,12 +4,10 @@ var currentProject = 0;
 
 $(function () {
   AOS.init({
-    offset: 400,
     duration: 600,
-    delay: 200,
   });
   window.onload = function () {
-    AOS.resetHard();
+    AOS.refreshHard();
   };
   fixHeight();
   installListeners();

@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Alex Richey · Web Developer</title>
-    <link rel="stylesheet" href="./dist/styles.min.css">
-    <script src="./dist/scripts.min.js"></script>
+    <link rel="stylesheet" href="./dist/styles.css">
+    <script src="./dist/scripts.js"></script>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -17,21 +17,21 @@
     </script>
   </head>
   <body>
-    <div class="nav-container">
+    <div id="nav-container" class="nav-container">
       <nav class="group">
-        <ul>
-          <li data-dest="header" id="name"># Alexander Richey</li>
-          <li data-dest=".skills">Skills</li>
-          <li data-dest=".project-container">Projects</li>
-          <li data-dest=".about">About</li>
-          <li data-dest=".contact">Contact</li>
-          <a href="/"><li>Blog</li></a>
+        <ul class="nav-ul">
+          <li class="nav-li" data-dest="header" id="name"># Alexander Richey</li>
+          <li class="nav-li" data-dest=".skills">Skills</li>
+          <li class="nav-li" data-dest=".project-container">Projects</li>
+          <li class="nav-li" data-dest=".about">About</li>
+          <li class="nav-li" data-dest=".contact">Contact</li>
+          <li class="nav-li"><a href="/">Blog</a></li>
         </ul>
       </nav>
     </div>
 
     <header class="group">
-      <div class="content">
+      <div class="header-content">
         <h1 id="line-one">>> </h1>
         <h1 id="line-two"></h1>
         <i class="material-icons" id="arrow">expand_more</i>
@@ -41,7 +41,7 @@
     <section class="skills">
       <h3 data-aos="fade"># Skills</h3>
 
-      <div class="container" data-aos="fade">
+      <div class="skills-container" data-aos="fade">
         <div class="skill">
           <i class="devicons devicons-ruby"></i>
           <span>Ruby</span>
@@ -129,29 +129,28 @@
         <h3 data-aos="fade"># Recent Projects</h3>
 
         <div data-aos="fade" class="project-container group">
-          <div class="project group">
-            <div class="arrow-container group" id="left">
-              <i class="material-icons group">chevron_left</i>
-            </div>
-            <div class="content group" id="middle">
-              <img src="./assets/newsjunkie.jpg">
+          <div class="arrow-container group" id="left">
+            <i class="material-icons group">chevron_left</i>
+          </div>
+          <div class="project-content group" id="slider">
 
-              <div class="info">
-                <h4>NewsJunkie</h4>
-
-                <p>
-                  A clone of the news aggregator Feedly, built with Ruby on Rails and React.js. Check out the GitHub repo for more technical details or visit the live site to see it in action.
+            <div class="project">
+              <div class="project-left">
+                <img class="project-img" src="./assets/mymeural.jpg">
+              </div>
+              <div class="project-right">
+                <h4 class="project-title">MyMeural</h4>
+                <p class="project-description">
+                  Lead full-stack developer. Built with Django, React, Redux,
+                  and much more, my.meural is a progressively enhanced web
+                  application that interfaces with the
+                  <a href="https://meural.com/">Meural Canvas</a>, a
+                  beautiful, IoT frame that gives its users access to over
+                  30,000 works of art.
                 </p>
-
-                <div class="container">
-                  <div class="link">
-                    <a id="repo" href="https://github.com/AlexanderRichey/NewsJunkie">
-                      <span>Repo</span>
-                      <i class="devicons devicons-github_alt"></i>
-                    </a>
-                  </div>
-                  <div class="link">
-                    <a id="live" href="http://www.newsjunkie.in/">
+                <div class="project-links-container">
+                  <div class="project-link">
+                    <a class="live" href="https://my.meural.com/">
                       <span>Live</span>
                       <i class="material-icons">arrow_forward</i>
                     </a>
@@ -159,11 +158,91 @@
                 </div>
               </div>
             </div>
-            <div class="arrow-container group" id="right">
-              <i class="material-icons group">chevron_right</i>
-            </div>
-          </div>
 
+            <div class="project">
+              <div class="project-left">
+                <img class="project-img" src="./assets/newsjunkie.jpg">
+              </div>
+              <div class="project-right">
+                <h4 class="project-title">NewsJunkie</h4>
+                <p class="project-description">
+                  A clone of the news aggregator Feedly, built with Ruby on
+                  Rails and React.js. Check out the GitHub repo for more
+                  technical details or visit the live site to see it in action.
+                </p>
+                <div class="project-links-container">
+                  <div class="project-link">
+                    <a class="repo"
+                      href="https://github.com/AlexanderRichey/NewsJunkie">
+                      <span>Repo</span>
+                      <i class="devicons devicons-github_alt"></i>
+                    </a>
+                  </div>
+                  <div class="project-link">
+                    <a class="live" href="http://www.newsjunkie.in/">
+                      <span>Live</span>
+                      <i class="material-icons">arrow_forward</i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="project">
+              <div class="project-left">
+                <img class="project-img" src="./assets/chess.jpg">
+              </div>
+              <div class="project-right">
+                <h4 class="project-title">Chess AI</h4>
+                <p class="project-description">
+                  Coded in Ruby, playable in terminal, and powered by a negamax
+                  algorithm with alpha-beta pruning. Can you beat it?
+                </p>
+                <div class="project-links-container">
+                  <div class="project-link">
+                    <a class="repo"
+                      href="https://github.com/AlexanderRichey/Chess">
+                      <span>Repo</span>
+                      <i class="devicons devicons-github_alt"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="project">
+              <div class="project-left">
+                <img class="project-img" src="./assets/skifree.jpg">
+              </div>
+              <div class="project-right">
+                <h4 class="project-title">SkiFree</h4>
+                <p class="project-description">
+                  A remake of the classic game SkiFree powered by JavaScript
+                  Canvas.
+                </p>
+                <div class="project-links-container">
+                  <div class="project-link">
+                    <a class="repo"
+                      href="https://github.com/AlexanderRichey/SkiFree">
+                      <span>Repo</span>
+                      <i class="devicons devicons-github_alt"></i>
+                    </a>
+                  </div>
+                  <div class="project-link">
+                    <a class="live" href="http://alexrichey.com/2016/04/17/ski-free/">
+                      <span>Live</span>
+                      <i class="material-icons">arrow_forward</i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="arrow-container group" id="right">
+            <i class="material-icons group">chevron_right</i>
+          </div>
         </div>
       </section>
     </div>

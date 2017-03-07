@@ -1,102 +1,9 @@
-// Reset
-html, body, header, nav, h1, a,
-ul, li, strong, main, button, i,
-section, figure, img, div, h2, p, form,
-fieldset, label, input, textarea,
-span, article, footer, time, small {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  font: inherit;
-  color: inherit;
-  text-align: inherit;
-  text-decoration: inherit;
-  vertical-align: inherit;
-  box-sizing: inherit;
-  background: transparent;
-  list-style: none;
-}
+@import "vars";
+@import "fonts";
+@import "mixins";
+@import "base";
+@import "slider";
 
-// Clearfix
-.group:after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-// Fonts
-@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
-
-@font-face {
-  font-family: 'Material Icons';
-  font-style: normal;
-  font-weight: 400;
-  src: url(/dev/assets/icons/MaterialIcons-Regular.eot); /* For IE6-8 */
-  src: local('Material Icons'),
-       local('MaterialIcons-Regular'),
-       url(/dev/assets/icons/MaterialIcons-Regular.woff2) format('woff2'),
-       url(/dev/assets/icons/MaterialIcons-Regular.woff) format('woff'),
-       url(/dev/assets/icons/MaterialIcons-Regular.ttf) format('truetype');
-}
-
-.material-icons {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;  /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
-
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
-
-  /* Support for IE. */
-  font-feature-settings: 'liga';
-}
-
-// Vars
-$background-color: #171f26;
-$text-white: rgba(255, 255, 255, 0.8);
-$button-background-dark: #283542;
-$button-background-light: #ddd;
-$monospace: Menlo, Source Code Pro, Monaco, Consolas, monospace;
-$sans-serif: 'Montserrat', sans-serif;
-
-// Mixins
-@mixin button-link($background) {
-  span {
-    display: inline-block;
-    font-size: inherit;
-    line-height: inherit;
-    font-family: $monospace;
-    color: inherit;
-    float: left;
-    background-color: $background;
-    padding: 10px 15px;
-  }
-  i {
-    display: inline-block;
-    font-size: 20px;
-    line-height: inherit;
-    float: left;
-    color: #fff;
-    background: #0e83cd;
-    text-decoration: none;
-    padding: 10px;
-    margin: 0;
-  }
-}
 
 // Real Stuff
 body {
@@ -106,7 +13,7 @@ body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
   color: #4c4c4c;
-  font-weight: lighter;
+  font-weight: normal;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -114,43 +21,47 @@ body {
 }
 
 .nav-container {
-  display: none;
-  opacity: 1;
+  opacity: 0;
   position: fixed;
   width: 100%;
   background-color: $background-color;
   z-index: 2;
-
-  nav {
-    width: auto;
-    height: 40px;
-    display: table;
-    margin: auto;
-    font-family: $monospace;
-    color: $text-white;
-
-    #name {
-      font-weight: bold;
-    }
-
-    ul {
-      list-style: none;
-      display: table-cell;
-      text-align: center;
-
-      li {
-        display: block;
-        float: left;
-        padding: 20px 40px 20px 10px;
-        cursor: pointer;
-      }
-
-      li:last-child { padding: 20px 10px 20px 10px; }
-      li:hover { text-decoration: underline; }
-    }
-  }
+  @include transitions;
 }
 
+nav {
+  width: auto;
+  height: 40px;
+  display: table;
+  margin: auto;
+  font-family: $monospace;
+  color: $text-white;
+}
+
+.nav-ul {
+  list-style: none;
+  display: table-cell;
+  text-align: center;
+}
+
+#name {
+  font-weight: bold;
+}
+
+.nav-li {
+  display: block;
+  float: left;
+  padding: 20px 40px 20px 10px;
+  cursor: pointer;
+
+  &:last-child {
+    padding: 20px 10px 20px 10px;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
 
 header {
   display: table;
@@ -162,24 +73,28 @@ header {
   text-align: center;
   font-family: $monospace;
   color: $text-white;
+}
 
-  .content {
-    display: table-cell;
+.header-content {
+  display: table-cell;
+  font-weight: inherit;
+  vertical-align: middle;
+
+  h1 {
+    font-size: 38px;
     font-weight: inherit;
-    vertical-align: middle;
-
-    h1 {
-      font-size: 38px;
-      font-weight: inherit;
-      margin: auto auto 20px auto;
-    }
-
-    i {
-      opacity: 0;
-      font-size: 100px;
-      margin-top: 50px;
-    }
+    margin: auto auto 20px auto;
   }
+
+  i {
+    opacity: 0;
+    font-size: 100px;
+    margin-top: 50px;
+  }
+}
+
+#arrow {
+  @include transitions;
 }
 
 section {
@@ -191,80 +106,81 @@ section {
   h3 {
     font-weight: inherit;
   }
-  .container {
-    margin-left: 24px;
-    background-color: inherit;
+}
 
-    img {
-      width: 40%;
-      display: block;
-      float: left;
-    }
+.container {
+  margin-left: 24px;
+  background-color: inherit;
 
-    p {
-      width: 50%;
-      display: block;
-      float: left;
-      color: #4c4c4c;
-      // font-family: "Helvetica Nue", sans-serif;
-      font-size: 16px;
-      padding: 10px 20px;
-      line-height: 1.6em;
-      a {
-        cursor: pointer;
-        font-weight: bold;
-      }
-    }
-
-    .skill {
-      display: inline-block;
-      padding: 0px 5px 0px 5px;
-      width: auto;
-      border: 1px solid #a3d2eb;
-      border-radius: 5px;
-      margin-bottom: 2px;
-      margin-right: 2px;
-      background-color: #d4ecfa;
-      color: #004c75;
-
-      i {
-        display: block;
-        float: left;
-        font-size: 25px;
-        line-height: 40px;
-        margin: 0px 5px 0px 0px;
-      }
-      span {
-        display: block;
-        float: left;
-        font-size: 16px;
-        line-height: 40px;
-        margin: 0px 0px 0px 0px;
-      }
-    }
-
-    .link {
-      display: inline-block;
-      margin-right: 2px;
-      margin-bottom: 2px;
-      line-height: 19px;
-      color: #000;
-      @include button-link($button-background-light);
-    }
-
-    .link:hover {
-      i {
-        background: #0A6096;
-        transition: 0.2s;
-      }
-      span {
-        background: #bbb;
-        transition: 0.2s;
-      }
-    }
-
-    .link:last-child { margin-right: 0px; }
+  img {
+    width: 40%;
+    display: block;
+    float: left;
   }
+
+  p {
+    width: 50%;
+    display: block;
+    float: left;
+    color: #4c4c4c;
+    font-size: 16px;
+    padding: 10px 20px;
+    line-height: 1.6em;
+
+    a {
+      cursor: pointer;
+      font-weight: bold;
+    }
+  }
+}
+
+.skill {
+  display: inline-block;
+  padding: 0px 5px 0px 5px;
+  width: auto;
+  border: 1px solid #a3d2eb;
+  border-radius: 5px;
+  margin-bottom: 2px;
+  margin-right: 2px;
+  background-color: #d4ecfa;
+  color: #004c75;
+
+  i {
+    display: block;
+    float: left;
+    font-size: 25px;
+    line-height: 40px;
+    margin: 0px 5px 0px 0px;
+  }
+  span {
+    display: block;
+    float: left;
+    font-size: 16px;
+    line-height: 40px;
+    margin: 0px 0px 0px 0px;
+  }
+}
+
+.link {
+  display: inline-block;
+  margin-right: 2px;
+  margin-bottom: 2px;
+  line-height: 19px;
+  color: #000;
+  @include button-link($button-background-light);
+
+  &:hover {
+    i {
+      background: #0A6096;
+      transition: 0.2s;
+    }
+    span {
+      background: #bbb;
+      transition: 0.2s;
+    }
+  }
+
+  &:last-child { margin-right: 0px; }
 }
 
 .projects-container {
@@ -272,109 +188,113 @@ section {
   width: 100%;
   height: auto;
   margin-top: 20px;
+}
 
-  section.projects {
-    max-width: none;
+.projects {
+  max-width: none;
+  margin: auto;
+
+  h3 {
+    max-width: 600px;
     margin: auto;
+    margin-bottom: 20px;
+  }
+}
 
-    h3 {
-      max-width: 600px;
-      margin: auto;
-      margin-bottom: 20px;
-    }
+.project-container {
+  display: flex;
+  width: 100%;
+  height: 30rem;
+  background-color: #eee;
+  padding: 0;
+  flex-direction: row;
+  overflow: hidden;
+}
 
-    .project-container {
-      display: block;
-      width: 100%;
-      background-color: #eee;
-      padding: 0;
+.arrow-container {
+  display: flex;
+  height: 100%;
+  width: 10%;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #ccc;
+  @include transitions;
 
-      .project {
-        display: block;
-        padding: 70px 0;
-        margin: auto;
-        width: inherit;
-        height: auto;
-        color: #4c4c4c;
+  .material-icons {
+    font-size: 4rem !important;
+  }
 
-        .arrow-container {
-          display: table;
-          box-sizing: border-box;
-          vertical-align: middle;
-          text-align: center;
-          float: left;
-          height: 100%;
-          width: 15%;
-          color: #ccc;
-          transition: 0.5s;
-          cursor: pointer;
+  &:hover {
+    color: #4c4c4c;
+  }
+}
 
-          i {
-            display: table-cell;
-            font-size: 60px;
-            margin: auto;
-          }
-        }
+.project-content {
+  display: flex;
+  width: 80%;
+  height: 100%;
+  position: relative;
+}
 
-        .arrow-container:hover {
-          transition: 0.5s;
-          color: #000;
-        }
+.project {
+  display: flex;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
 
-        .content {
-          display: block;
-          float: left;
-          width: 70%;
-          box-sizing: border-box;
-          font-family: $sans-serif;
-          color: inherit;
+.project-left {
+  display: flex;
+  float: left;
+  width: 50%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
 
-          img {
-            width: 50%;
-            border: 1px solid #ccc;
-            float: left;
-          }
+  img {
+    box-shadow: 0rem 0rem 1rem #ccc;
+  }
+}
 
-          .info {
-            width: 50%;
-            float: left;
+.project-right {
+  display: flex;
+  float: left;
+  width: 50%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 2rem;
+}
 
-            h4 {
-              margin: 10px 0px 0px 20px;
-              font-size: 28px;
-              font-weight: 700;
-            }
+.project-title {
+  font-size: 2rem;
+  line-height: 1.6rem;
+  margin: 0 0 1rem 0;
+}
 
-            p {
-              // font-family: "Helvetica Nue", sans-serif;
-              font-size: 18px;
-              margin: 10px 0px 10px 20px;
-              line-height: 1.6em;
-            }
+.project-description {
+  font-size: 1rem;
+  line-height: 1.6rem;
+  margin-bottom: 1rem;
+}
 
-            .container {
-              margin-left: 20px;
+.project-link {
+  display: inline-block;
+  margin-right: 2px;
+  margin-left: 0px;
+  margin-bottom: 2px;
+  line-height: 19px;
+  color: $text-white;
+  @include button-link($button-background-dark);
 
-              .link {
-                display: inline-block;
-                margin-right: 2px;
-                margin-left: 0px;
-                margin-bottom: 2px;
-                line-height: 19px;
-                color: $text-white;
-                @include button-link($button-background-dark);
-              }
-
-              .link:hover {
-                i {
-                  background: #0A6096;
-                  transition: 0.2s;
-                }
-              }
-            }
-          }
-        }
-      }
+  &:hover {
+    i {
+      background: #0A6096;
+      transition: 0.2s;
     }
   }
 }
@@ -391,58 +311,5 @@ footer {
   span {
     display: block;
     padding: 20px;
-  }
-}
-
-@media (max-width: 736px) {
-  body > .nav-container > nav > ul > li { padding: 20px 20px 20px 10px; }
-}
-
-@media (max-width: 630px) {
-  body > section { margin: 0px 10px; }
-
-  body > section > .container {
-    margin: 0;
-
-    img { width: 100%; }
-    p { width: 90%; }
-  }
-
-  body .projects-container > section.projects > h3 {
-    margin: 10px 10px;
-  }
-
-  body .projects-container > section.projects > .project-container > .project {
-    padding: 20px 0px;
-
-    #left {
-      width: 15%;
-      i { font-size: 40px; }
-    }
-
-    #right {
-      width: 15%;
-      i { font-size: 40px; }
-    }
-
-    .content {
-      width: 70%;
-      text-align: center;
-
-      img, .info {
-        width: 100%;
-        padding: 0;
-        margin: 0;
-
-        p, h4 {
-          margin: 10px 0px 10px 0px;
-        }
-      }
-
-    }
-  }
-
-  .nav-container {
-    display: none !important;
   }
 }

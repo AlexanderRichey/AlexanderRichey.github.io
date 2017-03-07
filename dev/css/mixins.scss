@@ -1,0 +1,31 @@
+// Mixins
+@mixin button-link($background) {
+  span {
+    display: inline-block;
+    font-size: inherit;
+    line-height: inherit;
+    font-family: $monospace;
+    color: inherit;
+    float: left;
+    background-color: $background;
+    padding: 10px 15px;
+  }
+  i {
+    display: inline-block;
+    font-size: 20px;
+    line-height: inherit;
+    float: left;
+    color: #fff;
+    background: #0e83cd;
+    text-decoration: none;
+    padding: 10px;
+    margin: 0;
+  }
+}
+
+@mixin transitions {
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+}

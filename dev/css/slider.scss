@@ -1,0 +1,21 @@
+.slide {
+  opacity: 0;
+  -webkit-transition: all 700ms;
+  -moz-transition: all 700ms;
+  -o-transition: all 700ms;
+  transition: all 700ms;
+  z-index: 0;
+
+  &.active {
+    opacity: 1;
+    z-index: 2;
+  }
+
+  &.next {
+    transform: translateX(120%);
+  }
+
+  &.prev {
+    transform: translateX(-120%);
+  }
+}

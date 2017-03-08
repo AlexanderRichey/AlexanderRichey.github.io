@@ -1403,6 +1403,9 @@ body {
   -moz-transition: all 500ms;
   -o-transition: all 500ms;
   transition: all 500ms; }
+  @media screen and (max-width: 414px) {
+    .nav-container {
+      display: none !important; } }
 
 nav {
   width: auto;
@@ -1444,7 +1447,8 @@ header {
 .header-content {
   display: table-cell;
   font-weight: inherit;
-  vertical-align: middle; }
+  vertical-align: middle;
+  padding: 0 1rem; }
   .header-content h1 {
     font-size: 38px;
     font-weight: inherit;
@@ -1468,14 +1472,32 @@ section {
   section h3 {
     font-weight: inherit; }
 
-.container {
+@media screen and (max-width: 414px) {
+  .skills, .contact {
+    padding: 1rem; } }
+
+@media screen and (max-width: 414px) {
+  .about h3 {
+    margin-left: 1rem; } }
+
+.about-container {
   margin-left: 24px;
-  background-color: inherit; }
-  .container img {
-    width: 40%;
-    display: block;
+  background-color: inherit;
+  display: flex;
+  flex-direction: row; }
+  @media screen and (max-width: 414px) {
+    .about-container {
+      margin-left: 0;
+      flex-direction: column; } }
+  .about-container .img-container {
+    width: 50%;
     float: left; }
-  .container p {
+    @media screen and (max-width: 414px) {
+      .about-container .img-container {
+        width: 100%; } }
+  .about-container img {
+    display: block; }
+  .about-container .p-container {
     width: 50%;
     display: block;
     float: left;
@@ -1483,9 +1505,14 @@ section {
     font-size: 16px;
     padding: 10px 20px;
     line-height: 1.6em; }
-    .container p a {
+    .about-container .p-container a {
       cursor: pointer;
       font-weight: bold; }
+    @media screen and (max-width: 414px) {
+      .about-container .p-container {
+        margin: 1rem;
+        padding: 0;
+        width: auto; } }
 
 .skill {
   display: inline-block;
@@ -1557,6 +1584,12 @@ section {
     max-width: 600px;
     margin: auto;
     margin-bottom: 20px; }
+    @media screen and (max-width: 414px) {
+      .projects h3 {
+        margin-left: 1rem; } }
+  @media screen and (max-width: 414px) {
+    .projects {
+      padding: 0 !important; } }
 
 .project-container {
   display: flex;
@@ -1566,6 +1599,15 @@ section {
   padding: 0;
   flex-direction: row;
   overflow: hidden; }
+  @media screen and (max-width: 414px) {
+    .project-container {
+      height: 36rem; } }
+  @media screen and (min-width: 1400px) {
+    .project-container {
+      height: 35rem; } }
+  @media screen and (min-width: 2560px) {
+    .project-container {
+      height: 43rem; } }
 
 .arrow-container {
   display: flex;
@@ -1598,6 +1640,9 @@ section {
   left: 0;
   height: 100%;
   width: 100%; }
+  @media screen and (max-width: 414px) {
+    .project {
+      flex-direction: column; } }
 
 .project-left {
   display: flex;
@@ -1607,7 +1652,13 @@ section {
   align-items: center;
   justify-content: center; }
   .project-left img {
-    box-shadow: 0rem 0rem 1rem #ccc; }
+    box-shadow: 0rem 0rem 1rem #ccc;
+    max-height: 90%; }
+  @media screen and (max-width: 414px) {
+    .project-left {
+      width: 100%;
+      height: auto;
+      margin: 2rem 0; } }
 
 .project-right {
   display: flex;
@@ -1617,6 +1668,11 @@ section {
   flex-direction: column;
   justify-content: center;
   padding-left: 2rem; }
+  @media screen and (max-width: 414px) {
+    .project-right {
+      width: 90%;
+      height: auto;
+      padding: 0.5rem; } }
 
 .project-title {
   font-size: 2rem;

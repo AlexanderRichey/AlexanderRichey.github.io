@@ -1,13 +1,11 @@
-import AOS from 'aos';
 import '../node_modules/aos/dist/aos.css';
 import '../css/devicons.css';
+import '../css/main.scss';
 
+import AOS from 'aos';
 import Slider from './slider';
 import intro from './intro';
 import { scrollTo } from './utils';
-
-import '../css/main.scss';
-
 
 document.addEventListener('DOMContentLoaded', () => {
   AOS.init({
@@ -47,3 +45,4 @@ function setUpSlider() {
   document.getElementById('right')
     .addEventListener('click', sliderToken.nextSlide);
 }
+

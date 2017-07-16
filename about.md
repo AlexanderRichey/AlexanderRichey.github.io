@@ -10,6 +10,7 @@ I'm a web developer in NYC, formerly a graduate student in philosophy at [Columb
 * [GitHub](https://github.com/AlexanderRichey)
 * [LinkedIn](https://www.linkedin.com/in/alexanderrichey)
 * [StackOverflow](http://stackoverflow.com/cv/alexrichey)
+* [Resume](/resume.html)
 * [Twitter](https://twitter.com/AlexanderRichey)
 * [Tumblr](http://grokeverything.com/)
 

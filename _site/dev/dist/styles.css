@@ -1654,6 +1654,9 @@ section {
   .project-left img {
     box-shadow: 0rem 0rem 1rem #ccc;
     max-height: 90%; }
+  .project-left video {
+    width: 100%;
+    box-shadow: 0rem 0rem 1rem #ccc; }
   @media screen and (max-width: 414px) {
     .project-left {
       width: 100%;

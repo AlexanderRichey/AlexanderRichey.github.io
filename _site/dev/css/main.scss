@@ -326,6 +326,11 @@ section {
     max-height: 90%;
   }
 
+  video {
+    width: 100%;
+    box-shadow: 0rem 0rem 1rem #ccc;
+  }
+
   @include media-small {
     width: 100%;
     height: auto;

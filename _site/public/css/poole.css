@@ -1,33 +1,19 @@
-/*
- *                        ___
- *                       /\_ \
- *  _____     ___     ___\//\ \      __
- * /\ '__`\  / __`\  / __`\\ \ \   /'__`\
- * \ \ \_\ \/\ \_\ \/\ \_\ \\_\ \_/\  __/
- *  \ \ ,__/\ \____/\ \____//\____\ \____\
- *   \ \ \/  \/___/  \/___/ \/____/\/____/
- *    \ \_\
- *     \/_/
- *
- * Designed, built, and released under MIT license by @mdo. Learn more at
- * https://github.com/poole/poole.
- */
+@font-face {
+  font-family: 'Atlas Grotesk';
+  font-style: normal;
+  src: url('/public/fonts/atlas_grotesk.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Atlas Grotesk';
+  font-style: italic;
+  src: url('/public/fonts/atlas_grotesk_italic.woff2') format('woff2');
+}
 
-
-/*
- * Contents
- *
- * Body resets
- * Custom type
- * Messages
- * Container
- * Masthead
- * Posts and pages
- * Pagination
- * Reverse layout
- * Themes
- */
-
+@font-face {
+  font-family: 'Atlas Typewriter';
+  font-style: normal;
+  src: url('/public/fonts/atlas_typewriter.woff2') format('woff2');
+}
 
 /*
  * Body resets
@@ -48,7 +34,7 @@ body {
 }
 
 html {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Atlas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.5;
 }
@@ -59,7 +45,8 @@ html {
 }
 
 body {
-  color: #515151;
+  /*color: #515151;*/
+  color: #000;
   background-color: #fff;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
@@ -67,7 +54,7 @@ body {
 
 /* No `:visited` state is required by default (browsers will use `a`) */
 a {
-  color: #268bd2;
+  color: rgba(0, 0, 0, 0.5);
   text-decoration: none;
 }
 a strong {
@@ -79,20 +66,27 @@ a:focus {
   text-decoration: underline;
 }
 
+p a {
+  text-decoration: underline;
+}
+
+p a:hover {
+  color: #000;
+}
+
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
   margin-bottom: .5rem;
   font-weight: bold;
   line-height: 1.25;
-  color: #313131;
   text-rendering: optimizeLegibility;
 }
 h1 {
   font-size: 2rem;
 }
 h2 {
-  margin-top: 1rem;
-  font-size: 1.5rem;
+  margin-top: 1.2rem;
+  font-size: 1.3rem;
 }
 h3 {
   margin-top: 1.5rem;
@@ -107,6 +101,8 @@ h4, h5, h6 {
 p {
   margin-top: 0;
   margin-bottom: 1rem;
+  font-size: 0.8rem;
+  line-height: 1.2rem;
 }
 
 strong {
@@ -231,7 +227,6 @@ img {
   display: block;
   max-width: 100%;
   margin: 0 0 1rem;
-  border-radius: 5px;
 }
 
 /* Tables */
@@ -259,8 +254,8 @@ tbody tr:nth-child(odd) th {
  */
 
 .lead {
-  font-size: 1.25rem;
-  font-weight: 300;
+  font-size: 0.9rem;
+  line-height: 1.2rem;
 }
 
 
@@ -273,6 +268,7 @@ tbody tr:nth-child(odd) th {
 
 .message {
   margin-bottom: 1rem;
+  font-size: 0.8rem;
   padding: 1rem;
   color: #717171;
   background-color: #f9f9f9;
@@ -347,9 +343,9 @@ tbody tr:nth-child(odd) th {
 /* Meta data line below post title */
 .post-date {
   display: block;
+  font-style: italic;
   margin-top: -.5rem;
   margin-bottom: 1rem;
-  color: #9a9a9a;
 }
 
 /* Related posts */
@@ -389,7 +385,6 @@ tbody tr:nth-child(odd) th {
   overflow: hidden; /* clearfix */
   margin-left: -1rem;
   margin-right: -1rem;
-  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   color: #ccc;
   text-align: center;
 }
@@ -398,7 +393,6 @@ tbody tr:nth-child(odd) th {
 .pagination-item {
   display: block;
   padding: 1rem;
-  border: 1px solid #eee;
 }
 .pagination-item:first-child {
   margin-bottom: -1px;
@@ -406,7 +400,6 @@ tbody tr:nth-child(odd) th {
 
 /* Only provide a hover state for linked pagination items */
 a.pagination-item:hover {
-  background-color: #f5f5f5;
 }
 
 @media (min-width: 30em) {

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>Alex Richey</title>
- <link href="http://localhost:4000/atom.xml" rel="self"/>
- <link href="http://localhost:4000/"/>
- <updated>2017-07-16T18:01:00-04:00</updated>
- <id>http://localhost:4000</id>
+ <link href="http://alexrichey.com/atom.xml" rel="self"/>
+ <link href="http://alexrichey.com/"/>
+ <updated>2017-08-06T21:48:29-04:00</updated>
+ <id>http://alexrichey.com</id>
  <author>
    <name>Alex Richey</name>
    <email></email>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>From Philosophy to Computer Science</title>
-   <link href="http://localhost:4000/2016/05/21/from-philosophy-to-cs/"/>
+   <link href="http://alexrichey.com/2016/05/21/from-philosophy-to-cs/"/>
    <updated>2016-05-21T00:00:00-04:00</updated>
-   <id>http://localhost:4000/2016/05/21/from-philosophy-to-cs</id>
+   <id>http://alexrichey.com/2016/05/21/from-philosophy-to-cs</id>
    <content type="html">&lt;p&gt;&lt;img src=&quot;/assets/philosophy.jpg&quot; alt=&quot;image&quot; /&gt;
 When I say that I’m a software developer with a background in academic philosophy, many people react with surprise, as if I had jumped between completely divergent fields. Philosophy and computer science are in fact closely related and it is easy to transition from one to the other. In this article I would like to highlight a few reasons why this is so, with the hopes of dispelling the common misperception that they are opposites and of giving some background for students of philosophy who are interested in transitioning to computer science.&lt;/p&gt;
 
@@ -112,9 +112,9 @@ By Modus Tollens: ¬A ∎
  
  <entry>
    <title>SkiFree</title>
-   <link href="http://localhost:4000/2016/04/17/ski-free/"/>
+   <link href="http://alexrichey.com/2016/04/17/ski-free/"/>
    <updated>2016-04-17T00:00:00-04:00</updated>
-   <id>http://localhost:4000/2016/04/17/ski-free</id>
+   <id>http://alexrichey.com/2016/04/17/ski-free</id>
    <content type="html">&lt;html&gt;
   &lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot;&gt;
@@ -148,9 +148,9 @@ By Modus Tollens: ¬A ∎
  
  <entry>
    <title>Two Kinds of Racism</title>
-   <link href="http://localhost:4000/2016/01/21/two-kinds-of-racism/"/>
+   <link href="http://alexrichey.com/2016/01/21/two-kinds-of-racism/"/>
    <updated>2016-01-21T00:00:00-05:00</updated>
-   <id>http://localhost:4000/2016/01/21/two-kinds-of-racism</id>
+   <id>http://alexrichey.com/2016/01/21/two-kinds-of-racism</id>
    <content type="html">&lt;div class=&quot;message&quot;&gt;
   A letter I wrote to the NYTimes, which was not published.
 &lt;/div&gt;
@@ -177,9 +177,9 @@ By Modus Tollens: ¬A ∎
  
  <entry>
    <title>Ted Sider’s Solution to the Problem of Radical Semantic Skepticism</title>
-   <link href="http://localhost:4000/2015/12/06/ted-siders-solution-to-the-problem-of-radical-semantic-skepticism/"/>
+   <link href="http://alexrichey.com/2015/12/06/ted-siders-solution-to-the-problem-of-radical-semantic-skepticism/"/>
    <updated>2015-12-06T00:00:00-05:00</updated>
-   <id>http://localhost:4000/2015/12/06/ted-siders-solution-to-the-problem-of-radical-semantic-skepticism</id>
+   <id>http://alexrichey.com/2015/12/06/ted-siders-solution-to-the-problem-of-radical-semantic-skepticism</id>
    <content type="html">&lt;div class=&quot;message&quot;&gt;
   &lt;a href=&quot;http://dx.doi.org/10.7916/D8RV0N61&quot;&gt;Link&lt;/a&gt; to a paper I wrote on Columbia Academic Commons. Here's the abstract:
 &lt;/div&gt;
@@ -192,9 +192,9 @@ By Modus Tollens: ¬A ∎
  
  <entry>
    <title>Against Pessimism</title>
-   <link href="http://localhost:4000/2014/02/24/against-pessimism/"/>
+   <link href="http://alexrichey.com/2014/02/24/against-pessimism/"/>
    <updated>2014-02-24T00:00:00-05:00</updated>
-   <id>http://localhost:4000/2014/02/24/against-pessimism</id>
+   <id>http://alexrichey.com/2014/02/24/against-pessimism</id>
    <content type="html">&lt;p&gt;&lt;img src=&quot;/assets/half-full-half-empty.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;message&quot;&gt;
@@ -265,9 +265,9 @@ By Modus Tollens: ¬A ∎
  
  <entry>
    <title>What the Science of Happiness Can Tell Us About Taxes</title>
-   <link href="http://localhost:4000/2013/07/10/what-the-science-of-happiness-can-tell-us-about-taxes/"/>
+   <link href="http://alexrichey.com/2013/07/10/what-the-science-of-happiness-can-tell-us-about-taxes/"/>
    <updated>2013-07-10T00:00:00-04:00</updated>
-   <id>http://localhost:4000/2013/07/10/what-the-science-of-happiness-can-tell-us-about-taxes</id>
+   <id>http://alexrichey.com/2013/07/10/what-the-science-of-happiness-can-tell-us-about-taxes</id>
    <content type="html">&lt;div class=&quot;message&quot;&gt;
   My article about the relationship between happiness and income, originally published on &lt;a href=&quot;http://www.policymic.com/articles/53521/what-the-science-of-happiness-can-tell-us-about-taxes&quot;&gt;&lt;em&gt;PolicyMic&lt;/em&gt;&lt;/a&gt;.
 &lt;/div&gt;
@@ -304,9 +304,9 @@ By Modus Tollens: ¬A ∎
  
  <entry>
    <title>Minimum Wage Bill: Obama's $9 Proposal Won't Increase Unemployment</title>
-   <link href="http://localhost:4000/2013/06/09/minimum-wage-bill-obamas-9-proposal-wont-increase-unemployment/"/>
+   <link href="http://alexrichey.com/2013/06/09/minimum-wage-bill-obamas-9-proposal-wont-increase-unemployment/"/>
    <updated>2013-06-09T00:00:00-04:00</updated>
-   <id>http://localhost:4000/2013/06/09/minimum-wage-bill-obamas-9-proposal-wont-increase-unemployment</id>
+   <id>http://alexrichey.com/2013/06/09/minimum-wage-bill-obamas-9-proposal-wont-increase-unemployment</id>
    <content type="html">&lt;p&gt;&lt;img src=&quot;/assets/min-wage.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;message&quot;&gt;
@@ -349,9 +349,9 @@ By Modus Tollens: ¬A ∎
  
  <entry>
    <title>The Lame Duck Dilemma</title>
-   <link href="http://localhost:4000/2012/09/15/the-lame-duck-dilemma/"/>
+   <link href="http://alexrichey.com/2012/09/15/the-lame-duck-dilemma/"/>
    <updated>2012-09-15T00:00:00-04:00</updated>
-   <id>http://localhost:4000/2012/09/15/the-lame-duck-dilemma</id>
+   <id>http://alexrichey.com/2012/09/15/the-lame-duck-dilemma</id>
    <content type="html">&lt;p&gt;There has been no shortage of articles declaring that the lame duck congress is intransigent. Paul Krugman of the New York Times, for example, &lt;a href=&quot;http://www.nytimes.com/2012/08/03/opinion/krugman-debt-depression-demarco.html?partner=rssnyt&amp;amp;emc=rss&quot;&gt;writes&lt;/a&gt; that the most striking feature of Obama’s presidency is not his management of the troubled economy, but “the scorched-earth opposition of Republicans.” Perhaps the most salient episode of Republican opposition occurred last summer, when Republicans threatened a government shut-down by posturing to deny raising the debt-ceiling and &lt;a href=&quot;http://www.nytimes.com/2011/08/06/business/us-debt-downgraded-by-sp.html?ref=nationaldebtus&quot;&gt;reduced the nation’s credit rating&lt;/a&gt; in the process.&lt;/p&gt;
 
 &lt;p&gt;It hardly seems questionable that the obstinate voting patterns of (largely Republican) congresspeople are harming the nation and slowing its economic recovery. But why is this so? Why is obstructionism so detrimental? I think that a surprising amount of insight can be gained from considering a famous ethical case called the &lt;a href=&quot;http://plato.stanford.edu/entries/prisoner-dilemma/&quot;&gt;prisoner’s dilemma&lt;/a&gt;.&lt;/p&gt;

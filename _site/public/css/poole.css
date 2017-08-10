@@ -101,7 +101,6 @@ h4, h5, h6 {
 p {
   margin-top: 0;
   margin-bottom: 1rem;
-  font-size: 0.8rem;
   line-height: 1.2rem;
 }
 
@@ -147,6 +146,7 @@ abbr[title] {
 code,
 pre {
   font-family: Menlo, Monaco, "Courier New", monospace;
+  font-size: 0.8rem;
 }
 code {
   padding: .25em .5em;
@@ -160,7 +160,7 @@ pre {
   margin-top: 0;
   margin-bottom: 1rem;
   padding: 1rem;
-  font-size: .8rem;
+  font-size: .7rem;
   line-height: 1.4;
   white-space: pre;
   white-space: pre-wrap;
@@ -327,6 +327,7 @@ tbody tr:nth-child(odd) th {
 .page,
 .post {
   margin-bottom: 4em;
+  font-size: 0.8rem;
 }
 
 /* Blog post or page title */

@@ -16,9 +16,9 @@
   </title>
 
   <!-- CSS -->
-  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/my-poole.css">
   <link rel="stylesheet" href="/public/css/syntax.css">
-  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="/public/css/my-hyde.css">
 
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
@@ -405,47 +405,48 @@ Render server here!
 
 <p>Finally, you also might have noticed that I added an <code class="highlighter-rouge">async</code> attribute to my script tag in <code class="highlighter-rouge">base.html</code>. The <code class="highlighter-rouge">async</code> attribute makes the tag non-render-blocking, which means that the browser won’t wait for the entire script to download before rendering. This produces a considerable speed increase, especially with large JavaScript bundles. However, it also means that it is possible for the script to be loaded at any time during the load process, which means that the standard procedure of waiting for <code class="highlighter-rouge">DOMContentLoaded</code> before rendering with <code class="highlighter-rouge">ReactDOM</code> might not always work, since <code class="highlighter-rouge">DOMContentLoaded</code> might have already fired, in which case, the React app would never get executed and the page would never become interactive. Therefore, I check the <code class="highlighter-rouge">document.readyState</code> when the bundle is initially loaded. If the <code class="highlighter-rouge">readyState</code> is <code class="highlighter-rouge">complete</code> or <code class="highlighter-rouge">interactive</code>, I initialize my React app right away. Otherwise, I add listener for <code class="highlighter-rouge">DOMContentLoaded</code> and use my initialize function as the callback.</p>
 
-<pre><code class="language-es6">import React from 'react'
-import ReactDOM from 'react-dom'
-import { match } from 'react-router'
-import { Provider } from 'react-redux'
-import { Router, browserHistory } from 'react-router'
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">'react'</span>
+<span class="kr">import</span> <span class="nx">ReactDOM</span> <span class="nx">from</span> <span class="s1">'react-dom'</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">match</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'react-router'</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Provider</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'react-redux'</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Router</span><span class="p">,</span> <span class="nx">browserHistory</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'react-router'</span>
 
-import configureStore from './bodega/store/store'
-import Root from './bodega/components/root'
-import getRoutes from './bodega/components/routes'
+<span class="kr">import</span> <span class="nx">configureStore</span> <span class="nx">from</span> <span class="s1">'./bodega/store/store'</span>
+<span class="kr">import</span> <span class="nx">Root</span> <span class="nx">from</span> <span class="s1">'./bodega/components/root'</span>
+<span class="kr">import</span> <span class="nx">getRoutes</span> <span class="nx">from</span> <span class="s1">'./bodega/components/routes'</span>
 
-import './styles/main.scss'
+<span class="kr">import</span> <span class="s1">'./styles/main.scss'</span>
 
-switch (document.readyState) {
-  case 'interactive':
-  case 'complete':
-    initializeApp()
-    break
-  case 'loading':
-  default:
-    document.addEventListener('DOMContentLoaded', initializeApp)
-}
+<span class="k">switch</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">readyState</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="s1">'interactive'</span><span class="err">:</span>
+  <span class="k">case</span> <span class="s1">'complete'</span><span class="err">:</span>
+    <span class="nx">initializeApp</span><span class="p">()</span>
+    <span class="k">break</span>
+  <span class="k">case</span> <span class="s1">'loading'</span><span class="err">:</span>
+  <span class="nl">default</span><span class="p">:</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'DOMContentLoaded'</span><span class="p">,</span> <span class="nx">initializeApp</span><span class="p">)</span>
+<span class="p">}</span>
 
-function initializeApp () {
-  const store = configureStore(window.__REDUX_STATE__)
+<span class="kd">function</span> <span class="nx">initializeApp</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="nx">configureStore</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">__REDUX_STATE__</span><span class="p">)</span>
 
-  const { pathname, search, hash } = window.location
-  const location = `${pathname}${search}${hash}`
-  const routes = getRoutes(store)
+  <span class="kr">const</span> <span class="p">{</span> <span class="nx">pathname</span><span class="p">,</span> <span class="nx">search</span><span class="p">,</span> <span class="nx">hash</span> <span class="p">}</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span>
+  <span class="kr">const</span> <span class="nx">location</span> <span class="o">=</span> <span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="nx">pathname</span><span class="p">}</span><span class="nx">$</span><span class="p">{</span><span class="nx">search</span><span class="p">}</span><span class="nx">$</span><span class="p">{</span><span class="nx">hash</span><span class="p">}</span><span class="err">`</span>
+  <span class="kr">const</span> <span class="nx">routes</span> <span class="o">=</span> <span class="nx">getRoutes</span><span class="p">(</span><span class="nx">store</span><span class="p">)</span>
 
-  match({ routes, location }, () =&gt; {
-    ReactDOM.render(
-      &lt;Provider store={store}&gt;
-        &lt;Router history={browserHistory}&gt;
-          {getRoutes(store)}
-        &lt;/Router&gt;
-      &lt;/Provider&gt;
-      document.getElementById('root')
-    )
-  })
-}
+  <span class="nx">match</span><span class="p">({</span> <span class="nx">routes</span><span class="p">,</span> <span class="nx">location</span> <span class="p">},</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">Provider</span> <span class="nx">store</span><span class="o">=</span><span class="p">{</span><span class="nx">store</span><span class="p">}</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Router</span> <span class="nx">history</span><span class="o">=</span><span class="p">{</span><span class="nx">browserHistory</span><span class="p">}</span><span class="o">&gt;</span>
+          <span class="p">{</span><span class="nx">getRoutes</span><span class="p">(</span><span class="nx">store</span><span class="p">)}</span>
+        <span class="o">&lt;</span><span class="sr">/Router</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/Provider</span><span class="err">&gt;
+</span>      <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'root'</span><span class="p">)</span>
+    <span class="p">)</span>
+  <span class="p">})</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
 <p>Now let’s enable JavaScript in our browser again, hit reload, and marvel at the speed of server side rendering.</p>
 

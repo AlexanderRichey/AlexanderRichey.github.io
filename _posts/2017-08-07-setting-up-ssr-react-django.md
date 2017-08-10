@@ -305,7 +305,7 @@ There is now just one more detail to work out, that is, how to configure our bro
 
 Finally, you also might have noticed that I added an `async` attribute to my script tag in `base.html`. The `async` attribute makes the tag non-render-blocking, which means that the browser won't wait for the entire script to download before rendering. This produces a considerable speed increase, especially with large JavaScript bundles. However, it also means that it is possible for the script to be loaded at any time during the load process, which means that the standard procedure of waiting for `DOMContentLoaded` before rendering with `ReactDOM` might not always work, since `DOMContentLoaded` might have already fired, in which case, the React app would never get executed and the page would never become interactive. Therefore, I check the `document.readyState` when the bundle is initially loaded. If the `readyState` is `complete` or `interactive`, I initialize my React app right away. Otherwise, I add listener for `DOMContentLoaded` and use my initialize function as the callback.
 
-```es6
+```js
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { match } from 'react-router'

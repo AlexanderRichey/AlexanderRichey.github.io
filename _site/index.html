@@ -425,14 +425,10 @@ Render server here!
 
 <span class="kr">import</span> <span class="s1">'./styles/main.scss'</span>
 
-<span class="k">switch</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">readyState</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">case</span> <span class="s1">'interactive'</span><span class="err">:</span>
-  <span class="k">case</span> <span class="s1">'complete'</span><span class="err">:</span>
-    <span class="nx">initializeApp</span><span class="p">()</span>
-    <span class="k">break</span>
-  <span class="k">case</span> <span class="s1">'loading'</span><span class="err">:</span>
-  <span class="nl">default</span><span class="p">:</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'DOMContentLoaded'</span><span class="p">,</span> <span class="nx">initializeApp</span><span class="p">)</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="s1">'loading'</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'DOMContentLoaded'</span><span class="p">,</span> <span class="nx">initializeApp</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="nx">initializeApp</span><span class="p">()</span>
 <span class="p">}</span>
 
 <span class="kd">function</span> <span class="nx">initializeApp</span> <span class="p">()</span> <span class="p">{</span>

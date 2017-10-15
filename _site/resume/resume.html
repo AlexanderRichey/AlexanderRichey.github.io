@@ -4,30 +4,17 @@
   <title>Alex Richey | Resume</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <style>
-      /* vietnamese */
     @font-face {
-      font-family: 'Muli';
+      font-family: 'Atlas Grotesk';
       font-style: normal;
-      font-weight: 400;
-      src: local('Muli Regular'), local('Muli-Regular'), url(http://fonts.gstatic.com/s/muli/v10/tg9tUAlnncaBSUvJ5NYofRTbgVql8nDJpwnrE27mub0.woff2) format('woff2');
-      unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB;
+      src: url('/public/fonts/atlas_grotesk.woff2') format('woff2');
     }
-    /* latin-ext */
     @font-face {
-      font-family: 'Muli';
-      font-style: normal;
-      font-weight: 400;
-      src: local('Muli Regular'), local('Muli-Regular'), url(http://fonts.gstatic.com/s/muli/v10/uw51sWa2VJFEFkdnqqMZ1RTbgVql8nDJpwnrE27mub0.woff2) format('woff2');
-      unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+      font-family: 'Atlas Grotesk';
+      font-style: italic;
+      src: url('/public/fonts/atlas_grotesk_italic.woff2') format('woff2');
     }
-    /* latin */
-    @font-face {
-      font-family: 'Muli';
-      font-style: normal;
-      font-weight: 400;
-      src: local('Muli Regular'), local('Muli-Regular'), url(http://fonts.gstatic.com/s/muli/v10/zscZFkjVRGyfQ_Pw-5exXPesZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
-      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
-    }
+
     html {
         font-size: 100%;
       -webkit-text-size-adjust: 100%;
@@ -39,7 +26,7 @@
       font-size: 15px;
       line-height: 150%;
       margin: 0;
-      font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-family: "Atlas Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
       font-size: 14px;
       line-height: 21px;
       color: #2d2d2d;
@@ -185,7 +172,8 @@
     <p><em>Django, React/Redux, PWA, PostgreSQL, Single-page, REST</em></p>
     <ul>
       <li>Lead full stack developer managing large scale, progressively enhanced web app with one direct report</li>
-      <li>Implemented server side rendering, code splitting, and service worker to reduce page load time from 5 to <2sec</li>
+      <li>Implemented server side rendering, code splitting, and service worker to reduce page load time from 5 to <2.5sec</li>
+      <li>Developed CI/CD pipeline with Docker, CircleCI, and AWS ECS to achieve safe, scalable, zero downtime deployments</li>
       <li>Integrated Stripe API to monetize content via Meural Membership subscription</li>
       <li>Wrote AWS Lambda function to dynamically scale images on the fly</li>
     </ul>
@@ -206,17 +194,10 @@
       <li>Multi-level class inheritance structure DRYs up code</li>
     </ul>
 
-    <h3>SkiFree <small><a href="http://alexrichey.com/2016/04/17/ski-free/">Live</a> | <a href="https://github.com/AlexanderRichey/SkiFree">Source Code</a></small></h3>
-    <p><em>JavaScript Canvas</em></p>
-    <ul>
-      <li>Calculates object collisions using Euclidian distance formula from vector mathematics</li>
-      <li>Implements mouse movement based physics for smooth skiing-like gameplay</li>
-    </ul>
-
     <hr>
 
     <h2><strong>Skills</strong></h2>
-    <p>Python, Ruby, JavaScript, Django, Rails, jQuery, React, Redux, Angular, SQL, Git, HTML5, CSS3, PWAs, VIM, Learning C/C++</p>
+    <p>Python, Ruby, JavaScript, Django, Rails, jQuery, React, Redux, Angular, Web Components, PWAs, SQL, Git, HTML5, CSS3, Docker, CI/CD, AWS, VIM, Learning C/C++</p>
 
     <hr>
 
@@ -227,7 +208,6 @@
     <p><em>May 2016 – Present</em></p>
     <ul>
       <li>Developed high-quality, speedy, readable, and reusable code for all aspects of IoT startup stack</li>
-      <li>Implemented CI/CD pipeline with Docker, CircleCI, and AWS ECS to achieve safe, fully scalable, zero downtime deployments</li>
       <li>Led talent search and successfully hired and onboarded one new engineer as direct report</li>
       <li>Designed RESTful API to be consumed by web frontend as well as iOS and Android apps</li>
       <li>Created internal CMS to empower content team to manage flagship app</li>

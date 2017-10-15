@@ -318,14 +318,10 @@ import getRoutes from './bodega/components/routes'
 
 import './styles/main.scss'
 
-switch (document.readyState) {
-  case 'interactive':
-  case 'complete':
-    initializeApp()
-    break
-  case 'loading':
-  default:
-    document.addEventListener('DOMContentLoaded', initializeApp)
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeApp)
+} else {
+  initializeApp()
 }
 
 function initializeApp () {

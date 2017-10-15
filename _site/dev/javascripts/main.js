@@ -5,7 +5,7 @@ import '../css/main.scss';
 import AOS from 'aos';
 import Slider from './slider';
 import intro from './intro';
-import { scrollTo } from './utils';
+import { scrollTo, debounce } from './utils';
 
 document.addEventListener('DOMContentLoaded', () => {
   AOS.init({
@@ -20,29 +20,32 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function installNavListeners() {
-  document.addEventListener('scroll', (e) => {
-    if (document.body.scrollTop > 10) {
-      document.getElementById('nav-container').style.opacity = 1;
+  const navContainer = document.getElementById('nav-container')
+  document.addEventListener('scroll', debounce(function (e) {
+    if (document.documentElement.scrollTop > 10) {
+      navContainer.style.opacity = 1;
+      document.removeEventListener('scroll', this)
     }
-  });
+  }, 200));
 
   document.querySelectorAll('nav li').forEach(el => {
     el.addEventListener('click', (e) => {
-      const className = e.currentTarget.dataset.dest;
-      const destEl = document.querySelector(className);
-      scrollTo(destEl.offsetTop, 500);
+      if (e.currentTarget.dataset.dest) {
+        const className = e.currentTarget.dataset.dest;
+        const destEl = document.querySelector(className);
+        scrollTo(destEl.offsetTop, 500);
+      }
     });
   });
 }
 
 function setUpSlider() {
   const sliderNode = document.getElementById('slider');
+  const left = document.getElementById('left')
+  const right = document.getElementById('right')
   const sliderToken = new Slider(sliderNode)
 
-  document.getElementById('left')
-    .addEventListener('click', sliderToken.prevSlide);
-
-  document.getElementById('right')
-    .addEventListener('click', sliderToken.nextSlide);
+  left.addEventListener('click', sliderToken.prevSlide);
+  right.addEventListener('click', sliderToken.nextSlide);
 }
 

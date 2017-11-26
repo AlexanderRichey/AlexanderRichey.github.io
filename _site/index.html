@@ -11,14 +11,13 @@
 
   <title>
     
-      Alex Richey &middot; Web Developer
+      Posts &middot; Alex Richey
     
   </title>
 
   <!-- CSS -->
   <link rel="stylesheet" href="/public/css/my-poole.css">
   <link rel="stylesheet" href="/public/css/syntax.css">
-  <link rel="stylesheet" href="/public/css/my-hyde.css">
 
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
@@ -43,19 +42,18 @@
 
   <body>
 
-    <div class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
+    <header class="masthead">
+    <div class="masthead-title">
       <h1>
         <a href="/">
           Alex Richey
         </a>
       </h1>
-      <p class="lead">I'm a web developer and occasional columnist based in NYC. I write about politics and code.</p>
+      <small>Software Engineer @ Meural</small>
     </div>
 
-    <nav class="sidebar-nav">
-      <a class="sidebar-nav-item active" href="/">Home</a>
+    <nav class="masthead-nav">
+      <a class="masthead-nav-item active" href="/">Posts</a>
 
       
 
@@ -67,7 +65,7 @@
       
         
           
-            <a class="sidebar-nav-item" href="/about/">About</a>
+            <a class="masthead-nav-item" href="/about/">About</a>
           
         
       
@@ -86,375 +84,15 @@
         
       
 
-      <a class="sidebar-nav-item" href="/dev/">Portfolio</a>
+      <a class="masthead-nav-item" href="/dev/">Portfolio</a>
 
     </nav>
 
-    <p class="lead">&copy; 2017. All rights reserved.</p>
-  </div>
-</div>
+</header>
 
 
     <div class="content container">
       <div class="posts">
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/2017/08/07/setting-up-ssr-react-django/">
-        Setting Up Server Side Rendering with React, React-Router 3, Redux, and Django
-      </a>
-    </h1>
-
-    <span class="post-date">07 Aug 2017</span>
-
-    <p>At a high level, setting up server side rendering consists in setting up the following chain of events.</p>
-
-<ol>
-  <li>Server receives request.</li>
-  <li>Database is queried and needed information is received in memory.</li>
-  <li>Needed information plus a desired path are passed into a render function.</li>
-  <li>The render function returns markup that is then sent down to the client.</li>
-</ol>
-
-<p>Since neither Python nor Django can understand JavaScript, we need a Node runtime to render our React app. Therefore, we need a dedicated render server. When a request hits our server, we’ll query our database to get the info we need. Then we’ll send that info in an http <code class="highlighter-rouge">POST</code> request to our render server, which will return our markup, plus the final state of our Redux store.</p>
-
-<p>Let’s start out by getting that much setup. In order to write this code in a testable way, we’ll start with a first pass at the render server.</p>
-
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// server.js</span>
-
-<span class="kr">const</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'http'</span><span class="p">)</span>
-<span class="kr">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'express'</span><span class="p">)</span>
-<span class="kr">const</span> <span class="nx">bodyParser</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'body-parser'</span><span class="p">)</span>
-<span class="kr">const</span> <span class="nx">morgan</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'morgan'</span><span class="p">)</span>
-
-<span class="kr">const</span> <span class="nx">ADDRESS</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_HOST</span>
-<span class="kr">const</span> <span class="nx">PORT</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_PORT</span>
-
-<span class="kr">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">()</span>
-<span class="kr">const</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">Server</span><span class="p">(</span><span class="nx">app</span><span class="p">)</span>
-
-<span class="c1">// I've increased the limit of the max payload size in case a huge page</span>
-<span class="c1">// needs to be rendered</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">bodyParser</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span> <span class="na">limit</span><span class="p">:</span> <span class="s1">'10mb'</span> <span class="p">}))</span>
-
-<span class="c1">// Morgan is the very silly name of some logging middleware</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">morgan</span><span class="p">(</span><span class="s1">'combined'</span><span class="p">))</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">'Render server here!'</span><span class="p">)</span>
-<span class="p">})</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">'/render'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c1">// We know we'll need a path and the data for our initial state,</span>
-  <span class="c1">// so let's save this stuff first</span>
-  <span class="kr">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">url</span>
-  <span class="kr">const</span> <span class="nx">initialState</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">initialState</span>
-
-  <span class="c1">// Eventually we'll return markup and our final state. For now,</span>
-  <span class="c1">// for the sake of testing, let's just return our inputs</span>
-  <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span>
-    <span class="na">html</span><span class="p">:</span> <span class="nx">url</span><span class="p">,</span>
-    <span class="na">finalState</span><span class="p">:</span> <span class="nx">initialState</span>
-  <span class="p">})</span>
-<span class="p">})</span>
-
-<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">PORT</span><span class="p">,</span> <span class="nx">ADDRESS</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Render server listening at http://'</span> <span class="o">+</span> <span class="nx">ADDRESS</span> <span class="o">+</span> <span class="s1">':'</span> <span class="o">+</span> <span class="nx">PORT</span><span class="p">)</span>
-<span class="p">})</span>
-</code></pre>
-</div>
-
-<p>Let’s test this in the shell with cURL before wiring up the Django app.</p>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># Fire up the server</span>
-<span class="gp">$ </span>node server.js
-Render server listening at http://localhost:9009
-
-<span class="c"># In another window, let's test it</span>
-<span class="gp">$ </span>curl http://localhost:9009
-Render server here!
-
-<span class="gp">$ </span>curl -X POST -d <span class="s1">'{"url": "/", "initialState", {}}'</span> http://localhost:9009
-<span class="o">{</span>
-  html: <span class="s2">"/"</span>,
-  finalState: <span class="o">{}</span>
-<span class="o">}</span>
-</code></pre>
-</div>
-
-<p>Looks good so far. Now let’s wire up the Django app and test it’s interaction with the render server.</p>
-
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># views.py</span>
-
-<span class="k">def</span> <span class="nf">sandwich</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">sandwich</span> <span class="o">=</span> <span class="n">Sandwich</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">)</span>
-        <span class="n">sandwich_data</span> <span class="o">=</span> <span class="n">sandwich</span><span class="o">.</span><span class="n">to_user</span><span class="p">()</span>
-        <span class="c"># Sandwich#to_user is a method that returns a nice sandwich object</span>
-    <span class="k">except</span> <span class="n">Sandwich</span><span class="o">.</span><span class="n">DoesNotExist</span><span class="p">:</span>
-        <span class="n">sandwich_data</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="c"># The magic happens in our _react_render helper function</span>
-    <span class="k">return</span> <span class="n">_react_render</span><span class="p">({</span><span class="s">'sandwich'</span><span class="p">:</span> <span class="n">sandwich_data</span><span class="p">},</span> <span class="n">request</span><span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">_react_render</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
-    <span class="c"># Let's grab our user's info if she has any</span>
-    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">():</span>
-        <span class="c"># User#to_client is another little helper method that returns</span>
-        <span class="c"># an object just the way we want it</span>
-        <span class="n">user</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">to_client</span><span class="p">()</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">user</span> <span class="o">=</span> <span class="p">{}</span>
-
-    <span class="c"># Here's what we've got so far</span>
-    <span class="n">render_assets</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s">'url'</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">path_info</span><span class="p">,</span>
-        <span class="s">'user'</span><span class="p">:</span> <span class="n">user</span>
-    <span class="p">}</span>
-    <span class="c"># Now we add the sandwich. We use the Dict#update method so that the</span>
-    <span class="c"># key could be anything, like pizza or cake or burger.</span>
-    <span class="n">render_assets</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
-
-    <span class="k">try</span><span class="p">:</span>
-        <span class="c"># All right, let's send it! Here we use requests, a very nice wrapper</span>
-        <span class="c"># around urllib. Note that we set the content type to json.</span>
-        <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">RENDER_SERVER_BASE_URL</span> <span class="o">+</span> <span class="s">'/render'</span><span class="p">,</span>
-                            <span class="n">json</span><span class="o">=</span><span class="n">render_assets</span><span class="p">,</span>
-                            <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s">'content_type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">})</span>
-        <span class="n">rendered_payload</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-    <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="c"># If we get here, then something broke! Let's report that error</span>
-        <span class="c"># and return some default data.</span>
-        <span class="n">ErrorReporter</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="n">ErrorReporter</span><span class="o">.</span><span class="n">RENDER_SERVER_FAILURE</span><span class="p">,</span> <span class="p">{</span><span class="s">'error'</span><span class="p">:</span> <span class="n">e</span><span class="p">})</span>
-        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'base.html'</span><span class="p">,</span> <span class="p">{</span>
-            <span class="s">'html'</span><span class="p">:</span> <span class="s">''</span><span class="p">,</span>
-            <span class="s">'finalState'</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({}),</span>
-        <span class="p">})</span>
-    <span class="c"># Beautiful! Let's render this stuff into our base template</span>
-    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'base.html'</span><span class="p">,</span> <span class="n">rendered_payload</span><span class="p">)</span>
-</code></pre>
-</div>
-
-<p>Here’s how we insert our rendered react app into our more standard Django template. If you want to support meta tags, etc., all you need to do is add that data to the <code class="highlighter-rouge">rendered_payload</code> object and then reference it in the template.</p>
-
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="c">&lt;!-- base.html --&gt;</span>
-{ load render_bundle from webpack_loader }
-{ load webpack_static from webpack_loader }
-
-<span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html&gt;</span>
-  <span class="nt">&lt;head&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"x-ua-compatible"</span> <span class="na">content=</span><span class="s">"ie=edge"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;title&gt;</span>The Finest Deli<span class="nt">&lt;/title&gt;</span>
-
-    { render_bundle 'bodega' 'css' }
-    { render_bundle 'bodega' 'js' attrs='async' }
-  <span class="nt">&lt;/head&gt;</span>
-  <span class="nt">&lt;body&gt;</span>
-
-    <span class="c">&lt;!-- Root --&gt;</span>
-    <span class="nt">&lt;main</span> <span class="na">id=</span><span class="s">"root"</span><span class="nt">&gt;</span>{ html|safe }<span class="nt">&lt;/main&gt;</span>
-
-    <span class="c">&lt;!-- Redux State --&gt;</span>
-    <span class="nt">&lt;script&gt;</span>
-      <span class="nb">window</span><span class="p">.</span><span class="nx">__REDUX_STATE__</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">finalState</span><span class="o">|</span><span class="nx">safe</span> <span class="p">}</span>
-    <span class="nt">&lt;/script&gt;</span>
-
-  <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-</code></pre>
-</div>
-
-<p>We’re ready to test again. Let’s fire up our Django server, open up a browser, and go to the url that corresponds to our sandwich view. To prevent our React frontend from taking over the page on load, let’s disable JavaScript in DevTools. If you see a page with a slash on it, you’re in business!</p>
-
-<p>Now let’s go back to our <code class="highlighter-rouge">server.js</code> and think about how we want to handle rendering. We’ll want to call a render method, which we haven’t written yet, and we’ll also need to massage our initialState data so that it matches the shape of our Redux store.</p>
-
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// server.js</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">'/render'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kr">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">url</span>
-  <span class="kr">const</span> <span class="nx">initialState</span> <span class="o">=</span> <span class="nx">buildInitialState</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">)</span> <span class="c1">// Massages data into the</span>
-                                                   <span class="c1">// shape of our Redux store</span>
-
-  <span class="c1">// Haven't written this yet, but this is what it'll output</span>
-  <span class="kr">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">render</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">initialState</span><span class="p">)</span>
-
-  <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span>
-    <span class="na">html</span><span class="p">:</span> <span class="nx">result</span><span class="p">.</span><span class="nx">html</span><span class="p">,</span>
-    <span class="na">finalState</span><span class="p">:</span> <span class="nx">result</span><span class="p">.</span><span class="nx">finalState</span>
-  <span class="p">})</span>
-<span class="p">})</span>
-</code></pre>
-</div>
-
-<p>Now we’re getting to the interesting part: the actual render function. This function will have to import our entire React frontend, which means that we’ll have to run it through webpack to handle all of our dependences and to transpile our source into ES5 since not all ES6 features are supported yet. We also have to change our webpack target runtime to <code class="highlighter-rouge">node</code>, since we won’t be running in the browser.</p>
-
-<p>The fact that our React app won’t be running in the browser also means that <code class="highlighter-rouge">window</code> and <code class="highlighter-rouge">document</code> will not be defined. Therefore, <strong><em>all references to the <code class="highlighter-rouge">window</code> and <code class="highlighter-rouge">document</code> must not occur in code that gets executed prior to mounting to the DOM</em></strong>. Such references need to be moved to component lifecycle methods like <code class="highlighter-rouge">Component#componentDidMount</code> that are fired after mounting. This may involve a bit of work and you may also need to alter some of your dependences if they refer to <code class="highlighter-rouge">window</code> in problematic places.</p>
-
-<p>Assuming your React app is in good shape, let’s now write another webpack config to bundle our app for the server before writing our render function.</p>
-
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// webpack.server.config.js</span>
-
-<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">)</span>
-<span class="kr">const</span> <span class="nx">webpack</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'webpack'</span><span class="p">)</span>
-
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">name</span><span class="p">:</span> <span class="s1">'server-side rendering'</span><span class="p">,</span>
-  <span class="na">entry</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">'render_server'</span><span class="p">,</span> <span class="s1">'render.jsx'</span><span class="p">),</span>
-  <span class="na">target</span><span class="p">:</span> <span class="s1">'node'</span><span class="p">,</span> <span class="c1">// Here's the only interesting part</span>
-  <span class="na">output</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">path</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">'render_server'</span><span class="p">,</span> <span class="s1">'dist'</span><span class="p">),</span>
-    <span class="na">filename</span><span class="p">:</span> <span class="s1">'bodega.server.js'</span><span class="p">,</span>
-    <span class="na">publicPath</span><span class="p">:</span> <span class="s1">'/static/'</span><span class="p">,</span>
-    <span class="na">libraryTarget</span><span class="p">:</span> <span class="s1">'commonjs2'</span>
-  <span class="p">},</span>
-  <span class="na">externals</span><span class="p">:</span> <span class="sr">/^</span><span class="se">[</span><span class="sr">a-z</span><span class="se">\-</span><span class="sr">0-9</span><span class="se">]</span><span class="sr">+$/</span><span class="p">,</span>
-  <span class="na">module</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">rules</span><span class="p">:</span> <span class="p">[</span>
-      <span class="p">{</span>
-        <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">jsx</span><span class="se">?</span><span class="sr">$/</span><span class="p">,</span>
-        <span class="na">exclude</span><span class="p">:</span> <span class="sr">/node_modules/</span><span class="p">,</span>
-        <span class="na">loader</span><span class="p">:</span> <span class="s1">'babel-loader'</span><span class="p">,</span>
-        <span class="na">query</span><span class="p">:</span> <span class="p">{</span>
-          <span class="na">presets</span><span class="p">:</span> <span class="p">[</span><span class="s1">'react'</span><span class="p">,</span> <span class="s1">'es2015'</span><span class="p">,</span> <span class="s1">'stage-0'</span><span class="p">]</span>
-        <span class="p">}</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.(</span><span class="sr">ttf|otf|eot|svg|woff</span><span class="se">(</span><span class="sr">2</span><span class="se">)?)(\?[</span><span class="sr">a-z0-9</span><span class="se">]</span><span class="sr">+</span><span class="se">)?</span><span class="sr">$|</span><span class="se">\.</span><span class="sr">jpe</span><span class="se">?</span><span class="sr">g$|</span><span class="se">\.</span><span class="sr">gif$|</span><span class="se">\.</span><span class="sr">png$|</span><span class="se">\.</span><span class="sr">svg$/</span><span class="p">,</span>
-        <span class="na">loader</span><span class="p">:</span> <span class="s1">'file-loader?name=[name].[ext]'</span>
-      <span class="p">}</span>
-    <span class="p">]</span>
-  <span class="p">},</span>
-  <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span>
-    <span class="k">new</span> <span class="nx">webpack</span><span class="p">.</span><span class="nx">DefinePlugin</span><span class="p">({</span>
-      <span class="s1">'process.env'</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">'NODE_ENV'</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="s1">'production'</span><span class="p">),</span>
-        <span class="c1">// Added `server` env variable in case you need to make adjustments to</span>
-        <span class="c1">// your code based on where it's going to be run</span>
-        <span class="s1">'MACHINE'</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="s1">'server'</span><span class="p">)</span>
-      <span class="p">}</span>
-    <span class="p">})</span>
-  <span class="p">],</span>
-  <span class="na">resolve</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">extensions</span><span class="p">:</span> <span class="p">[</span><span class="s1">'.js'</span><span class="p">,</span> <span class="s1">'.jsx'</span><span class="p">]</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<p>Now let’s actually write our render function. There’s a number of things we need to consider.</p>
-
-<ul>
-  <li>Which resource to use to render our app to markup</li>
-  <li>How to import our existing React app</li>
-  <li>How to match the desired route with React Router 3</li>
-  <li>How to handle the React-Redux <code class="highlighter-rouge">&lt;Provider&gt;</code> component</li>
-</ul>
-
-<p>Let’s take these questions in order. To render our app to markup, we can use the <code class="highlighter-rouge">ReactDOMServer#renderToString</code> method. This takes a React component and renders it to a giant string of html markup. Easy.</p>
-
-<p>In importing our existing React app, we can’t use our standard entry point, since that references the <code class="highlighter-rouge">document</code>, waits for <code class="highlighter-rouge">DOMContentLoaded</code>, etc. We also can’t use the version of React-Router that we use in browser, since that requires <code class="highlighter-rouge">browserHistory</code>, which isn’t available in Node runtime.</p>
-
-<p>To resolve these difficulties, I abstracted my app’s routes into a new function called <code class="highlighter-rouge">getRoutes</code>. It takes the Redux store as an argument and returns all of the routes to my app, with all of their embedded components. I then use this function to insert my routes into a <code class="highlighter-rouge">&lt;Router&gt;</code> component in my browser entry point and to insert my routes into React-Router’s <code class="highlighter-rouge">match</code> function in my server entry point.</p>
-
-<p>The <code class="highlighter-rouge">match</code> function is how we match the desired route on the server side. It’s first argument is an object containing all of our app’s routes as its first key, and our desired location as the second key. The <code class="highlighter-rouge">match</code> function’s second argument is a callback that gets evoked after matching is complete. In a successful matching, the callback’s third argument will be a <code class="highlighter-rouge">renderProps</code> object. The <code class="highlighter-rouge">renderProps</code> represent the state of our app’s props at a given location. We can then use React-Router’s <code class="highlighter-rouge">&lt;RouterContext&gt;</code> component, which is sort of like a static version of its more familiar <code class="highlighter-rouge">&lt;Router&gt;</code> component, to render the state of our app with the given <code class="highlighter-rouge">renderProps</code>.</p>
-
-<p>Finally, we can wrap our <code class="highlighter-rouge">&lt;RouterContext&gt;</code> with React-Redux’s <code class="highlighter-rouge">&lt;Provider&gt;</code> so that all of the components in the tree can access the Redux store.</p>
-
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// render.jsx</span>
-
-<span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">'react'</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">Provider</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'react-redux'</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">match</span><span class="p">,</span> <span class="nx">RouterContext</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'react-router'</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">Helmet</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'react-helmet'</span>
-<span class="kr">import</span> <span class="nx">ReactDOMServer</span> <span class="nx">from</span> <span class="s1">'react-dom/server'</span>
-<span class="kr">import</span> <span class="nx">configureStore</span> <span class="nx">from</span> <span class="s1">'../bodega/src/scripts/store/store'</span>
-<span class="kr">import</span> <span class="nx">getRoutes</span> <span class="nx">from</span> <span class="s1">'../bodega/src/scripts/components/routes'</span>
-
-<span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">render</span> <span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">initialState</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kr">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="nx">configureStore</span><span class="p">(</span><span class="nx">initialState</span><span class="p">)</span>
-
-  <span class="kr">const</span> <span class="nx">routes</span> <span class="o">=</span> <span class="nx">getRoutes</span><span class="p">(</span><span class="nx">store</span><span class="p">)</span>
-
-  <span class="kd">let</span> <span class="nx">html</span><span class="p">,</span> <span class="nx">redirect</span>
-  <span class="nx">match</span><span class="p">({</span> <span class="nx">routes</span><span class="p">,</span> <span class="na">location</span><span class="p">:</span> <span class="nx">url</span> <span class="p">},</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">redirectLocation</span><span class="p">,</span> <span class="nx">renderProps</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">redirectLocation</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">redirect</span> <span class="o">=</span> <span class="nx">redirectLocation</span><span class="p">.</span><span class="nx">pathname</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">renderProps</span><span class="p">)</span> <span class="p">{</span>
-      <span class="c1">// Here's where the actual rendering happens</span>
-      <span class="nx">html</span> <span class="o">=</span> <span class="nx">ReactDOMServer</span><span class="p">.</span><span class="nx">renderToString</span><span class="p">(</span>
-        <span class="o">&lt;</span><span class="nx">Provider</span> <span class="nx">store</span><span class="o">=</span><span class="p">{</span><span class="nx">store</span><span class="p">}</span><span class="o">&gt;</span>
-          <span class="o">&lt;</span><span class="nx">RouterContext</span> <span class="p">{...</span><span class="nx">renderProps</span><span class="p">}</span> <span class="sr">/</span><span class="err">&gt;
-</span>        <span class="o">&lt;</span><span class="sr">/Provider</span><span class="err">&gt;
-</span>      <span class="p">)</span>
-      <span class="nx">Helmet</span><span class="p">.</span><span class="nx">renderStatic</span><span class="p">()</span> <span class="c1">// This is called to prevent a memory leak.</span>
-                            <span class="c1">// See https://github.com/nfl/react-helmet#server-usage</span>
-                            <span class="c1">// for more info.</span>
-    <span class="p">}</span>
-  <span class="p">})</span>
-
-  <span class="k">if</span> <span class="p">(</span><span class="nx">redirect</span><span class="p">)</span> <span class="k">return</span> <span class="nx">render</span><span class="p">(</span><span class="nx">redirect</span><span class="p">,</span> <span class="nx">initialState</span><span class="p">)</span> <span class="c1">// Recursion, baby</span>
-
-  <span class="kr">const</span> <span class="nx">finalState</span> <span class="o">=</span> <span class="nx">store</span><span class="p">.</span><span class="nx">getState</span><span class="p">()</span>
-
-  <span class="k">return</span> <span class="p">{</span>
-    <span class="nx">html</span><span class="p">,</span>
-    <span class="nx">finalState</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<p>Beautiful! Let’s tell webpack to build our server bundle, import it into <code class="highlighter-rouge">server.js</code> to define the render function, and test our work by opening up the Sandwich page in a browser with JavaScript disabled. If everything is setup properly, we should see our fully rendered React app in the initial server response.</p>
-
-<p>There is now just one more detail to work out, that is, how to configure our browser entry point to start Redux with the pre-rendered store. This is pretty easy, since all we have to do is pass <code class="highlighter-rouge">window.__REDUX_STATE__</code> into our <code class="highlighter-rouge">configureStore</code> method.</p>
-
-<p>Finally, you also might have noticed that I added an <code class="highlighter-rouge">async</code> attribute to my script tag in <code class="highlighter-rouge">base.html</code>. The <code class="highlighter-rouge">async</code> attribute makes the tag non-render-blocking, which means that the browser won’t wait for the entire script to download before rendering. This produces a considerable speed increase, especially with large JavaScript bundles. However, it also means that it is possible for the script to be loaded at any time during the load process, which means that the standard procedure of waiting for <code class="highlighter-rouge">DOMContentLoaded</code> before rendering with <code class="highlighter-rouge">ReactDOM</code> might not always work, since <code class="highlighter-rouge">DOMContentLoaded</code> might have already fired, in which case, the React app would never get executed and the page would never become interactive. Therefore, I check the <code class="highlighter-rouge">document.readyState</code> when the bundle is initially loaded. If the <code class="highlighter-rouge">readyState</code> is <code class="highlighter-rouge">complete</code> or <code class="highlighter-rouge">interactive</code>, I initialize my React app right away. Otherwise, I add listener for <code class="highlighter-rouge">DOMContentLoaded</code> and use my initialize function as the callback.</p>
-
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">'react'</span>
-<span class="kr">import</span> <span class="nx">ReactDOM</span> <span class="nx">from</span> <span class="s1">'react-dom'</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">match</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'react-router'</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">Provider</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'react-redux'</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">Router</span><span class="p">,</span> <span class="nx">browserHistory</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'react-router'</span>
-
-<span class="kr">import</span> <span class="nx">configureStore</span> <span class="nx">from</span> <span class="s1">'./bodega/store/store'</span>
-<span class="kr">import</span> <span class="nx">Root</span> <span class="nx">from</span> <span class="s1">'./bodega/components/root'</span>
-<span class="kr">import</span> <span class="nx">getRoutes</span> <span class="nx">from</span> <span class="s1">'./bodega/components/routes'</span>
-
-<span class="kr">import</span> <span class="s1">'./styles/main.scss'</span>
-
-<span class="k">if</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="s1">'loading'</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'DOMContentLoaded'</span><span class="p">,</span> <span class="nx">initializeApp</span><span class="p">)</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-  <span class="nx">initializeApp</span><span class="p">()</span>
-<span class="p">}</span>
-
-<span class="kd">function</span> <span class="nx">initializeApp</span> <span class="p">()</span> <span class="p">{</span>
-  <span class="kr">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="nx">configureStore</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">__REDUX_STATE__</span><span class="p">)</span>
-
-  <span class="kr">const</span> <span class="p">{</span> <span class="nx">pathname</span><span class="p">,</span> <span class="nx">search</span><span class="p">,</span> <span class="nx">hash</span> <span class="p">}</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span>
-  <span class="kr">const</span> <span class="nx">location</span> <span class="o">=</span> <span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="nx">pathname</span><span class="p">}</span><span class="nx">$</span><span class="p">{</span><span class="nx">search</span><span class="p">}</span><span class="nx">$</span><span class="p">{</span><span class="nx">hash</span><span class="p">}</span><span class="err">`</span>
-  <span class="kr">const</span> <span class="nx">routes</span> <span class="o">=</span> <span class="nx">getRoutes</span><span class="p">(</span><span class="nx">store</span><span class="p">)</span>
-
-  <span class="nx">match</span><span class="p">({</span> <span class="nx">routes</span><span class="p">,</span> <span class="nx">location</span> <span class="p">},</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span>
-      <span class="o">&lt;</span><span class="nx">Provider</span> <span class="nx">store</span><span class="o">=</span><span class="p">{</span><span class="nx">store</span><span class="p">}</span><span class="o">&gt;</span>
-        <span class="o">&lt;</span><span class="nx">Router</span> <span class="nx">history</span><span class="o">=</span><span class="p">{</span><span class="nx">browserHistory</span><span class="p">}</span><span class="o">&gt;</span>
-          <span class="p">{</span><span class="nx">getRoutes</span><span class="p">(</span><span class="nx">store</span><span class="p">)}</span>
-        <span class="o">&lt;</span><span class="sr">/Router</span><span class="err">&gt;
-</span>      <span class="o">&lt;</span><span class="sr">/Provider</span><span class="err">&gt;
-</span>      <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'root'</span><span class="p">)</span>
-    <span class="p">)</span>
-  <span class="p">})</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<p>Now let’s enable JavaScript in our browser again, hit reload, and marvel at the speed of server side rendering.</p>
-
-  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -581,6 +219,11 @@ By Modus Tollens: ¬A ∎
         background-image: url('/assets/ski-free-background.png');
         background-size: contain;
       }
+      @media screen and (max-width: 500px) {
+        #canvas {
+          width: 100%;
+        }
+      }
     </style>
   </head>
   <body>
@@ -598,6 +241,39 @@ By Modus Tollens: ¬A ∎
 
   </div>
   
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2016/01/21/two-kinds-of-racism/">
+        Two Kinds of Racism
+      </a>
+    </h1>
+
+    <span class="post-date">21 Jan 2016</span>
+
+    <div class="message">
+  A letter I wrote to the NYTimes, which was not published.
+</div>
+
+<p>In George Yancy’s article “<a href="http://opinionator.blogs.nytimes.com/2015/12/24/dear-white-america/">Dear White America</a>,” he writes:</p>
+
+<blockquote>
+  <p>What if I told you that I’m sexist? Well, I am. Yes. I said it and I mean just that.</p>
+</blockquote>
+
+<p>I think that this passage is confusing because it conflates two distinct types of sexism. One type of sexism might be called <em>doxastic</em> sexism – doxastic means relating to an individual’s beliefs. Thus, in response to the question, “Do you believe women are inferior to men?” a doxastic sexist would say <em>yes.</em> I doubt Yancy is a doxastic sexist. Another type of sexism might be called <em>implicit</em> sexism. Implicit sexism is not doxastic; it does not have to do with what one actually believes, but rather with how one behaves. The broader effects of implicit sexism include the persistent wage gap, gender disparity among the occupants of leadership positions in business and government, and a cultural indifference to disrespect towards women.</p>
+
+<p>His failure to distinguish between doxastic and implicit sexism is probably why Yancy has</p>
+
+<blockquote>
+  <p>watched [his] male students squirm in their seats when [he’s] asked them to identify and talk about their sexism.</p>
+</blockquote>
+
+<p>I suspect that Yancy’s male students would not squirm in this way if asked to accept their implicit sexism. However, I suspect that most would rightly object to being called doxastic sexists, since they do not believe that men are superior to women.</p>
+
+<p>Similar remarks apply to racism, the main subject of Yancy’s essay. Just as in the case of sexism, I will admit that I am an implicit racist, that this is a deep problem, and that I don’t quite know what to do about it. Despite this, I would squirm in my seat just as Yancy’s students do if I were asked to admit to being a doxastic racist, since I simply do not believe that white people are superior to black. I believe that they are equal.</p>
+
+  </div>
+  
 </div>
 
 <div class="pagination">
@@ -611,5 +287,8 @@ By Modus Tollens: ¬A ∎
 
     </div>
 
+    <footer>
+      <small>&copy; 2017. All rights reserved.</small>
+    </footer>
   </body>
 </html>

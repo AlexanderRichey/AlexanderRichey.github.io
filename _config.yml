@@ -11,8 +11,8 @@ plugins:
 
 # Setup
 title:            Alex Richey
-tagline:          'Web Developer'
-description:      "I'm a web developer and occasional columnist based in NYC. I write about politics and code."
+tagline:          "Software Engineer"
+description:      "Software Engineer @ Meural"
 url:              http://alexrichey.com
 baseurl:          /
 

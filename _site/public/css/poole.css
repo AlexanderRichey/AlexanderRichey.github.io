@@ -1,4 +1,35 @@
 /*
+ *                        ___
+ *                       /\_ \
+ *  _____     ___     ___\//\ \      __
+ * /\ '__`\  / __`\  / __`\\ \ \   /'__`\
+ * \ \ \_\ \/\ \_\ \/\ \_\ \\_\ \_/\  __/
+ *  \ \ ,__/\ \____/\ \____//\____\ \____\
+ *   \ \ \/  \/___/  \/___/ \/____/\/____/
+ *    \ \_\
+ *     \/_/
+ *
+ * Designed, built, and released under MIT license by @mdo. Learn more at
+ * https://github.com/poole/poole.
+ */
+
+
+/*
+ * Contents
+ *
+ * Body resets
+ * Custom type
+ * Messages
+ * Container
+ * Masthead
+ * Posts and pages
+ * Pagination
+ * Reverse layout
+ * Themes
+ */
+
+
+/*
  * Body resets
  *
  * Update the foundational and global aspects of the page.
@@ -17,20 +48,18 @@ body {
 }
 
 html {
-  font: 1em/1.5 sans-serif;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 18px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
 }
-
-@media screen and (max-width: 568px) {
+@media (min-width: 38rem) {
   html {
-    font-size: 16px;
+    font-size: 20px;
   }
 }
 
 body {
-  /*color: #515151;*/
-  color: #333;
+  color: #515151;
   background-color: #fff;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
@@ -38,11 +67,8 @@ body {
 
 /* No `:visited` state is required by default (browsers will use `a`) */
 a {
-  color: rgba(0, 0, 0, 0.5);
+  color: #268bd2;
   text-decoration: none;
-}
-a strong {
-  color: inherit;
 }
 /* `:focus` is linked to `:hover` for basic accessibility */
 a:hover,
@@ -50,33 +76,28 @@ a:focus {
   text-decoration: underline;
 }
 
-p a {
-  text-decoration: underline;
-}
-
-p a:hover {
-  color: #000;
-}
-
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
   margin-bottom: .5rem;
-  font-weight: 500;
+  font-weight: bold;
   line-height: 1.25;
+  color: #313131;
   text-rendering: optimizeLegibility;
 }
 h1 {
-  margin-top: 1.2rem;
-  font-size: 2.5rem;
+  font-size: 2rem;
 }
 h2 {
-  margin-top: 1.2rem;
+  margin-top: 1rem;
+  font-size: 1.5rem;
 }
 h3 {
   margin-top: 1.5rem;
+  font-size: 1.25rem;
 }
 h4, h5, h6 {
   margin-top: 1rem;
+  font-size: 1rem;
 }
 
 /* Body text */
@@ -127,12 +148,6 @@ abbr[title] {
 code,
 pre {
   font-family: Menlo, Monaco, "Courier New", monospace;
-  font-size: 1rem;
-}
-@media screen and (max-width: 568px) {
-  pre {
-    font-size: 0.8rem;
-  }
 }
 code {
   padding: .25em .5em;
@@ -146,6 +161,7 @@ pre {
   margin-top: 0;
   margin-bottom: 1rem;
   padding: 1rem;
+  font-size: .8rem;
   line-height: 1.4;
   white-space: pre;
   white-space: pre-wrap;
@@ -159,36 +175,12 @@ pre code {
   color: inherit;
   background-color: transparent;
 }
-
-/* Pygments via Jekyll */
 .highlight {
   margin-bottom: 1rem;
   border-radius: 4px;
 }
 .highlight pre {
   margin-bottom: 0;
-}
-
-/* Gist via GitHub Pages */
-.gist .gist-file {
-  font-family: Menlo, Monaco, "Courier New", monospace !important;
-}
-.gist .markdown-body {
-  padding: 15px;
-}
-.gist pre {
-  padding: 0;
-  background-color: transparent;
-}
-.gist .gist-file .gist-data {
-  font-size: .8rem !important;
-  line-height: 1.4;
-}
-.gist code {
-  padding: 0;
-  color: inherit;
-  background-color: transparent;
-  border-radius: 0;
 }
 
 /* Quotes */
@@ -201,7 +193,7 @@ blockquote {
 blockquote p:last-child {
   margin-bottom: 0;
 }
-@media (min-width: 30em) {
+@media (min-width: 30rem) {
   blockquote {
     padding-right: 5rem;
     padding-left: 1.25rem;
@@ -210,8 +202,8 @@ blockquote p:last-child {
 
 img {
   display: block;
-  max-width: 100%;
   margin: 0 0 1rem;
+  border-radius: 5px;
 }
 
 /* Tables */
@@ -231,12 +223,6 @@ tbody tr:nth-child(odd) th {
   background-color: #f9f9f9;
 }
 
-footer {
-  display: flex;
-  justify-content: center;
-  color: #CCC;
-  margin-bottom: 2rem;
-}
 
 /*
  * Custom type
@@ -245,8 +231,8 @@ footer {
  */
 
 .lead {
-  font-size: 0.9rem;
-  line-height: 1.2rem;
+  font-size: 1.25rem;
+  font-weight: 300;
 }
 
 
@@ -259,7 +245,6 @@ footer {
 
 .message {
   margin-bottom: 1rem;
-  font-size: 1rem;
   padding: 1rem;
   color: #717171;
   background-color: #f9f9f9;
@@ -273,7 +258,7 @@ footer {
  */
 
 .container {
-  max-width: 45rem;
+  max-width: 38rem;
   padding-left:  1rem;
   padding-right: 1rem;
   margin-left:  auto;
@@ -288,21 +273,16 @@ footer {
  */
 
 .masthead {
-  display: flex;
-  padding: 2rem;
+  padding-top:    1rem;
+  padding-bottom: 1rem;
   margin-bottom: 3rem;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
 }
 .masthead-title {
   margin-top: 0;
   margin-bottom: 0;
   color: #505050;
 }
-.masthead-title h1 {
-  font-size: 1rem;
-  margin: 0;
+.masthead-title a {
   color: #505050;
 }
 .masthead-title small {
@@ -311,21 +291,7 @@ footer {
   color: #c0c0c0;
   letter-spacing: 0;
 }
-.masthead-nav-item {
-  margin-left: 0.5rem;
-}
-@media screen and (max-width: 568px) {
-.masthead {
-  justify-content: center;
-  flex-direction: column;
-  margin-bottom: 0;
-}
 
-.masthead-title {
-  text-align: center;
-  margin-bottom: 1rem;
-}
-}
 
 /*
  * Posts and pages
@@ -353,9 +319,9 @@ footer {
 /* Meta data line below post title */
 .post-date {
   display: block;
-  font-style: italic;
-  margin-top: 0rem;
-  margin-bottom: 1.5rem;
+  margin-top: -.5rem;
+  margin-bottom: 1rem;
+  color: #9a9a9a;
 }
 
 /* Related posts */
@@ -373,8 +339,11 @@ footer {
 }
 .related-posts li small {
   font-size: 75%;
+  color: #999;
 }
 .related-posts li a:hover {
+  color: #268bd2;
+  text-decoration: none;
 }
 .related-posts li a:hover small {
   color: inherit;
@@ -392,6 +361,7 @@ footer {
   overflow: hidden; /* clearfix */
   margin-left: -1rem;
   margin-right: -1rem;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   color: #ccc;
   text-align: center;
 }
@@ -400,6 +370,7 @@ footer {
 .pagination-item {
   display: block;
   padding: 1rem;
+  border: 1px solid #eee;
 }
 .pagination-item:first-child {
   margin-bottom: -1px;
@@ -407,9 +378,10 @@ footer {
 
 /* Only provide a hover state for linked pagination items */
 a.pagination-item:hover {
+  background-color: #f5f5f5;
 }
 
-@media (min-width: 30em) {
+@media (min-width: 30rem) {
   .pagination {
     margin: 3rem 0;
   }

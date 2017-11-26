@@ -18,7 +18,6 @@
   <!-- CSS -->
   <link rel="stylesheet" href="/public/css/my-poole.css">
   <link rel="stylesheet" href="/public/css/syntax.css">
-  <link rel="stylesheet" href="/public/css/my-hyde.css">
 
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
@@ -43,19 +42,18 @@
 
   <body>
 
-    <div class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
+    <header class="masthead">
+    <div class="masthead-title">
       <h1>
         <a href="/">
           Alex Richey
         </a>
       </h1>
-      <p class="lead">I'm a web developer and occasional columnist based in NYC. I write about politics and code.</p>
+      <small>Software Engineer @ Meural</small>
     </div>
 
-    <nav class="sidebar-nav">
-      <a class="sidebar-nav-item" href="/">Home</a>
+    <nav class="masthead-nav">
+      <a class="masthead-nav-item" href="/">Posts</a>
 
       
 
@@ -67,7 +65,7 @@
       
         
           
-            <a class="sidebar-nav-item" href="/about/">About</a>
+            <a class="masthead-nav-item" href="/about/">About</a>
           
         
       
@@ -86,13 +84,11 @@
         
       
 
-      <a class="sidebar-nav-item" href="/dev/">Portfolio</a>
+      <a class="masthead-nav-item" href="/dev/">Portfolio</a>
 
     </nav>
 
-    <p class="lead">&copy; 2017. All rights reserved.</p>
-  </div>
-</div>
+</header>
 
 
     <div class="content container">
@@ -112,6 +108,11 @@
         height: 500px;
         background-image: url('/assets/ski-free-background.png');
         background-size: contain;
+      }
+      @media screen and (max-width: 500px) {
+        #canvas {
+          width: 100%;
+        }
       }
     </style>
   </head>
@@ -136,15 +137,6 @@
     
       <li>
         <h3>
-          <a href="/2017/08/07/setting-up-ssr-react-django/">
-            Setting Up Server Side Rendering with React, React-Router 3, Redux, and Django
-            <small>07 Aug 2017</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
           <a href="/2016/05/21/from-philosophy-to-cs/">
             From Philosophy to Computer Science
             <small>21 May 2016</small>
@@ -161,10 +153,22 @@
         </h3>
       </li>
     
+      <li>
+        <h3>
+          <a href="/2015/12/06/ted-siders-solution-to-the-problem-of-radical-semantic-skepticism/">
+            Ted Sider’s Solution to the Problem of Radical Semantic Skepticism
+            <small>06 Dec 2015</small>
+          </a>
+        </h3>
+      </li>
+    
   </ul>
 </div>
 
     </div>
 
+    <footer>
+      <small>&copy; 2017. All rights reserved.</small>
+    </footer>
   </body>
 </html>

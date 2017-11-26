@@ -1,0 +1,32 @@
+<header class="masthead">
+    <div class="masthead-title">
+      <h1>
+        <a href="/">
+          {{ site.title }}
+        </a>
+      </h1>
+      <small>{{ site.description }}</small>
+    </div>
+
+    <nav class="masthead-nav">
+      <a class="masthead-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="/">Posts</a>
+
+      {% comment %}
+        The code below dynamically generates a sidebar nav of pages with
+        `layout: page` in the front-matter. See readme for usage.
+      {% endcomment %}
+
+      {% assign pages_list = site.pages %}
+      {% for node in pages_list %}
+        {% if node.title != null %}
+          {% if node.layout == "page" %}
+            <a class="masthead-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url }}">{{ node.title }}</a>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+
+      <a class="masthead-nav-item" href="/dev/">Portfolio</a>
+
+    </nav>
+
+</header>

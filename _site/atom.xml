@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>Alex Richey</title>
- <link href="http://alexrichey.com/atom.xml" rel="self"/>
- <link href="http://alexrichey.com/"/>
- <updated>2017-11-26T00:12:53-05:00</updated>
- <id>http://alexrichey.com</id>
+ <link href="http://localhost:4000/atom.xml" rel="self"/>
+ <link href="http://localhost:4000/"/>
+ <updated>2017-11-26T01:37:53-05:00</updated>
+ <id>http://localhost:4000</id>
  <author>
    <name>Alex Richey</name>
    <email></email>
@@ -13,10 +13,101 @@
 
  
  <entry>
+   <title>Setting Up Server Side Rendering with React, Redux, and Django</title>
+   <link href="http://localhost:4000/2017/08/07/setting-up-ssr-react-django/"/>
+   <updated>2017-08-07T00:00:00-04:00</updated>
+   <id>http://localhost:4000/2017/08/07/setting-up-ssr-react-django</id>
+   <content type="html">&lt;p&gt;At Meural, we decided to implement server side rendering in order to increase our SEO exposure and to make social media sharing more effective. In this post, I’ll talk about how server side rendering works and the implementation that I developed.&lt;/p&gt;
+
+&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
+
+&lt;p&gt;In traditional web applications, web pages are rendered on the client side. The browser receives a blob of JavaScript from the server, processes it, and paints the UI that the user sees. In server rendered applications, on the other hand, the first render of a web page is done on the server. The browser receives a pre-rendered page, which it can display without running any JavaScript. This enables better SEO exposure, since many web crawlers cannot run JavaScript, and faster perceived page load times.&lt;/p&gt;
+
+&lt;p&gt;There are also some downsides to server side rendering. These include slower server response time and, in lower bandwidth environments, slower time to interactive. For apps that run behind login screens, whose content is private, these downsides might make server side rendering less than worthwhile. For our use case, however, the benefits well outweigh the costs. Most of our app’s pages are public facing, so exposure to web crawlers is essential.&lt;/p&gt;
+
+&lt;h2 id=&quot;preliminary-considerations&quot;&gt;Preliminary Considerations&lt;/h2&gt;
+
+&lt;p&gt;Implementing server side rendering is not a trivial task. In response to this fact, a number of libraries have emerged to make implementation a bit easier. These include Next.js, Razzle, numerous boilerplates, and others.&lt;/p&gt;
+
+&lt;p&gt;These libraries and frameworks can be a good choice for rapidly prototyping a feature or when starting a new app, but I would not recommend them for use in production or for extant apps. The reason for this is that using them requires surrendering a large portion of your codebase to them, which makes debugging and optimization more difficult, if not impossible, and makes you ignorant of how your app is really working. What’s more, integrating such a framework into an extant application is often more trouble than it’s worth.&lt;/p&gt;
+
+&lt;p&gt;Therefore, I developed a custom implementation of server side rendering at Meural. I hope that our stack is similar enough to that of other companies so that other developers might find this article useful. Our frontend uses React, React Router 3, and Redux, while our backend is a monolithic Django application.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-high-level-view&quot;&gt;The High-Level View&lt;/h2&gt;
+
+&lt;p&gt;At a high level, setting up server side rendering consists in setting up the following chain of events.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/ssr.jpg&quot; alt=&quot;SSR Schema&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Since our primary application server is a Django application, which cannot understand JavaScript, we need a JavaScript runtime to render our React frontend. For this, we’ll use a Node server. When a request hits our primary Django server, we’ll query our database to get the info we need. Next we’ll send that info in an HTTP &lt;code class=&quot;highlighter-rouge&quot;&gt;POST&lt;/code&gt; request to our Node server, which will return our markup, plus the final state of our Redux store. Finally, we’ll embed this information into the HTML response of our Django app and send it to the client.&lt;/p&gt;
+
+&lt;h2 id=&quot;node-django-interaction&quot;&gt;Node-Django Interaction&lt;/h2&gt;
+
+&lt;p&gt;Let’s begin by setting up the Node server. I decided to use Express.js because it is battle-tested and very easy to use.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/AlexanderRichey/96cdba8e8171d0a6bfa239b5a42db3f9.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;I recommend writing a simple &lt;code class=&quot;highlighter-rouge&quot;&gt;render&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;buildInitalState&lt;/code&gt; functions for testing purposes that simply return some valid output of any kind. I also recommend testing this server with cURL before moving on to anything else.&lt;/p&gt;
+
+&lt;p&gt;Now let’s wire up the Django app and test it’s interaction with the Node server.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/AlexanderRichey/109eb5d4730be1f88fb894c05e00df03.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Here’s how we insert the rendered HTML payload into our Django template.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/AlexanderRichey/925151a5fa26bd076fe37263007ff60d.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;We can now test the interaction between Node and Django. Let’s start the Node server and the Django server, open up a browser, and go to the url that corresponds to our sandwich view. To prevent our React frontend from taking over the page on load, we’ll disable JavaScript in DevTools. If you see a page with the output that you defined in your &lt;code class=&quot;highlighter-rouge&quot;&gt;render&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;buildInitalState&lt;/code&gt; functions, then all is well.&lt;/p&gt;
+
+&lt;h2 id=&quot;defining-the-renderfunction&quot;&gt;Defining the Render Function&lt;/h2&gt;
+
+&lt;p&gt;It will be instructive to first look at the code of the &lt;code class=&quot;highlighter-rouge&quot;&gt;render&lt;/code&gt; function and then to explain how it works.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/AlexanderRichey/df4c27427936ae186b3725a8c1fee7d6.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;The first thing the &lt;code class=&quot;highlighter-rouge&quot;&gt;render&lt;/code&gt; function does is configure the Redux store. I used the same &lt;code class=&quot;highlighter-rouge&quot;&gt;configureStore&lt;/code&gt; function that I had already defined in following the usual Redux API pattern.&lt;/p&gt;
+
+&lt;p&gt;The second thing the &lt;code class=&quot;highlighter-rouge&quot;&gt;render&lt;/code&gt; function does is get the frontend routes of my React app, by calling a function I wrote called &lt;code class=&quot;highlighter-rouge&quot;&gt;getRoutes&lt;/code&gt;. This function takes the Redux store as an argument and returns all of the routes to my app. It prevents code duplication because I can call it in both server and browser environments (See the &lt;em&gt;Handling the Client Side&lt;/em&gt; section below to see how it is used in a browser environment).&lt;/p&gt;
+
+&lt;p&gt;The name &lt;code class=&quot;highlighter-rouge&quot;&gt;getRoutes&lt;/code&gt;, though accurate, is somewhat incomplete. The function does not just get routes. It also gets the React components of which my app is composed, since they are embedded in the definitions of the routes themselves. Therefore, the &lt;code class=&quot;highlighter-rouge&quot;&gt;getRoutes&lt;/code&gt; function is what links my existing React app to the render function.&lt;/p&gt;
+
+&lt;p&gt;Next, in order for the &lt;code class=&quot;highlighter-rouge&quot;&gt;render&lt;/code&gt; function to match the desired route, I use React Router’s &lt;code class=&quot;highlighter-rouge&quot;&gt;match&lt;/code&gt; function. This function’s first argument is an object containing all of my app’s routes as its first key — which we have from the &lt;code class=&quot;highlighter-rouge&quot;&gt;getRoutes&lt;/code&gt; function — and the desired route as the second key. The match function’s second argument is a callback that gets evoked after matching is complete. In a successful matching, this callback’s third argument is a &lt;code class=&quot;highlighter-rouge&quot;&gt;renderProps&lt;/code&gt; object. These &lt;code class=&quot;highlighter-rouge&quot;&gt;renderProps&lt;/code&gt; represent the state of my app’s props at a given route. I pass this object into React-Router’s &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;RouterContext&amp;gt;&lt;/code&gt; component (which is a static version of its more familiar &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;Router&amp;gt;&lt;/code&gt; component) to render the state of our app at the matched route.&lt;/p&gt;
+
+&lt;p&gt;To give the components of my app access to the Redux store, I wrap the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;RouterContext&amp;gt;&lt;/code&gt; component with the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;Provider&amp;gt;&lt;/code&gt; component from the React-Redux library.&lt;/p&gt;
+
+&lt;p&gt;Next, I call &lt;code class=&quot;highlighter-rouge&quot;&gt;ReactDOMServer#renderToString&lt;/code&gt; with this wrapped component as its argument to render the state of my application at the matched route to HTML.&lt;/p&gt;
+
+&lt;p&gt;Finally, I call &lt;code class=&quot;highlighter-rouge&quot;&gt;getState&lt;/code&gt; on my Redux store to extract its final state in case the rendering process changed anything.&lt;/p&gt;
+
+&lt;p&gt;If the match function fails to match the desired route, the second argument of its callback is a &lt;code class=&quot;highlighter-rouge&quot;&gt;redirectLocation&lt;/code&gt; argument. In this case, I recursively call the &lt;code class=&quot;highlighter-rouge&quot;&gt;render&lt;/code&gt; function with this new desired route. I am confident that there will never be a chain of infinite redirects because I have defined a wildcard route to handle such cases.&lt;/p&gt;
+
+&lt;h2 id=&quot;calling-the-renderfunction&quot;&gt;Calling the Render Function&lt;/h2&gt;
+
+&lt;p&gt;The render function will not work as it is currently defined. The reason for this is that the JSX used in the function itself, as well as in the rest of my app, is not understood in Node runtimes. Therefore, I use Webpack and Babel to transpile my &lt;code class=&quot;highlighter-rouge&quot;&gt;render.jsx&lt;/code&gt; file into Node compliant code. All I had to do to make this work was to copy my existing webpack config, change the entry point to &lt;code class=&quot;highlighter-rouge&quot;&gt;render.jsx&lt;/code&gt;, and replace the target parameter with &lt;code class=&quot;highlighter-rouge&quot;&gt;target: ‘node’&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;When transpiling, I ran into some errors. Since this version of my React app will not be running in the browser, window and document will not be defined. Therefore, I had to move all references to &lt;code class=&quot;highlighter-rouge&quot;&gt;window&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;document&lt;/code&gt; to functions that are executed only after the DOM is accessible. This involved moving references to &lt;code class=&quot;highlighter-rouge&quot;&gt;window&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;document&lt;/code&gt; from methods like &lt;code class=&quot;highlighter-rouge&quot;&gt;Component#constructor&lt;/code&gt; to methods like &lt;code class=&quot;highlighter-rouge&quot;&gt;Component#componentDidMount&lt;/code&gt;. Unlike &lt;code class=&quot;highlighter-rouge&quot;&gt;Component#constructor&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Component#componentDidMount&lt;/code&gt; will only be called after the component has been mounted to the DOM. I also had to abandon some third-party libraries that relied on &lt;code class=&quot;highlighter-rouge&quot;&gt;window&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;document&lt;/code&gt; in problematic places.&lt;/p&gt;
+
+&lt;h2 id=&quot;handling-the-clientside&quot;&gt;Handling the Client Side&lt;/h2&gt;
+
+&lt;p&gt;Now that my server responds with a fully rendered page of my app, I need to adjust my client side JS to expect this. Here’s the code I wrote.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/AlexanderRichey/c6f0bf438ff2f6c8b8a4fc74e41658c5.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;You might have noticed that I added an &lt;code class=&quot;highlighter-rouge&quot;&gt;async&lt;/code&gt; attribute to my script tag in &lt;code class=&quot;highlighter-rouge&quot;&gt;base.html&lt;/code&gt;. The &lt;code class=&quot;highlighter-rouge&quot;&gt;async&lt;/code&gt; attribute makes the tag non-render-blocking, which means that the browser won’t wait for the entire script to download before rendering. This produces a considerable speed increase, especially with large JavaScript bundles. However, it also means that it is possible for the script to be executed at any time during the load process, which means that the standard procedure of waiting for &lt;code class=&quot;highlighter-rouge&quot;&gt;DOMContentLoaded&lt;/code&gt; before rendering with ReactDOM might not always work, since &lt;code class=&quot;highlighter-rouge&quot;&gt;DOMContentLoaded&lt;/code&gt; might have already fired, in which case, the React app would never get executed and the page would never become interactive. Therefore, I check the &lt;code class=&quot;highlighter-rouge&quot;&gt;document.readyState&lt;/code&gt; when the bundle is initially executed. If the &lt;code class=&quot;highlighter-rouge&quot;&gt;readyState&lt;/code&gt; is &lt;code class=&quot;highlighter-rouge&quot;&gt;complete&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;interactive&lt;/code&gt;, I initialize my React app right away. Otherwise, I add listener for &lt;code class=&quot;highlighter-rouge&quot;&gt;DOMContentLoaded&lt;/code&gt; and use my initialize function as the callback.&lt;/p&gt;
+
+&lt;p&gt;In my &lt;code class=&quot;highlighter-rouge&quot;&gt;initializeApp&lt;/code&gt; function, I get the current state of the Redux store from the window and pass it into &lt;code class=&quot;highlighter-rouge&quot;&gt;configureStore&lt;/code&gt; to setup Redux. Next, I match the current route, just as I did on the server side, using the same &lt;code class=&quot;highlighter-rouge&quot;&gt;getRoutes&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;match&lt;/code&gt; functions which I discussed above. Instead of calling &lt;code class=&quot;highlighter-rouge&quot;&gt;ReactDOM#render&lt;/code&gt;, which is the usual pattern in client rendered apps, I call &lt;code class=&quot;highlighter-rouge&quot;&gt;ReactDOM#hydrate&lt;/code&gt;, which sets up React’s virtual DOM and installs listeners to make the page interactive.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Since deploying this project, we have seen much better SEO at Meural. Now a Google search for the terms &lt;code class=&quot;highlighter-rouge&quot;&gt;meural&lt;/code&gt; and some artist’s name will yield a result of that artist’s page or one of her playlists, if that artist is in our collection. Prior to this deployment, this was not possible, since we had exposed only one webpage, which contained our single-page React app.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
    <title>From Philosophy to Computer Science</title>
-   <link href="http://alexrichey.com/2016/05/21/from-philosophy-to-cs/"/>
+   <link href="http://localhost:4000/2016/05/21/from-philosophy-to-cs/"/>
    <updated>2016-05-21T00:00:00-04:00</updated>
-   <id>http://alexrichey.com/2016/05/21/from-philosophy-to-cs</id>
+   <id>http://localhost:4000/2016/05/21/from-philosophy-to-cs</id>
    <content type="html">&lt;p&gt;&lt;img src=&quot;/assets/philosophy.jpg&quot; alt=&quot;image&quot; /&gt;
 When I say that I’m a software developer with a background in academic philosophy, many people react with surprise, as if I had jumped between completely divergent fields. Philosophy and computer science are in fact closely related and it is easy to transition from one to the other. In this article I would like to highlight a few reasons why this is so, with the hopes of dispelling the common misperception that they are opposites and of giving some background for students of philosophy who are interested in transitioning to computer science.&lt;/p&gt;
 
@@ -112,9 +203,9 @@ By Modus Tollens: ¬A ∎
  
  <entry>
    <title>SkiFree</title>
-   <link href="http://alexrichey.com/2016/04/17/ski-free/"/>
+   <link href="http://localhost:4000/2016/04/17/ski-free/"/>
    <updated>2016-04-17T00:00:00-04:00</updated>
-   <id>http://alexrichey.com/2016/04/17/ski-free</id>
+   <id>http://localhost:4000/2016/04/17/ski-free</id>
    <content type="html">&lt;html&gt;
   &lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot;&gt;
@@ -153,9 +244,9 @@ By Modus Tollens: ¬A ∎
  
  <entry>
    <title>Two Kinds of Racism</title>
-   <link href="http://alexrichey.com/2016/01/21/two-kinds-of-racism/"/>
+   <link href="http://localhost:4000/2016/01/21/two-kinds-of-racism/"/>
    <updated>2016-01-21T00:00:00-05:00</updated>
-   <id>http://alexrichey.com/2016/01/21/two-kinds-of-racism</id>
+   <id>http://localhost:4000/2016/01/21/two-kinds-of-racism</id>
    <content type="html">&lt;div class=&quot;message&quot;&gt;
   A letter I wrote to the NYTimes, which was not published.
 &lt;/div&gt;
@@ -182,9 +273,9 @@ By Modus Tollens: ¬A ∎
  
  <entry>
    <title>Ted Sider’s Solution to the Problem of Radical Semantic Skepticism</title>
-   <link href="http://alexrichey.com/2015/12/06/ted-siders-solution-to-the-problem-of-radical-semantic-skepticism/"/>
+   <link href="http://localhost:4000/2015/12/06/ted-siders-solution-to-the-problem-of-radical-semantic-skepticism/"/>
    <updated>2015-12-06T00:00:00-05:00</updated>
-   <id>http://alexrichey.com/2015/12/06/ted-siders-solution-to-the-problem-of-radical-semantic-skepticism</id>
+   <id>http://localhost:4000/2015/12/06/ted-siders-solution-to-the-problem-of-radical-semantic-skepticism</id>
    <content type="html">&lt;p&gt;&lt;a href=&quot;http://dx.doi.org/10.7916/D8RV0N61&quot;&gt;Link&lt;/a&gt; to a paper I wrote on Columbia Academic Commons. Here’s the abstract:&lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -195,9 +286,9 @@ By Modus Tollens: ¬A ∎
  
  <entry>
    <title>Against Pessimism</title>
-   <link href="http://alexrichey.com/2014/02/24/against-pessimism/"/>
+   <link href="http://localhost:4000/2014/02/24/against-pessimism/"/>
    <updated>2014-02-24T00:00:00-05:00</updated>
-   <id>http://alexrichey.com/2014/02/24/against-pessimism</id>
+   <id>http://localhost:4000/2014/02/24/against-pessimism</id>
    <content type="html">&lt;p&gt;&lt;img src=&quot;/assets/half-full-half-empty.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;message&quot;&gt;
@@ -268,9 +359,9 @@ By Modus Tollens: ¬A ∎
  
  <entry>
    <title>What the Science of Happiness Can Tell Us About Taxes</title>
-   <link href="http://alexrichey.com/2013/07/10/what-the-science-of-happiness-can-tell-us-about-taxes/"/>
+   <link href="http://localhost:4000/2013/07/10/what-the-science-of-happiness-can-tell-us-about-taxes/"/>
    <updated>2013-07-10T00:00:00-04:00</updated>
-   <id>http://alexrichey.com/2013/07/10/what-the-science-of-happiness-can-tell-us-about-taxes</id>
+   <id>http://localhost:4000/2013/07/10/what-the-science-of-happiness-can-tell-us-about-taxes</id>
    <content type="html">&lt;div class=&quot;message&quot;&gt;
   My article about the relationship between happiness and income, originally published on &lt;a href=&quot;http://www.policymic.com/articles/53521/what-the-science-of-happiness-can-tell-us-about-taxes&quot;&gt;&lt;em&gt;PolicyMic&lt;/em&gt;&lt;/a&gt;.
 &lt;/div&gt;
@@ -307,9 +398,9 @@ By Modus Tollens: ¬A ∎
  
  <entry>
    <title>Minimum Wage Bill: Obama's $9 Proposal Won't Increase Unemployment</title>
-   <link href="http://alexrichey.com/2013/06/09/minimum-wage-bill-obamas-9-proposal-wont-increase-unemployment/"/>
+   <link href="http://localhost:4000/2013/06/09/minimum-wage-bill-obamas-9-proposal-wont-increase-unemployment/"/>
    <updated>2013-06-09T00:00:00-04:00</updated>
-   <id>http://alexrichey.com/2013/06/09/minimum-wage-bill-obamas-9-proposal-wont-increase-unemployment</id>
+   <id>http://localhost:4000/2013/06/09/minimum-wage-bill-obamas-9-proposal-wont-increase-unemployment</id>
    <content type="html">&lt;p&gt;&lt;img src=&quot;/assets/min-wage.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;message&quot;&gt;
@@ -352,9 +443,9 @@ By Modus Tollens: ¬A ∎
  
  <entry>
    <title>The Lame Duck Dilemma</title>
-   <link href="http://alexrichey.com/2012/09/15/the-lame-duck-dilemma/"/>
+   <link href="http://localhost:4000/2012/09/15/the-lame-duck-dilemma/"/>
    <updated>2012-09-15T00:00:00-04:00</updated>
-   <id>http://alexrichey.com/2012/09/15/the-lame-duck-dilemma</id>
+   <id>http://localhost:4000/2012/09/15/the-lame-duck-dilemma</id>
    <content type="html">&lt;p&gt;There has been no shortage of articles declaring that the lame duck congress is intransigent. Paul Krugman of the New York Times, for example, &lt;a href=&quot;http://www.nytimes.com/2012/08/03/opinion/krugman-debt-depression-demarco.html?partner=rssnyt&amp;amp;emc=rss&quot;&gt;writes&lt;/a&gt; that the most striking feature of Obama’s presidency is not his management of the troubled economy, but “the scorched-earth opposition of Republicans.” Perhaps the most salient episode of Republican opposition occurred last summer, when Republicans threatened a government shut-down by posturing to deny raising the debt-ceiling and &lt;a href=&quot;http://www.nytimes.com/2011/08/06/business/us-debt-downgraded-by-sp.html?ref=nationaldebtus&quot;&gt;reduced the nation’s credit rating&lt;/a&gt; in the process.&lt;/p&gt;
 
 &lt;p&gt;It hardly seems questionable that the obstinate voting patterns of (largely Republican) congresspeople are harming the nation and slowing its economic recovery. But why is this so? Why is obstructionism so detrimental? I think that a surprising amount of insight can be gained from considering a famous ethical case called the &lt;a href=&quot;http://plato.stanford.edu/entries/prisoner-dilemma/&quot;&gt;prisoner’s dilemma&lt;/a&gt;.&lt;/p&gt;

@@ -1,0 +1,3 @@
+Jinja2==2.10
+Markdown==2.6.9
+MarkupSafe==1.0

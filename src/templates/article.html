@@ -1,4 +1,5 @@
+{% from 'article-partial.html' import article %}
 {% extends 'base.html' %}
 {% block content %}
-  {% include 'article-partial.html' %}
+  {{ article(url, title, date, content) }}
 {% endblock %}

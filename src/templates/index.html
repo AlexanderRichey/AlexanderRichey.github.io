@@ -1,7 +1,8 @@
+{% from 'article-partial.html' import article %}
 {% extends 'base.html' %}
 {% block content %}
-  {% for article in articles %}
-    {{ article }}
+  {% for data in articles %}
+    {{ article(data.url, data.title, data.date, data.content) }}
   {% endfor %}
   {% include 'pagination.html' %}
 {% endblock %}

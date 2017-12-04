@@ -1,8 +1,13 @@
-from timeit import timeit
+import logging
 from watchdog.events import FileSystemEventHandler
+from time import time
+from lib.build import build
 
 
 class EventHandler(FileSystemEventHandler):
     def on_any_event(self, event):
-        time = timeit('build()')
-        logging.info('built in ' + str(time)[:5] + 'seconds')
+        t0 = time()
+        build()
+        t1 = time()
+        diff = str(t1 - t0)[:5]
+        logging.info('Built in ' + diff + ' seconds')

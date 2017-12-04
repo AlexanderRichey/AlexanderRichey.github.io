@@ -1,6 +1,7 @@
 import os
 import sys
 import shutil
+import logging
 from os.path import dirname, abspath, join, splitext, isfile
 from io import BytesIO
 from datetime import datetime
@@ -24,7 +25,8 @@ try:
 except Exception as e:
     raise ImportError('Could not load template directory')
 
-md = Markdown(extensions=['markdown.extensions.meta'])
+md = Markdown(extensions=['markdown.extensions.meta',
+                          'markdown.extensions.fenced_code'])
 article_template = jinja_env.get_template('article.html')
 index_template = jinja_env.get_template('index.html')
 
@@ -89,14 +91,14 @@ def build_articles_and_indicies():
                 url = '/' + page_dir
                 out_index_fpath = join(DIST_DIR, page_dir, 'index.html')
             if (len_articles - 1) > idx:
-                next_page = '/page' + str(index_page_num + 2)
+                next_page = '/page' + str(index_page_num + 2) + '/'
             elif (len_articles - 1) == idx:
                 next_page = None
             if index_page_num > 0:
                 if index_page_num == 1:
                     prev_page = '/'
                 else:
-                    prev_page = '/page' + str(index_page_num)
+                    prev_page = '/page' + str(index_page_num) + '/'
             with open(out_index_fpath, 'w') as out_fp:
                 out_fp.write(index_template.render(
                     url=url,
@@ -161,7 +163,12 @@ def massage_metadata(meta, base_fname, parent_dir='articles'):
     article_title = ','.join(meta.get('title', ''))
     url = join('/', parent_dir, slugify(article_title) + '.html')
     page_title = CONFIG.get('name', '') + ' • ' + article_title
-    date = '-'.join(base_fname.split('-')[:3])
+    try:
+        date_arr = [int(i) for i in base_fname.split('-')[:3]]
+        date = datetime(*date_arr).strftime('%-d %B %Y')
+    except ValueError as e:
+        logging.warn(base_fname + ' does not have a date')
+        date = ''
     return article_title, page_title, date, url
 
 

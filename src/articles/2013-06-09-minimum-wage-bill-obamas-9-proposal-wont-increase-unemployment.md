@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Minimum Wage Bill: Obama''s $9 Proposal Won''t Increase Unemployment'
+title: Minimum Wage Bill: Obama's $9 Proposal Won't Increase Unemployment
 ---
 <img src="/assets/min-wage.jpg">
 

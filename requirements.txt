@@ -1,6 +1,9 @@
+argh==0.26.2
 Jinja2==2.10
 Markdown==2.6.9
 MarkupSafe==1.0
+pathtools==0.1.2
 python-slugify==1.2.4
 PyYAML==3.12
 Unidecode==0.4.21
+watchdog==0.8.3

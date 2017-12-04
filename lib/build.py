@@ -1,26 +1,23 @@
 import os
 import sys
-from os.path import dirname, abspath, join, splitext
-from pathlib import Path
+import shutil
+from os.path import dirname, abspath, join, splitext, isfile
 from io import BytesIO
 from datetime import datetime
 from jinja2 import Environment, FileSystemLoader
 from markdown import Markdown
-from yaml import load
 from slugify import slugify
 
-BASE_DIR = dirname(dirname(abspath(__file__)))
-TEMPLATE_DIR = join(BASE_DIR, 'src', 'templates')
-ARTICLES_DIR = join(BASE_DIR, 'src', 'articles')
-DIST_DIR = join(BASE_DIR, 'dist')
-
-try:
-    with open(join(BASE_DIR, 'config.yml')) as config_fp:
-        CONFIG = load(config_fp.read())
-except Exception as e:
-    raise ImportError('Could not load config')
-
-BASE_URL = CONFIG.get('url', '')
+from lib.settings import BASE_DIR, \
+                         SRC_DIR, \
+                         TEMPLATE_DIR, \
+                         ARTICLES_DIR, \
+                         PAGES_DIR, \
+                         ASSETS_DIR, \
+                         DIST_DIR, \
+                         PORT, \
+                         CONFIG, \
+                         BASE_URL
 
 try:
     jinja_env = Environment(loader=FileSystemLoader(TEMPLATE_DIR))
@@ -33,8 +30,15 @@ index_template = jinja_env.get_template('index.html')
 
 
 def build():
-    sys.stdout.write('Building... ')
     clean_dist_dir()
+    build_articles_and_indicies()
+    build_pages()
+    copy_assets()
+    copy_misc_files()
+    return True
+
+
+def build_articles_and_indicies():
     mkdir_in_dist('articles')
 
     fnames = sorted(
@@ -52,10 +56,7 @@ def build():
         base_fname, _ = splitext(in_fname)
         in_fpath = join(ARTICLES_DIR, in_fname)
 
-        buf = BytesIO()
-        md.convertFile(input=in_fpath, output=buf)
-        meta = md.Meta
-        md.reset()
+        buf, meta = convert_to_html(in_fpath)
 
         article_title, page_title, date, url = \
             massage_metadata(meta, base_fname)
@@ -106,19 +107,70 @@ def build():
                 ))
             index_payload = []
             index_page_num += 1
-    sys.stdout.write('Done\n')
+    return True
 
 
-def massage_metadata(meta, base_fname):
+def build_pages():
+    mkdir_in_dist('pages')
+    for in_fname in os.listdir(path=PAGES_DIR):
+        base_fname, _ = splitext(in_fname)
+        in_fpath = join(PAGES_DIR, in_fname)
+
+        buf, meta = convert_to_html(in_fpath)
+
+        article_title, page_title, date, url = \
+            massage_metadata(meta, base_fname, parent_dir='pages')
+
+        out_fpath = join(DIST_DIR, url[1:])
+
+        with open(out_fpath, 'w') as out_fp:
+            out_fp.write(article_template.render(
+                url=url,
+                title=article_title,
+                page_title=page_title,
+                date='',
+                content=buf.getvalue().decode('utf-8')
+            ))
+    return True
+
+
+def convert_to_html(in_fpath):
+    buf = BytesIO()
+    md.convertFile(input=in_fpath, output=buf)
+    meta = md.Meta
+    md.reset()
+    return buf, meta
+
+
+def copy_assets():
+    mkdir_in_dist('assets')
+    for root, dirs, files in os.walk(ASSETS_DIR, topdown=False):
+        for name in files:
+            shutil.copy(join(root, name), join(DIST_DIR, 'assets', name))
+    return True
+
+
+def copy_misc_files():
+    files = [f for f in os.listdir(SRC_DIR) if isfile(join(SRC_DIR, f))]
+    for name in files:
+        shutil.copy(join(SRC_DIR, name), join(DIST_DIR, name))
+    return True
+
+
+def massage_metadata(meta, base_fname, parent_dir='articles'):
     article_title = ','.join(meta.get('title', ''))
-    url = join('/', 'articles', slugify(article_title) + '.html')
+    url = join('/', parent_dir, slugify(article_title) + '.html')
     page_title = CONFIG.get('name', '') + ' • ' + article_title
     date = '-'.join(base_fname.split('-')[:3])
     return article_title, page_title, date, url
 
 
 def mkdir_in_dist(name):
-    Path(join(DIST_DIR, name)).mkdir(exist_ok=True)
+    try:
+        os.mkdir(join(DIST_DIR, name))
+    except FileExistsError as e:
+        pass
+    return True
 
 
 def clean_dist_dir():
@@ -127,7 +179,4 @@ def clean_dist_dir():
             os.remove(join(root, name))
         for name in dirs:
             os.rmdir(join(root, name))
-
-
-if __name__ == '__main__':
-    build()
+    return True

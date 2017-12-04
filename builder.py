@@ -9,7 +9,7 @@ from lib.settings import SRC_DIR
 from lib.watcher import EventHandler
 
 
-if __name__ == "__main__":
+def watch():
     logging.basicConfig(level=logging.INFO,
                         format='-WATCHER- - - [%(asctime)s] %(message)s',
                         datefmt='%d/%b/%Y %H:%M:%S')
@@ -34,3 +34,18 @@ if __name__ == "__main__":
 
     webserver.join()
     observer.join()
+
+
+if __name__ == '__main__':
+    try:
+        cmd = sys.argv[1]
+    except Exception as e:
+        sys.exit('No command given')
+    if cmd == 'build':
+        sys.stdout.write('Building...')
+        build()
+        sys.stdout.write('Done\n')
+    elif cmd == 'serve':
+        watch()
+    else:
+        print('Available commands are "build" and "serve"')

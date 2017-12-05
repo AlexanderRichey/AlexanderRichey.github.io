@@ -2,36 +2,26 @@
 layout: post
 title: SkiFree
 ---
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>SkiFree</title>
-    <style>
-      #canvas {
-        display: block;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        width: 500px;
-        height: 500px;
-        background-image: url('/assets/ski-free-background.png');
-        background-size: contain;
-      }
-      @media screen and (max-width: 500px) {
-        #canvas {
-          width: 100%;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div style="display:none;">
-     <img id="obstacles"
-      src="/assets/obstacles.png">
-     <img id="skier"
-      src="/assets/skier.png">
-    </div>
-    <p>Here's a clone of the classic game SkiFree that I made with Javascript Canvas as part of a/A's curriculum. Check out the repo on GitHub <a href="https://github.com/AlexanderRichey/SkiFree">here.</a> <strong>Click to begin</strong> and use the mouse to control your skier.</p>
-    <canvas width="500" height="500" id="canvas"></canvas>
-    <script type="text/javascript" src="/assets/skifree.min.js" charset="utf-8"></script>
-  </body>
-</html>
+<style>
+  #canvas {
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 500px;
+    height: 500px;
+    background-image: url('/assets/ski-free-background.png');
+    background-size: contain;
+  }
+  @media screen and (max-width: 500px) {
+    #canvas {
+      width: 100%;
+    }
+  }
+</style>
+<div style="display:none;">
+ <img id="obstacles" src="/assets/obstacles.png">
+ <img id="skier" src="/assets/skier.png">
+</div>
+<p>Here's a clone of the classic game SkiFree that I made with Javascript Canvas as part of a/A's curriculum. Check out the repo on GitHub <a href="https://github.com/AlexanderRichey/SkiFree">here.</a> <strong>Click to begin</strong> and use the mouse to control your skier.</p>
+<canvas width="500" height="500" id="canvas"></canvas>
+<script type="text/javascript" src="/assets/skifree.min.js" charset="utf-8"></script>

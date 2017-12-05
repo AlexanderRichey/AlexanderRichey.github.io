@@ -32,6 +32,7 @@ index_template = jinja_env.get_template('index.html')
 
 
 def build():
+    make_dist_dir()
     clean_dist_dir()
     build_articles_and_indicies()
     build_pages()
@@ -175,7 +176,15 @@ def massage_metadata(meta, base_fname, parent_dir='articles'):
 def mkdir_in_dist(name):
     try:
         os.mkdir(join(DIST_DIR, name))
-    except FileExistsError as e:
+    except (FileExistsError, FileNotFoundError) as e:
+        pass
+    return True
+
+
+def make_dist_dir():
+    try:
+        os.mkdir(DIST_DIR)
+    except (FileExistsError, FileNotFoundError) as e:
         pass
     return True
 

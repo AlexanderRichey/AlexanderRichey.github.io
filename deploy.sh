@@ -3,6 +3,7 @@ python3 builder.py build
 mkdir -p tmp
 cd tmp
 git clone git@github.com:AlexanderRichey/AlexanderRichey.github.io.git
+git co master
 rm -rf *
 cp ../dist/* .
 git add .

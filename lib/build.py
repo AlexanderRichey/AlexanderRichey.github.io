@@ -1,22 +1,19 @@
 import os
-import sys
 import shutil
 import logging
-from os.path import dirname, abspath, join, splitext, isfile
+from os.path import join, splitext, isfile
 from io import BytesIO
 from datetime import datetime
 from jinja2 import Environment, FileSystemLoader
 from markdown import Markdown
 from slugify import slugify
 
-from lib.settings import BASE_DIR, \
-                         SRC_DIR, \
+from lib.settings import SRC_DIR, \
                          TEMPLATE_DIR, \
                          ARTICLES_DIR, \
                          PAGES_DIR, \
                          ASSETS_DIR, \
                          DIST_DIR, \
-                         PORT, \
                          CONFIG, \
                          BASE_URL
 
@@ -29,6 +26,7 @@ md = Markdown(extensions=['markdown.extensions.meta',
                           'markdown.extensions.fenced_code'])
 article_template = jinja_env.get_template('article.html')
 index_template = jinja_env.get_template('index.html')
+rss_template = jinja_env.get_template('rss.xml')
 
 
 def build():
@@ -61,7 +59,7 @@ def build_articles_and_indicies():
 
         buf, meta = convert_to_html(in_fpath)
 
-        article_title, page_title, date, url = \
+        article_title, page_title, date, rss_date, url = \
             massage_metadata(meta, base_fname)
 
         out_fpath = join(DIST_DIR, url[1:])
@@ -71,6 +69,7 @@ def build_articles_and_indicies():
             title=article_title,
             page_title=page_title,
             date=date,
+            rss_date=rss_date,
             content=buf.getvalue().decode('utf-8')
         )
 
@@ -83,6 +82,7 @@ def build_articles_and_indicies():
                 (idx == (len_articles - 1)):
             page_title = CONFIG.get('name', '')
             if index_page_num == 0:
+                build_rss(index_payload)
                 out_index_fpath = join(DIST_DIR, 'index.html')
                 url = BASE_URL
                 prev_page = None
@@ -113,6 +113,30 @@ def build_articles_and_indicies():
     return True
 
 
+def build_rss(articles):
+    title = CONFIG.get('name', '')
+    url = BASE_URL
+    description = CONFIG.get('description', '')
+
+    clean_articles = []
+    for article in articles:
+        clean_articles.append({
+            'title': article['title'],
+            'url': url + article['url'],
+            'date': article['rss_date'],
+            'content': article['content']
+        })
+
+    with open(join(DIST_DIR, 'rss.xml'), 'w') as fp:
+        fp.write(rss_template.render(
+            title=title,
+            url=url,
+            date=clean_articles[0]['date'],
+            content=content,
+            articles=clean_articles,
+        ))
+
+
 def build_pages():
     mkdir_in_dist('pages')
     for in_fname in os.listdir(path=PAGES_DIR):
@@ -121,7 +145,7 @@ def build_pages():
 
         buf, meta = convert_to_html(in_fpath)
 
-        article_title, page_title, date, url = \
+        article_title, page_title, date, rss_date, url = \
             massage_metadata(meta, base_fname, parent_dir='pages')
 
         out_fpath = join(DIST_DIR, url[1:])
@@ -166,17 +190,20 @@ def massage_metadata(meta, base_fname, parent_dir='articles'):
     page_title = CONFIG.get('name', '') + ' • ' + article_title
     try:
         date_arr = [int(i) for i in base_fname.split('-')[:3]]
-        date = datetime(*date_arr).strftime('%-d %B %Y')
-    except ValueError as e:
+        date = datetime(*date_arr)
+        rss_date = date.strftime('%a, %d %b %Y %X -0500')
+        date = date.strftime('%-d %B %Y')
+    except ValueError:
         logging.warn(base_fname + ' does not have a date')
         date = ''
-    return article_title, page_title, date, url
+        rss_date = ''
+    return article_title, page_title, date, rss_date, url
 
 
 def mkdir_in_dist(name):
     try:
         os.mkdir(join(DIST_DIR, name))
-    except (FileExistsError, FileNotFoundError) as e:
+    except (FileExistsError, FileNotFoundError):
         pass
     return True
 
@@ -184,7 +211,7 @@ def mkdir_in_dist(name):
 def make_dist_dir():
     try:
         os.mkdir(DIST_DIR)
-    except (FileExistsError, FileNotFoundError) as e:
+    except (FileExistsError, FileNotFoundError):
         pass
     return True
 

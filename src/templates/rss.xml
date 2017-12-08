@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>{{ title }}</title>
+    <link>{{ url }}</link>
+    <language>en-us</language>
+    <description>{{ description }}</description>
+    <pubDate>{{ date }}</pubDate>
+    <lastBuildDate>{{ date }}</lastBuildDate>
+    {% for article in articles %}
+    <item>
+      <title>{{ article.title }}</title>
+      <link>{{ article.url }}</link>
+      <pubDate>{{ article.date }}</pubDate>
+      <description>{{ article.content|striptags|truncate(512, True) }}</description>
+    </item>
+    {% endfor %}
+  </channel>
+</rss>

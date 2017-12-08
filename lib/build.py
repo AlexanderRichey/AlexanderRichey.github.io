@@ -42,11 +42,17 @@ def build():
 def build_articles_and_indicies():
     mkdir_in_dist('articles')
 
-    fnames = sorted(
-        os.listdir(path=ARTICLES_DIR),
-        key=lambda f: datetime(*[int(i) for i in f.split('-')[:3]]).timestamp(),
-        reverse=True
-    )
+    # Sort articles by dates in filenames
+    try:
+        fnames = sorted(
+            os.listdir(path=ARTICLES_DIR),
+            key=lambda f: datetime(*[int(i) for i in f.split('-')[:3]]).timestamp(),
+            reverse=True
+        )
+    except Exception:
+        raise ValueError('Could not sort articles by dates in filenames. ' +
+                         'Is an article missing a date in it\'s title? ' +
+                         'The format is YYYY-MM-DD.')
 
     index_page_num = 0
     index_payload = []
@@ -80,36 +86,41 @@ def build_articles_and_indicies():
 
         if (((idx + 1) % max_page_len) == 0 and idx != 0) or \
                 (idx == (len_articles - 1)):
-            page_title = CONFIG.get('name', '')
-            if index_page_num == 0:
-                build_rss(index_payload)
-                out_index_fpath = join(DIST_DIR, 'index.html')
-                url = BASE_URL
-                prev_page = None
-            else:
-                page_dir = 'page' + str(index_page_num + 1)
-                mkdir_in_dist(page_dir)
-                url = '/' + page_dir
-                out_index_fpath = join(DIST_DIR, page_dir, 'index.html')
-            if (len_articles - 1) > idx:
-                next_page = '/page' + str(index_page_num + 2) + '/'
-            elif (len_articles - 1) == idx:
-                next_page = None
-            if index_page_num > 0:
-                if index_page_num == 1:
-                    prev_page = '/'
-                else:
-                    prev_page = '/page' + str(index_page_num) + '/'
-            with open(out_index_fpath, 'w') as out_fp:
-                out_fp.write(index_template.render(
-                    url=url,
-                    page_title=page_title,
-                    articles=index_payload,
-                    next=next_page,
-                    prev=prev_page
-                ))
+            build_index_page(index_payload, idx, index_page_num, len_articles)
             index_payload = []
             index_page_num += 1
+    return True
+
+
+def build_index_page(index_payload, idx, index_page_num, len_articles,):
+    page_title = CONFIG.get('name', '')
+    if index_page_num == 0:
+        build_rss(index_payload)
+        out_index_fpath = join(DIST_DIR, 'index.html')
+        url = BASE_URL
+        prev_page = None
+    else:
+        page_dir = 'page' + str(index_page_num + 1)
+        mkdir_in_dist(page_dir)
+        url = '/' + page_dir
+        out_index_fpath = join(DIST_DIR, page_dir, 'index.html')
+    if (len_articles - 1) > idx:
+        next_page = '/page' + str(index_page_num + 2) + '/'
+    elif (len_articles - 1) == idx:
+        next_page = None
+    if index_page_num > 0:
+        if index_page_num == 1:
+            prev_page = '/'
+        else:
+            prev_page = '/page' + str(index_page_num) + '/'
+    with open(out_index_fpath, 'w') as out_fp:
+        out_fp.write(index_template.render(
+            url=url,
+            page_title=page_title,
+            articles=index_payload,
+            next=next_page,
+            prev=prev_page
+        ))
     return True
 
 
@@ -132,9 +143,10 @@ def build_rss(articles):
             title=title,
             url=url,
             date=clean_articles[0]['date'],
-            content=content,
+            description=description,
             articles=clean_articles,
         ))
+    return True
 
 
 def build_pages():

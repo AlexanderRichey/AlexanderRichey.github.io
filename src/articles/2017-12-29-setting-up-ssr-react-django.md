@@ -2,6 +2,9 @@
 layout: post
 title: Setting Up Server Side Rendering with React, Redux, and Django
 ---
+<div class="message">
+My article on server side rendering originally published on Meural's <a href="https://medium.com/meural-product-development/setting-up-server-side-rendering-with-react-redux-and-django-4d6f4d2fd705">Product Blog</a>.
+</div>
 At Meural, we decided to implement server side rendering in order to increase our SEO exposure and to make social media sharing more effective. In this post, I’ll talk about how server side rendering works and the implementation that I developed.
 
 ## Background
@@ -28,21 +31,21 @@ Since our primary application server is a Django application, which cannot under
 
 ## Node-Django Interaction
 
-Let’s begin by setting up the Node server. I decided to use Express.js because it is battle-tested and very easy to use.
+Let’s begin by setting up the Node server. I decided to use Express.js because it is battle-tested and very easy to use. Note that we are reading our `NODE_HOST` and `NODE_PORT` variables from our runtime environment.
 
 <script src="https://gist.github.com/AlexanderRichey/96cdba8e8171d0a6bfa239b5a42db3f9.js"></script>
 
-I recommend writing a simple `render` and `buildInitalState` functions for testing purposes that simply return some valid output of any kind. I also recommend testing this server with cURL before moving on to anything else.
+I recommend writing a simple `render` and `buildInitialState` functions for testing purposes that simply return some valid output of any kind. I also recommend testing this server with cURL before moving on to anything else.
 
 Now let’s wire up the Django app and test it’s interaction with the Node server.
 
 <script src="https://gist.github.com/AlexanderRichey/109eb5d4730be1f88fb894c05e00df03.js"></script>
 
-Here’s how we insert the rendered HTML payload into our Django template.
+Here’s how we insert the rendered HTML payload into our Django template. Note that we use [Webpack](https://webpack.js.org/guides/getting-started/) and [django-webpack-loader](https://github.com/ezhome/django-webpack-loader) to handle our client-side JavaScript.
 
 <script src="https://gist.github.com/AlexanderRichey/925151a5fa26bd076fe37263007ff60d.js"></script>
 
-We can now test the interaction between Node and Django. Let’s start the Node server and the Django server, open up a browser, and go to the url that corresponds to our sandwich view. To prevent our React frontend from taking over the page on load, we’ll disable JavaScript in DevTools. If you see a page with the output that you defined in your `render` and `buildInitalState` functions, then all is well.
+We can now test the interaction between Node and Django. Let’s start the Node server and the Django server, open up a browser, and go to the url that corresponds to our sandwich view. To prevent our React frontend from taking over the page on load, we’ll disable JavaScript in DevTools. If you see a page with the output that you defined in your `render` and `buildInitialState` functions, then all is well.
 
 ## Defining the Render Function
 

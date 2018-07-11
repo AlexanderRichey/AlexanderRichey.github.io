@@ -5,8 +5,15 @@
     <link>https://alexrichey.com</link>
     <language>en-us</language>
     <description>Software engineer based in NYC. I write about politics and code.</description>
-    <pubDate>Fri, 29 Dec 2017 00:00:00 -0500</pubDate>
-    <lastBuildDate>Fri, 29 Dec 2017 00:00:00 -0500</lastBuildDate>
+    <pubDate>Tue, 10 Jul 2018 00:00:00 -0500</pubDate>
+    <lastBuildDate>Tue, 10 Jul 2018 00:00:00 -0500</lastBuildDate>
+    
+    <item>
+      <title>Bringing Meural's Frontend to the Bleeding Edge</title>
+      <link>https://alexrichey.com/articles/bringing-meural-s-frontend-to-the-bleeding-edge.html</link>
+      <pubDate>Tue, 10 Jul 2018 00:00:00 -0500</pubDate>
+      <description>My article on my.meural's redesign originally published on Meural's Product Blog. When we decided to redesign our flagship web app at Meural, we took the opportunity to rethink our approach to React and other frontend infrastructure. We ultimately decided to migrate from our own home-cooked server side rendering solution to Next.js, to change our approach to data handling with Redux, and to adopt styled-components. These decisions enabled us to develop and deploy our new frontend in just two months. In t...</description>
+    </item>
     
     <item>
       <title>Setting Up Server Side Rendering with React, Redux, and Django</title>
@@ -20,13 +27,6 @@
       <link>https://alexrichey.com/articles/from-philosophy-to-computer-science.html</link>
       <pubDate>Sat, 21 May 2016 00:00:00 -0500</pubDate>
       <description>When I say that I’m a software developer with a background in academic philosophy, many people react with surprise, as if I had jumped between completely divergent fields. Philosophy and computer science are in fact closely related and it is easy to transition from one to the other. In this article I would like to highlight a few reasons why this is so, with the hopes of dispelling the common misperception that they are opposites and of giving some background for students of philosophy who are interested...</description>
-    </item>
-    
-    <item>
-      <title>SkiFree</title>
-      <link>https://alexrichey.com/articles/skifree.html</link>
-      <pubDate>Sun, 17 Apr 2016 00:00:00 -0500</pubDate>
-      <description>Here's a clone of the classic game SkiFree that I made with Javascript Canvas as part of a/A's curriculum. Check out the repo on GitHub here. Click to begin and use the mouse to control your skier. #canvas { display: block; border: 1px solid #ccc; border-radius: 6px; width: 500px; height: 500px; background-image: url('/assets/ski-free-background.png'); background-size: contain; } @media screen and (max-width: 500px) { #canvas { width: 100%; } }</description>
     </item>
     
   </channel>

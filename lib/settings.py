@@ -9,7 +9,7 @@ ARTICLES_DIR = join(SRC_DIR, 'articles')
 PAGES_DIR = join(SRC_DIR, 'pages')
 ASSETS_DIR = join(SRC_DIR, 'assets')
 DIST_DIR = join(BASE_DIR, 'dist')
-PORT = 8000
+PORT = 3000
 
 try:
     with open(join(BASE_DIR, 'config.yml')) as config_fp:

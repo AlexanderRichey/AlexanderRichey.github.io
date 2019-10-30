@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Alex Richey • Docker Commands</title>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
+    <script async type="text/javascript" src="https://plausible.io/js/analytics.js"></script>
+  </head>
+  <body>
+    <header class="top-header">
+    <div class="top-header-title">
+      <h1>
+        <a href="/">
+          Alex Richey
+        </a>
+      </h1>
+      <small>Software Engineer @ Amazon</small>
+    </div>
+    <nav class="top-header-nav">
+      <a class="top-header-nav-item" href="/">Posts</a>
+      <a class="top-header-nav-item" href="/pages/about.html">About</a>
+      <a class="top-header-nav-item" href="http://dev.alexrichey.com">Portfolio</a>
+    </nav>
+</header>
+    <div class="container">
+    
+  
+<article>
+  <header class="article-header">
+    <h1 class="article-title">
+      <a href="/articles/docker-commands.html">
+        Docker Commands
+      </a>
+    </h1>
+    <span class="article-date">30 October 2019</span>
+  </header>
+  <main>
+    <p>I use Docker all the time. But still I forget common commands constantly. Here are the commands I need to look up most often.</p>
+<pre><code class="bash"># Build a container with the a tag
+docker build . -t &lt;CONTAINER_TAG&gt;
+
+# Run bash inside a running container
+docker exec -it &lt;CONTAINER_ID&gt; bash
+
+# Run bash in a new container
+docker run -it &lt;CONTAINER_TAG&gt; bash
+
+# Run a container while mounting the current directory to
+# `var/www` in the container
+docker run -v $(pwd):/var/www &lt;CONTAINER_TAG&gt;
+
+# Run a container while exposing a port to the host
+docker run -p &lt;HOST_PORT&gt;:&lt;CONTAINER_PORT&gt; &lt;CONTAINER_TAG&gt;
+
+# Above two combined
+docker run -v $(pwd):/var/www -p &lt;HOST_PORT&gt;:&lt;CONTAINER_PORT&gt; &lt;CONTAINER_TAG&gt;
+
+# Stop all of the containers
+docker stop $(docker ps -aq)
+
+# Remove all of the containers
+docker rm $(docker ps -aq)
+
+# Delete all of the images
+docker rmi $(docker images -aq)
+
+# Delete all of the volumes
+docker volume rm $(docker volume ls -q)
+
+# Copy stuff from the container to the host
+docker cp &lt;CONTAINER_ID&gt;:&lt;CONTAINER_PATH&gt; &lt;HOST_PATH&gt;
+</code></pre>
+  </main>
+</article>
+
+
+    </div>
+    <footer>
+  <small>© 2019. All rights reserved. <a rel="alternate" type="application/rss+xml" href="/rss.xml">RSS</a>.</small>
+</footer>
+  </body>
+</html>

@@ -5,8 +5,15 @@
     <link>https://alexrichey.com</link>
     <language>en-us</language>
     <description>Software engineer based in NYC. I write about politics and code.</description>
-    <pubDate>Tue, 10 Jul 2018 00:00:00 -0500</pubDate>
-    <lastBuildDate>Tue, 10 Jul 2018 00:00:00 -0500</lastBuildDate>
+    <pubDate>Wed, 30 Oct 2019 00:00:00 -0500</pubDate>
+    <lastBuildDate>Wed, 30 Oct 2019 00:00:00 -0500</lastBuildDate>
+    
+    <item>
+      <title>Docker Commands</title>
+      <link>https://alexrichey.com/articles/docker-commands.html</link>
+      <pubDate>Wed, 30 Oct 2019 00:00:00 -0500</pubDate>
+      <description>I use Docker all the time. But still I forget common commands constantly. Here are the commands I need to look up most often. # Build a container with the a tag docker build . -t <CONTAINER_TAG> # Run bash inside a running container docker exec -it <CONTAINER_ID> bash # Run bash in a new container docker run -it <CONTAINER_TAG> bash # Run a container while mounting the current directory to # `var/www` in the container docker run -v $(pwd):/var/www <CONTAINER_TAG> # Run a container while exposing a port t...</description>
+    </item>
     
     <item>
       <title>Bringing Meural's Frontend to the Bleeding Edge</title>
@@ -20,13 +27,6 @@
       <link>https://alexrichey.com/articles/setting-up-server-side-rendering-with-react-redux-and-django.html</link>
       <pubDate>Fri, 29 Dec 2017 00:00:00 -0500</pubDate>
       <description>My article on server side rendering originally published on Meural's Product Blog. At Meural, we decided to implement server side rendering in order to increase our SEO exposure and to make social media sharing more effective. In this post, I’ll talk about how server side rendering works and the implementation that I developed. Background In traditional web applications, web pages are rendered on the client side. The browser receives a blob of JavaScript from the server, processes it, and paints the UI t...</description>
-    </item>
-    
-    <item>
-      <title>From Philosophy to Computer Science</title>
-      <link>https://alexrichey.com/articles/from-philosophy-to-computer-science.html</link>
-      <pubDate>Sat, 21 May 2016 00:00:00 -0500</pubDate>
-      <description>When I say that I’m a software developer with a background in academic philosophy, many people react with surprise, as if I had jumped between completely divergent fields. Philosophy and computer science are in fact closely related and it is easy to transition from one to the other. In this article I would like to highlight a few reasons why this is so, with the hopes of dispelling the common misperception that they are opposites and of giving some background for students of philosophy who are interested...</description>
     </item>
     
   </channel>

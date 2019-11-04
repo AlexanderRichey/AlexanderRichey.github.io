@@ -61,7 +61,7 @@ table {
 /* Set default fonts */
 html {
   font: 1em/1.5 sans-serif;
-  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
   font-size: 18px;
 }
 
@@ -323,9 +323,8 @@ footer a {
 
 @media screen and (max-width: 568px) {
   .top-header {
-    justify-content: center;
-    flex-direction: column;
-    margin-bottom: 0;
+    margin-bottom: 1rem;
+    padding: 1rem;
   }
 }
 
@@ -333,13 +332,6 @@ footer a {
   margin-top: 0;
   margin-bottom: 0;
   color: #505050;
-}
-
-@media screen and (max-width: 568px) {
-  .top-header-title {
-    text-align: center;
-    margin-bottom: 1rem;
-  }
 }
 
 .top-header-title h1 {

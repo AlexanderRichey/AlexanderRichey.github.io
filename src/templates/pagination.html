@@ -1,17 +1,17 @@
 <div class="pagination">
-  {% if next %}
-    <span class="pagination-item older">
-      <a href="{{ next }}">Older</a>
-    </span>
-  {% else %}
-    <span class="pagination-item older">Older</span>
-  {% endif %}
-
   {% if prev %}
     <span class="pagination-item newer">
       <a href="{{ prev }}">Newer</a>
     </span>
   {% else %}
     <span class="pagination-item newer">Newer</span>
+  {% endif %}
+
+  {% if next %}
+    <span class="pagination-item older">
+      <a href="{{ next }}">Older</a>
+    </span>
+  {% else %}
+    <span class="pagination-item older">Older</span>
   {% endif %}
 </div>

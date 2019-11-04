@@ -10,4 +10,4 @@ class EventHandler(FileSystemEventHandler):
         build()
         t1 = time()
         diff = str(t1 - t0)[:5]
-        logging.info('Built in ' + diff + ' seconds')
+        logging.info("Built in " + diff + " seconds")

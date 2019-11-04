@@ -10,12 +10,14 @@ from lib.watcher import EventHandler
 
 
 def watch():
-    logging.basicConfig(level=logging.INFO,
-                        format='-WATCHER- - - [%(asctime)s] %(message)s',
-                        datefmt='%d/%b/%Y %H:%M:%S')
+    logging.basicConfig(
+        level=logging.INFO,
+        format="-WATCHER- - - [%(asctime)s] %(message)s",
+        datefmt="%d/%b/%Y %H:%M:%S",
+    )
 
     build()
-    logging.info('Completed initial build')
+    logging.info("Completed initial build")
 
     webserver = Process(target=serve)
 
@@ -36,16 +38,16 @@ def watch():
     observer.join()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     try:
         cmd = sys.argv[1]
     except Exception as e:
-        sys.exit('No command given')
-    if cmd == 'build':
-        sys.stdout.write('Building...')
+        sys.exit("No command given")
+    if cmd == "build":
+        sys.stdout.write("Building...")
         build()
-        sys.stdout.write('Done\n')
-    elif cmd == 'serve':
+        sys.stdout.write("Done\n")
+    elif cmd == "serve":
         watch()
     else:
         print('Available commands are "build" and "serve"')

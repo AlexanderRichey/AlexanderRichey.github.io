@@ -2,10 +2,6 @@
 layout: post
 title: Two Kinds of Racism
 ---
-<div class="message">
-  A letter I wrote to the NYTimes, which was not published.
-</div>
-
 In George Yancy’s article “[Dear White America](http://opinionator.blogs.nytimes.com/2015/12/24/dear-white-america/),” he writes:
 
 >What if I told you that I’m sexist? Well, I am. Yes. I said it and I mean just that.

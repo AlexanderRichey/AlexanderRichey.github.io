@@ -3,6 +3,7 @@ layout: post
 title: From Philosophy to Computer Science
 ---
 ![image](/assets/philosophy.jpg)
+
 When I say that I’m a software developer with a background in academic philosophy, many people react with surprise, as if I had jumped between completely divergent fields. Philosophy and computer science are in fact closely related and it is easy to transition from one to the other. In this article I would like to highlight a few reasons why this is so, with the hopes of dispelling the common misperception that they are opposites and of giving some background for students of philosophy who are interested in transitioning to computer science.
 
 ## Logical Similarities

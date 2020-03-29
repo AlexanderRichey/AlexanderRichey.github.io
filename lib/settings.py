@@ -1,4 +1,4 @@
-from yaml import load
+import yaml
 from os.path import dirname, abspath, join
 
 
@@ -13,7 +13,7 @@ PORT = 3000
 
 try:
     with open(join(BASE_DIR, "config.yml")) as config_fp:
-        CONFIG = load(config_fp.read())
+        CONFIG = yaml.load(config_fp.read(), Loader=yaml.FullLoader)
 except Exception as e:
     raise ImportError("Could not load config")
 

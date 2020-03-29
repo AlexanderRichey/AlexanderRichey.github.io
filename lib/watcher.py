@@ -5,7 +5,7 @@ from lib.build import build
 
 
 class EventHandler(FileSystemEventHandler):
-    def on_any_event(self, event):
+    def on_modified(self, event):
         t0 = time()
         build()
         t1 = time()

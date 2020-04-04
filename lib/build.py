@@ -4,7 +4,8 @@ import logging
 from os.path import join, splitext, isfile
 from io import BytesIO
 from datetime import datetime
-from jinja2 import Environment, FileSystemLoader
+from xml.sax.saxutils import escape
+import jinja2
 from markdown import Markdown
 from slugify import slugify
 
@@ -20,7 +21,7 @@ from lib.settings import (
 )
 
 try:
-    jinja_env = Environment(loader=FileSystemLoader(TEMPLATE_DIR))
+    jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader(TEMPLATE_DIR))
 except Exception as e:
     raise ImportError("Could not load template directory")
 
@@ -147,7 +148,7 @@ def build_rss(articles):
                 "title": article["title"],
                 "url": url + article["url"],
                 "date": article["rss_date"],
-                "content": article["content"],
+                "content": escape(jinja2.Markup(article["content"]).striptags()),
             }
         )
 

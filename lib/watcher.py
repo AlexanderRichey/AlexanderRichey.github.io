@@ -1,13 +1,15 @@
 import logging
-from watchdog.events import FileSystemEventHandler
-from time import time
+import time
+
+from watchdog.events import RegexMatchingEventHandler
 from lib.build import build
 
 
-class EventHandler(FileSystemEventHandler):
+class EventHandler(RegexMatchingEventHandler):
     def on_modified(self, event):
-        t0 = time()
+        t0 = time.time()
         build()
-        t1 = time()
+        t1 = time.time()
+
         diff = str(t1 - t0)[:5]
         logging.info("Built in " + diff + " seconds")

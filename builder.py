@@ -22,7 +22,10 @@ def watch():
     webserver = Process(target=serve)
 
     observer = Observer()
-    observer.schedule(EventHandler(), SRC_DIR, recursive=True)
+    observer.schedule(
+        EventHandler(regexes=[r"^.+\.[^\/\.]+$"], ignore_directories=True),
+        SRC_DIR,
+        recursive=True)
 
     observer.start()
     webserver.start()
@@ -42,7 +45,7 @@ if __name__ == "__main__":
     try:
         cmd = sys.argv[1]
     except Exception as e:
-        sys.exit("No command given")
+        cmd = ""
     if cmd == "build":
         sys.stdout.write("Building...")
         build()

@@ -46,15 +46,12 @@ With gzip, we can reduce the size of these bundles by roughly 75%, which would g
 
 The solution that we developed is to leverage NGINX’s [caching capabilities](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache). For many reasons, we run our Next.js application behind an NGINX server. We decided to use the `proxy_cache` directive to cache responses at the `/_next/` location. The way this works is that the first request for any asset at `/_next/` will be forwarded to the application with `proxy_pass`, but the resulting response will be saved in NGINX’s cache. Subsequent requests will then be served out of the cache. Here are the relevant parts of the configuration.
 
-```
+```nginx
 http {
-    ...
-
     # Cache setup
 
     proxy_cache_path /data/nginx/cache keys_zone=one:20m; 
     proxy_cache_valid 200 60m;
-
 
     # Gzip settings
 
@@ -68,7 +65,7 @@ http {
     server {
         listen 80;
 
-        ...
+        # ...
 
         location /_next/ {
             proxy_pass http://application:8000;
@@ -77,7 +74,7 @@ http {
             break;
         }
 
-        ...
+        # ...
 
     }
 }

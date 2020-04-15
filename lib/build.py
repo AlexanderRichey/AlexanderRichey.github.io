@@ -26,7 +26,7 @@ except Exception as e:
     raise ImportError("Could not load template directory")
 
 md = Markdown(
-    extensions=["markdown.extensions.meta", "markdown.extensions.fenced_code"]
+    extensions=["markdown.extensions.meta", "markdown.extensions.fenced_code", "codehilite"]
 )
 article_template = jinja_env.get_template("article.html")
 index_template = jinja_env.get_template("index.html")

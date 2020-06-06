@@ -2,13 +2,30 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Alex Richey • Bringing Meural's Frontend to the Bleeding Edge</title>
-    <link rel="stylesheet" href="/assets/styles.css">
-    <link rel="icon" href="/favicon.ico">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Alex Richey | Blog | Bringing Meural's Frontend to the Bleeding Edge</title>
+    <link rel="stylesheet" href="/assets/styles.css" />
+    <link rel="stylesheet" href="/assets/syntax.css" />
+    <link
+      async
+      defer
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@openfonts/public-sans_latin@0.0.2/index.min.css"
+    />
+    <link
+      async
+      defer
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@openfonts/literata_latin@1.44.3/index.min.css"
+    />
+    <link rel="icon" href="/favicon.ico" />
     <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
-    <script async type="text/javascript" src="https://plausible.io/js/analytics.js"></script>
+    <script
+      async
+      type="text/javascript"
+      src="https://plausible.io/js/analytics.js"
+    ></script>
   </head>
   <body>
     <header class="top-header">
@@ -23,11 +40,10 @@
     <nav class="top-header-nav">
       <a class="top-header-nav-item" href="/">Posts</a>
       <a class="top-header-nav-item" href="/pages/about.html">About</a>
-      <a class="top-header-nav-item" href="http://dev.alexrichey.com">Portfolio</a>
     </nav>
 </header>
     <div class="container">
-    
+      
   
 <article>
   <header class="article-header">
@@ -63,14 +79,11 @@ My article on <a href="https://my.meural.com">my.meural</a>'s redesign originall
 <p>The primary issues that we have seen are related to performance and stem from Next.js and styled-components. For all of their virtues, the combination of Next.js and styled-components creates large JavaScript bundles. At the time of this writing, our <code>main.js</code> bundle is just under 800kb and other split bundles range from less than 10kb to more than 100kb. This increased our page time to interactive from under 2.5 seconds to over 5 seconds, which is not acceptable.</p>
 <p>With gzip, we can reduce the size of these bundles by roughly 75%, which would get our page load time back into an acceptable range. The problem is that Next.js does not serve static files in a straightforward way. Static assets are built and saved to the <code>/.next</code> directory, but the directory structure does not match the URLs that the client requests. These requests must be routed through the Next.js application to be resolved to the correct static asset. This prevents us from easily gzipping and serving these files independently from the Next.js application.</p>
 <p>The solution that we developed is to leverage NGINX’s <a href="http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache">caching capabilities</a>. For many reasons, we run our Next.js application behind an NGINX server. We decided to use the <code>proxy_cache</code> directive to cache responses at the <code>/_next/</code> location. The way this works is that the first request for any asset at <code>/_next/</code> will be forwarded to the application with <code>proxy_pass</code>, but the resulting response will be saved in NGINX’s cache. Subsequent requests will then be served out of the cache. Here are the relevant parts of the configuration.</p>
-<pre><code>http {
-    ...
-
+<pre class="codehilite"><code class="language-nginx">http {
     # Cache setup
 
     proxy_cache_path /data/nginx/cache keys_zone=one:20m; 
     proxy_cache_valid 200 60m;
-
 
     # Gzip settings
 
@@ -84,7 +97,7 @@ My article on <a href="https://my.meural.com">my.meural</a>'s redesign originall
     server {
         listen 80;
 
-        ...
+        # ...
 
         location /_next/ {
             proxy_pass http://application:8000;
@@ -93,11 +106,11 @@ My article on <a href="https://my.meural.com">my.meural</a>'s redesign originall
             break;
         }
 
-        ...
+        # ...
 
     }
-}
-</code></pre>
+}</code></pre>
+
 
 <h2>Conclusion</h2>
 <p>We have been running our new frontend stack in production for a little over two months and, so far, have had an easy time updating and extending our application. All of the decisions we made regarding Next.js, Redux, and styled-components seem to have paid off and it has been easy to live with the few inflexible areas of Next.js. After we deployed our new NGINX configuration, page load performance was restored to our target range and our application, at least in my opinion, has a wonderful, speedy, and modern feel.</p>
@@ -107,7 +120,7 @@ My article on <a href="https://my.meural.com">my.meural</a>'s redesign originall
 
     </div>
     <footer>
-  <small>© 2019. All rights reserved. <a rel="alternate" type="application/rss+xml" href="/rss.xml">RSS</a>.</small>
+  <small>© 2020. All rights reserved. <a rel="alternate" type="application/rss+xml" href="/rss.xml">RSS</a>.</small>
 </footer>
   </body>
 </html>

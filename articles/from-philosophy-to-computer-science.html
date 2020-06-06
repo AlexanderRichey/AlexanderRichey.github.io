@@ -2,13 +2,30 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Alex Richey • From Philosophy to Computer Science</title>
-    <link rel="stylesheet" href="/assets/styles.css">
-    <link rel="icon" href="/favicon.ico">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Alex Richey | Blog | From Philosophy to Computer Science</title>
+    <link rel="stylesheet" href="/assets/styles.css" />
+    <link rel="stylesheet" href="/assets/syntax.css" />
+    <link
+      async
+      defer
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@openfonts/public-sans_latin@0.0.2/index.min.css"
+    />
+    <link
+      async
+      defer
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@openfonts/literata_latin@1.44.3/index.min.css"
+    />
+    <link rel="icon" href="/favicon.ico" />
     <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
-    <script async type="text/javascript" src="https://plausible.io/js/analytics.js"></script>
+    <script
+      async
+      type="text/javascript"
+      src="https://plausible.io/js/analytics.js"
+    ></script>
   </head>
   <body>
     <header class="top-header">
@@ -23,11 +40,10 @@
     <nav class="top-header-nav">
       <a class="top-header-nav-item" href="/">Posts</a>
       <a class="top-header-nav-item" href="/pages/about.html">About</a>
-      <a class="top-header-nav-item" href="http://dev.alexrichey.com">Portfolio</a>
     </nav>
 </header>
     <div class="container">
-    
+      
   
 <article>
   <header class="article-header">
@@ -39,8 +55,8 @@
     <span class="article-date">21 May 2016</span>
   </header>
   <main>
-    <p><img alt="image" src="/assets/philosophy.jpg" />
-When I say that I’m a software developer with a background in academic philosophy, many people react with surprise, as if I had jumped between completely divergent fields. Philosophy and computer science are in fact closely related and it is easy to transition from one to the other. In this article I would like to highlight a few reasons why this is so, with the hopes of dispelling the common misperception that they are opposites and of giving some background for students of philosophy who are interested in transitioning to computer science.</p>
+    <p><img alt="image" src="/assets/philosophy.jpg" /></p>
+<p>When I say that I’m a software developer with a background in academic philosophy, many people react with surprise, as if I had jumped between completely divergent fields. Philosophy and computer science are in fact closely related and it is easy to transition from one to the other. In this article I would like to highlight a few reasons why this is so, with the hopes of dispelling the common misperception that they are opposites and of giving some background for students of philosophy who are interested in transitioning to computer science.</p>
 <h2>Logical Similarities</h2>
 <p>The basis of both philosophy and computer science is logic. In philosophy, it’s often used to evaluate arguments, whereas in computer science, it is the means by which the processor is given instructions. Having a good grasp of logic’s core concepts is essential to do well in either.</p>
 <p>Consider this example to see what I mean. Suppose I say,</p>
@@ -48,17 +64,17 @@ When I say that I’m a software developer with a background in academic philoso
 <p>If Trump or Hillary wins, then all is lost.</p>
 </blockquote>
 <p>This statement can be represented in philosophical notation as follows:</p>
-<pre><code>(1) (A ∨ B) → C
-</code></pre>
+<pre class="codehilite"><code>(1) (A ∨ B) → C</code></pre>
+
 
 <p>where <code>A</code> is "Trump wins", <code>B</code> is "Hillary wins", <code>C</code> is "All is lost," and  <code>∨</code> and <code>→</code> are shorthand for "or" and "If … then …," respectively.</p>
 <p>Now let’s write a simple program that captures the content of our claim. Let’s make our computer print "All is lost," if either Hillary or Trump win, and print "Not all is lost," if neither of them wins.</p>
-<pre><code class="ruby">if trump_wins || hillary_wins
+<pre class="codehilite"><code class="language-ruby">if trump_wins || hillary_wins
     print &quot;All is lost.&quot;
 else
     print &quot;Not all is lost.&quot;
-end
-</code></pre>
+end</code></pre>
+
 
 <p>Cool. If we run this program after the election, it will print "All is lost," or "Not all is lost," depending on the result. Notice that, as far as the logic is concerned, we’ve used the exact same concepts that we used in expressing (1). The only difference is <em>syntax</em>. Here, the <code>→</code> is represented as a multi-line command and  <code>∨</code> is represented as <code>||</code>. The other addition that we’ve made is to add an imperative, namely, <code>print</code>. This is one of the main differences between pure logic and programming: Computers do things in the physical world; pure logic does not.</p>
 <p>The advantage of a background in philosophy is that you are already able to translate colloquial statements into logical formulae, just as programmers do. As a student of philosophy, moreover, this kind of knowledge allows you to craft and criticize arguments. As a computer programmer, the same knowledge enables you to see several ways of building the same program; and the ability to see the far reaching, logical entailments of your claims often makes it easier to spot bugs.</p>
@@ -69,23 +85,23 @@ end
 <p>What is good is what maximizes happiness. The virtuous choice is the one that maximizes happiness.</p>
 </blockquote>
 <p>In order to evaluate this position, we need to consider its implications and ask if they are sound. If there is an unsound consequence, then the following logic will undermine the position. Schematically, where <code>¬</code> is 'not,' <code>A</code> is "What is good is what maximizes happiness," and <code>B</code> is some unsound consequence, we have:</p>
-<pre><code>Assume:            A → B
+<pre class="codehilite"><code>Assume:            A → B
 Assume:            A
 By Modus Ponens:   B
 Assume:           ¬B
-By Modus Tollens: ¬A ∎
-</code></pre>
+By Modus Tollens: ¬A ∎</code></pre>
+
 
 <p>This argument shows that, if there is some unsound consequence <code>B</code>, then <code>A</code> cannot be true.</p>
 <p>In computer programming, the style of thinking involved is remarkably similar. Suppose you are writing a computer program that plays chess and you need to write a function that checks the board to see if there is a checkmate. You might start out with something like this:</p>
-<pre><code class="ruby">def checkmate?
+<pre class="codehilite"><code class="language-ruby">def checkmate?
   if current_player.king.is_capturable?
     return true
   else
     return false
   end
-end
-</code></pre>
+end</code></pre>
+
 
 <p>This function checks to see if the current player's king can be captured. If it is, it returns <code>true</code>; otherwise, it returns <code>false</code>.</p>
 <p>In order to evaluate this code, we perform a <em>mental stack trace</em>, that is, we imagine, as best we can, how the computer will process the code that we have just written. If our code is successful, all checkmated boards will be identified; otherwise, they won't be. Similarly, in the philosophical case, we evaluate our position by imagining all possible entailments. If our position is successful, we'll agree with all of the entailments; otherwise, we won't.</p>
@@ -105,7 +121,7 @@ end
 
     </div>
     <footer>
-  <small>© 2019. All rights reserved. <a rel="alternate" type="application/rss+xml" href="/rss.xml">RSS</a>.</small>
+  <small>© 2020. All rights reserved. <a rel="alternate" type="application/rss+xml" href="/rss.xml">RSS</a>.</small>
 </footer>
   </body>
 </html>

@@ -3,6 +3,7 @@ Jinja2==2.10
 Markdown==2.6.9
 MarkupSafe==1.1
 pathtools==0.1.2
+Pygments==2.6.1
 python-slugify==1.2.4
 PyYAML==5.1
 Unidecode==0.4.21

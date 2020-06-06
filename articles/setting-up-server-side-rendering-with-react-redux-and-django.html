@@ -42,19 +42,19 @@
       <a class="top-header-nav-item" href="/pages/about.html">About</a>
     </nav>
 </header>
-    <div class="container">
+    <main class="container">
       
   
 <article>
-  <header class="article-header">
+  <div class="article-header">
     <h1 class="article-title">
       <a href="/articles/setting-up-server-side-rendering-with-react-redux-and-django.html">
         Setting Up Server Side Rendering with React, Redux, and Django
       </a>
     </h1>
     <span class="article-date">29 December 2017</span>
-  </header>
-  <main>
+  </div>
+  <div>
     <div class="message">
 My article on server side rendering originally published on Meural's <a href="https://medium.com/meural-product-development/setting-up-server-side-rendering-with-react-redux-and-django-4d6f4d2fd705">Product Blog</a>.
 </div>
@@ -106,11 +106,11 @@ My article on server side rendering originally published on Meural's <a href="ht
 <p>In my <code>initializeApp</code> function, I get the current state of the Redux store from the window and pass it into <code>configureStore</code> to setup Redux. Next, I match the current route, just as I did on the server side, using the same <code>getRoutes</code> and <code>match</code> functions which I discussed above. Instead of calling <code>ReactDOM#render</code>, which is the usual pattern in client rendered apps, I call <code>ReactDOM#hydrate</code>, which sets up React’s virtual DOM and installs listeners to make the page interactive.</p>
 <h2>Conclusion</h2>
 <p>Since deploying this project, we have seen much better SEO at Meural. Now a Google search for the terms <code>meural</code> and some artist’s name will yield a result of that artist’s page or one of her playlists, if that artist is in our collection. Prior to this deployment, this was not possible, since we had exposed only one webpage, which contained our single-page React app.</p>
-  </main>
+  </div>
 </article>
 
 
-    </div>
+    </main>
     <footer>
   <small>© 2020. All rights reserved. <a rel="alternate" type="application/rss+xml" href="/rss.xml">RSS</a>.</small>
 </footer>

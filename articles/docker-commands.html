@@ -42,19 +42,19 @@
       <a class="top-header-nav-item" href="/pages/about.html">About</a>
     </nav>
 </header>
-    <div class="container">
+    <main class="container">
       
   
 <article>
-  <header class="article-header">
+  <div class="article-header">
     <h1 class="article-title">
       <a href="/articles/docker-commands.html">
         Docker Commands
       </a>
     </h1>
     <span class="article-date">30 October 2019</span>
-  </header>
-  <main>
+  </div>
+  <div>
     <p>I use Docker all the time. But still I forget common commands constantly. Here are the commands I need to look up most often.</p>
 <div class="codehilite"><pre><span></span><span class="c1"># Build a container with the a tag</span>
 docker build . -t &lt;CONTAINER_TAG&gt;
@@ -90,11 +90,11 @@ docker volume rm <span class="k">$(</span>docker volume ls -q<span class="k">)</
 <span class="c1"># Copy stuff from the container to the host</span>
 docker cp &lt;CONTAINER_ID&gt;:&lt;CONTAINER_PATH&gt; &lt;HOST_PATH&gt;
 </pre></div>
-  </main>
+  </div>
 </article>
 
 
-    </div>
+    </main>
     <footer>
   <small>© 2020. All rights reserved. <a rel="alternate" type="application/rss+xml" href="/rss.xml">RSS</a>.</small>
 </footer>

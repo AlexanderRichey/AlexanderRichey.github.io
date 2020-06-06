@@ -42,20 +42,20 @@
       <a class="top-header-nav-item" href="/pages/about.html">About</a>
     </nav>
 </header>
-    <div class="container">
+    <main class="container">
       
   
     
 <article>
-  <header class="article-header">
+  <div class="article-header">
     <h1 class="article-title">
       <a href="/articles/setting-up-server-side-rendering-with-react-redux-and-django.html">
         Setting Up Server Side Rendering with React, Redux, and Django
       </a>
     </h1>
     <span class="article-date">29 December 2017</span>
-  </header>
-  <main>
+  </div>
+  <div>
     <div class="message">
 My article on server side rendering originally published on Meural's <a href="https://medium.com/meural-product-development/setting-up-server-side-rendering-with-react-redux-and-django-4d6f4d2fd705">Product Blog</a>.
 </div>
@@ -107,21 +107,21 @@ My article on server side rendering originally published on Meural's <a href="ht
 <p>In my <code>initializeApp</code> function, I get the current state of the Redux store from the window and pass it into <code>configureStore</code> to setup Redux. Next, I match the current route, just as I did on the server side, using the same <code>getRoutes</code> and <code>match</code> functions which I discussed above. Instead of calling <code>ReactDOM#render</code>, which is the usual pattern in client rendered apps, I call <code>ReactDOM#hydrate</code>, which sets up React’s virtual DOM and installs listeners to make the page interactive.</p>
 <h2>Conclusion</h2>
 <p>Since deploying this project, we have seen much better SEO at Meural. Now a Google search for the terms <code>meural</code> and some artist’s name will yield a result of that artist’s page or one of her playlists, if that artist is in our collection. Prior to this deployment, this was not possible, since we had exposed only one webpage, which contained our single-page React app.</p>
-  </main>
+  </div>
 </article>
 
   
     
 <article>
-  <header class="article-header">
+  <div class="article-header">
     <h1 class="article-title">
       <a href="/articles/from-philosophy-to-computer-science.html">
         From Philosophy to Computer Science
       </a>
     </h1>
     <span class="article-date">21 May 2016</span>
-  </header>
-  <main>
+  </div>
+  <div>
     <p><img alt="image" src="/assets/philosophy.jpg" /></p>
 <p>When I say that I’m a software developer with a background in academic philosophy, many people react with surprise, as if I had jumped between completely divergent fields. Philosophy and computer science are in fact closely related and it is easy to transition from one to the other. In this article I would like to highlight a few reasons why this is so, with the hopes of dispelling the common misperception that they are opposites and of giving some background for students of philosophy who are interested in transitioning to computer science.</p>
 <h2>Logical Similarities</h2>
@@ -186,21 +186,21 @@ My article on server side rendering originally published on Meural's <a href="ht
 <p>…provided a basis for both a precise semantics and elegant programming logics. It was in this context that computer scientists and logicians created the type theories that are deeply connected to <em>Principia Mathematica</em> and serve now as comprehensive logical accounts of computing, computational mathematics, and programming logics (<a href="https://www.srcf.ucam.org/principia/files/rc.pdf">Constable</a> 3).</p>
 </blockquote>
 <p>Today the influence of philosophy on computer science continues, especially in the ares of artificial intelligence, the representation of information, language, and other things.</p>
-  </main>
+  </div>
 </article>
 
   
     
 <article>
-  <header class="article-header">
+  <div class="article-header">
     <h1 class="article-title">
       <a href="/articles/skifree.html">
         SkiFree
       </a>
     </h1>
     <span class="article-date">17 April 2016</span>
-  </header>
-  <main>
+  </div>
+  <div>
     <p>Here's a clone of the classic game SkiFree that I made with Javascript Canvas as part of a/A's curriculum. Check out the repo on GitHub <a href="https://github.com/AlexanderRichey/SkiFree">here.</a> <strong>Click to begin</strong> and use the mouse to control your skier.</p>
 
 <style>
@@ -228,7 +228,7 @@ My article on server side rendering originally published on Meural's <a href="ht
 <canvas width="500" height="500" id="canvas"></canvas>
 
 <script type="text/javascript" src="/assets/skifree.min.js" charset="utf-8"></script>
-  </main>
+  </div>
 </article>
 
   
@@ -246,7 +246,7 @@ My article on server side rendering originally published on Meural's <a href="ht
   
 </div>
 
-    </div>
+    </main>
     <footer>
   <small>© 2020. All rights reserved. <a rel="alternate" type="application/rss+xml" href="/rss.xml">RSS</a>.</small>
 </footer>

@@ -12,21 +12,21 @@
       <title>On Looting</title>
       <link>https://alexrichey.com/articles/on-looting.html</link>
       <pubDate>Fri, 05 Jun 2020 00:00:00 -0500</pubDate>
-      <description>It is in one’s interest to follow the law when one is also protected by the law. But if one is not protected by the law, then what interest does one have in following it? For example, it is in my interest to follow the law by abstaining from stealing from others because, in return, others will not steal from me. The law enforces this, such that, if someone does steal from me anyway, then she will be punished and, if possible, my property will be returned to me. This is, roughly speaking, the way the soci...</description>
+      <description>It is in one’s interest to follow the law when one is also protected by the law. But if one is not protected by the law, then what interest does one have in following it? For example, it is in my interest to follow the law by abstaining from stealing from others because, in return, others will not steal from me. The law enforces this, such that, if someone does steal from me anyway, then she will be punished and, if possible, my property will be returned to me. This is, roughly speaking, the way the...</description>
     </item>
     
     <item>
       <title>Docker Commands</title>
       <link>https://alexrichey.com/articles/docker-commands.html</link>
       <pubDate>Wed, 30 Oct 2019 00:00:00 -0500</pubDate>
-      <description>I use Docker all the time. But still I forget common commands constantly. Here are the commands I need to look up most often. # Build a container with the a tag docker build . -t &lt;CONTAINER_TAG&gt; # Run bash inside a running container docker exec -it &lt;CONTAINER_ID&gt; bash # Run bash in a new container docker run -it &lt;CONTAINER_TAG&gt; bash # Run a container while mounting the current directory to # `var/www` in the container docker run -v $(pwd):/var/www &lt;CONTAINER_TAG&gt; # Run a container...</description>
+      <description>I use Docker all the time. But still I forget common commands constantly. Here are the commands I need to look up most often. # Build a container with the a tag docker build . -t &lt;CONTAINER_TAG&gt; # Run bash inside a running container docker exec -it &lt;CONTAINER_ID&gt; bash # Run bash in a new container docker run -it &lt;CONTAINER_TAG&gt; bash # Run a container while mounting the current directory to # `var/www` in the container docker run -v $(pwd):/var/www &lt;CONTAINER_TAG&gt; # Run a...</description>
     </item>
     
     <item>
       <title>Bringing Meural's Frontend to the Bleeding Edge</title>
       <link>https://alexrichey.com/articles/bringing-meural-s-frontend-to-the-bleeding-edge.html</link>
       <pubDate>Tue, 10 Jul 2018 00:00:00 -0500</pubDate>
-      <description>My article on my.meural's redesign originally published on Meural's Product Blog. When we decided to redesign our flagship web app at Meural, we took the opportunity to rethink our approach to React and other frontend infrastructure. We ultimately decided to migrate from our own home-cooked server side rendering solution to Next.js, to change our approach to data handling with Redux, and to adopt styled-components. These decisions enabled us to develop and deploy our new frontend in just two months. In t...</description>
+      <description>My article on my.meural's redesign originally published on Meural's Product Blog. When we decided to redesign our flagship web app at Meural, we took the opportunity to rethink our approach to React and other frontend infrastructure. We ultimately decided to migrate from our own home-cooked server side rendering solution to Next.js, to change our approach to data handling with Redux, and to adopt styled-components. These decisions enabled us to develop and deploy our new frontend in just two months. In...</description>
     </item>
     
   </channel>

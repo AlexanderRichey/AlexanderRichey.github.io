@@ -1,10 +1,15 @@
 # Personal Blog
 
+This is source of my personal blog, which is hosted on GitHub Pages. It uses a custom build system that I threw together one weekend.
+
 ### Setup
 
-1. `virtualenv env`
-2. `pip3 install -r requirements.txt`
-3. `python3 builder.py serve`
+```
+virtualenv env
+source env/bin/activate
+pip3 install -r requirements.txt
+python3 builder.py serve
+```
 
 To build assets run `python3 builder.py build`.
 

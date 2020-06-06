@@ -12,7 +12,7 @@
       <title>{{ article.title }}</title>
       <link>{{ article.url }}</link>
       <pubDate>{{ article.date }}</pubDate>
-      <description>{{ article.content|truncate(512, True) }}</description>
+      <description>{{ article.content|truncate(512, False) }}</description>
     </item>
     {% endfor %}
   </channel>

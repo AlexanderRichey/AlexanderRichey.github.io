@@ -1,15 +1,15 @@
 {% macro article(url, title, date, content) %}
 <article>
-  <header class="article-header">
+  <div class="article-header">
     <h1 class="article-title">
       <a href="{{ url }}">
         {{ title }}
       </a>
     </h1>
     <span class="article-date">{{ date }}</span>
-  </header>
-  <main>
+  </div>
+  <div>
     {{ content }}
-  </main>
+  </div>
 </article>
 {% endmacro %}

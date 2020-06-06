@@ -131,16 +131,18 @@ My article on server side rendering originally published on Meural's <a href="ht
 <p>If Trump or Hillary wins, then all is lost.</p>
 </blockquote>
 <p>This statement can be represented in philosophical notation as follows:</p>
-<pre class="codehilite"><code>(1) (A ∨ B) → C</code></pre>
+<div class="codehilite"><pre><span></span><span class="err">(1) (A ∨ B) → C</span>
+</pre></div>
 
 
 <p>where <code>A</code> is "Trump wins", <code>B</code> is "Hillary wins", <code>C</code> is "All is lost," and  <code>∨</code> and <code>→</code> are shorthand for "or" and "If … then …," respectively.</p>
 <p>Now let’s write a simple program that captures the content of our claim. Let’s make our computer print "All is lost," if either Hillary or Trump win, and print "Not all is lost," if neither of them wins.</p>
-<pre class="codehilite"><code class="language-ruby">if trump_wins || hillary_wins
-    print &quot;All is lost.&quot;
-else
-    print &quot;Not all is lost.&quot;
-end</code></pre>
+<div class="codehilite"><pre><span></span><span class="k">if</span> <span class="n">trump_wins</span> <span class="o">||</span> <span class="n">hillary_wins</span>
+    <span class="nb">print</span> <span class="s2">&quot;All is lost.&quot;</span>
+<span class="k">else</span>
+    <span class="nb">print</span> <span class="s2">&quot;Not all is lost.&quot;</span>
+<span class="k">end</span>
+</pre></div>
 
 
 <p>Cool. If we run this program after the election, it will print "All is lost," or "Not all is lost," depending on the result. Notice that, as far as the logic is concerned, we’ve used the exact same concepts that we used in expressing (1). The only difference is <em>syntax</em>. Here, the <code>→</code> is represented as a multi-line command and  <code>∨</code> is represented as <code>||</code>. The other addition that we’ve made is to add an imperative, namely, <code>print</code>. This is one of the main differences between pure logic and programming: Computers do things in the physical world; pure logic does not.</p>
@@ -152,22 +154,24 @@ end</code></pre>
 <p>What is good is what maximizes happiness. The virtuous choice is the one that maximizes happiness.</p>
 </blockquote>
 <p>In order to evaluate this position, we need to consider its implications and ask if they are sound. If there is an unsound consequence, then the following logic will undermine the position. Schematically, where <code>¬</code> is 'not,' <code>A</code> is "What is good is what maximizes happiness," and <code>B</code> is some unsound consequence, we have:</p>
-<pre class="codehilite"><code>Assume:            A → B
-Assume:            A
-By Modus Ponens:   B
-Assume:           ¬B
-By Modus Tollens: ¬A ∎</code></pre>
+<div class="codehilite"><pre><span></span><span class="n">Assume</span><span class="o">:</span>            <span class="n">A</span> <span class="err">→</span> <span class="n">B</span>
+<span class="n">Assume</span><span class="o">:</span>            <span class="n">A</span>
+<span class="n">By</span> <span class="n">Modus</span> <span class="n">Ponens</span><span class="o">:</span>   <span class="n">B</span>
+<span class="n">Assume</span><span class="o">:</span>           <span class="err">¬</span><span class="n">B</span>
+<span class="n">By</span> <span class="n">Modus</span> <span class="n">Tollens</span><span class="o">:</span> <span class="err">¬</span><span class="n">A</span> <span class="err">∎</span>
+</pre></div>
 
 
 <p>This argument shows that, if there is some unsound consequence <code>B</code>, then <code>A</code> cannot be true.</p>
 <p>In computer programming, the style of thinking involved is remarkably similar. Suppose you are writing a computer program that plays chess and you need to write a function that checks the board to see if there is a checkmate. You might start out with something like this:</p>
-<pre class="codehilite"><code class="language-ruby">def checkmate?
-  if current_player.king.is_capturable?
-    return true
-  else
-    return false
-  end
-end</code></pre>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">checkmate?</span>
+  <span class="k">if</span> <span class="n">current_player</span><span class="o">.</span><span class="n">king</span><span class="o">.</span><span class="n">is_capturable?</span>
+    <span class="k">return</span> <span class="kp">true</span>
+  <span class="k">else</span>
+    <span class="k">return</span> <span class="kp">false</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
 
 
 <p>This function checks to see if the current player's king can be captured. If it is, it returns <code>true</code>; otherwise, it returns <code>false</code>.</p>

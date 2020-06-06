@@ -77,39 +77,40 @@
   </header>
   <main>
     <p>I use Docker all the time. But still I forget common commands constantly. Here are the commands I need to look up most often.</p>
-<pre class="codehilite"><code class="language-bash"># Build a container with the a tag
+<div class="codehilite"><pre><span></span><span class="c1"># Build a container with the a tag</span>
 docker build . -t &lt;CONTAINER_TAG&gt;
 
-# Run bash inside a running container
-docker exec -it &lt;CONTAINER_ID&gt; bash
+<span class="c1"># Run bash inside a running container</span>
+docker <span class="nb">exec</span> -it &lt;CONTAINER_ID&gt; bash
 
-# Run bash in a new container
+<span class="c1"># Run bash in a new container</span>
 docker run -it &lt;CONTAINER_TAG&gt; bash
 
-# Run a container while mounting the current directory to
-# `var/www` in the container
-docker run -v $(pwd):/var/www &lt;CONTAINER_TAG&gt;
+<span class="c1"># Run a container while mounting the current directory to</span>
+<span class="c1"># `var/www` in the container</span>
+docker run -v <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/var/www &lt;CONTAINER_TAG&gt;
 
-# Run a container while exposing a port to the host
+<span class="c1"># Run a container while exposing a port to the host</span>
 docker run -p &lt;HOST_PORT&gt;:&lt;CONTAINER_PORT&gt; &lt;CONTAINER_TAG&gt;
 
-# Above two combined
-docker run -v $(pwd):/var/www -p &lt;HOST_PORT&gt;:&lt;CONTAINER_PORT&gt; &lt;CONTAINER_TAG&gt;
+<span class="c1"># Above two combined</span>
+docker run -v <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/var/www -p &lt;HOST_PORT&gt;:&lt;CONTAINER_PORT&gt; &lt;CONTAINER_TAG&gt;
 
-# Stop all of the containers
-docker stop $(docker ps -aq)
+<span class="c1"># Stop all of the containers</span>
+docker stop <span class="k">$(</span>docker ps -aq<span class="k">)</span>
 
-# Remove all of the containers
-docker rm $(docker ps -aq)
+<span class="c1"># Remove all of the containers</span>
+docker rm <span class="k">$(</span>docker ps -aq<span class="k">)</span>
 
-# Delete all of the images
-docker rmi $(docker images -aq)
+<span class="c1"># Delete all of the images</span>
+docker rmi <span class="k">$(</span>docker images -aq<span class="k">)</span>
 
-# Delete all of the volumes
-docker volume rm $(docker volume ls -q)
+<span class="c1"># Delete all of the volumes</span>
+docker volume rm <span class="k">$(</span>docker volume ls -q<span class="k">)</span>
 
-# Copy stuff from the container to the host
-docker cp &lt;CONTAINER_ID&gt;:&lt;CONTAINER_PATH&gt; &lt;HOST_PATH&gt;</code></pre>
+<span class="c1"># Copy stuff from the container to the host</span>
+docker cp &lt;CONTAINER_ID&gt;:&lt;CONTAINER_PATH&gt; &lt;HOST_PATH&gt;
+</pre></div>
   </main>
 </article>
 
@@ -149,37 +150,38 @@ My article on <a href="https://my.meural.com">my.meural</a>'s redesign originall
 <p>The primary issues that we have seen are related to performance and stem from Next.js and styled-components. For all of their virtues, the combination of Next.js and styled-components creates large JavaScript bundles. At the time of this writing, our <code>main.js</code> bundle is just under 800kb and other split bundles range from less than 10kb to more than 100kb. This increased our page time to interactive from under 2.5 seconds to over 5 seconds, which is not acceptable.</p>
 <p>With gzip, we can reduce the size of these bundles by roughly 75%, which would get our page load time back into an acceptable range. The problem is that Next.js does not serve static files in a straightforward way. Static assets are built and saved to the <code>/.next</code> directory, but the directory structure does not match the URLs that the client requests. These requests must be routed through the Next.js application to be resolved to the correct static asset. This prevents us from easily gzipping and serving these files independently from the Next.js application.</p>
 <p>The solution that we developed is to leverage NGINX’s <a href="http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache">caching capabilities</a>. For many reasons, we run our Next.js application behind an NGINX server. We decided to use the <code>proxy_cache</code> directive to cache responses at the <code>/_next/</code> location. The way this works is that the first request for any asset at <code>/_next/</code> will be forwarded to the application with <code>proxy_pass</code>, but the resulting response will be saved in NGINX’s cache. Subsequent requests will then be served out of the cache. Here are the relevant parts of the configuration.</p>
-<pre class="codehilite"><code class="language-nginx">http {
-    # Cache setup
+<div class="codehilite"><pre><span></span><span class="k">http</span> <span class="p">{</span>
+    <span class="c1"># Cache setup</span>
 
-    proxy_cache_path /data/nginx/cache keys_zone=one:20m; 
-    proxy_cache_valid 200 60m;
+    <span class="kn">proxy_cache_path</span> <span class="s">/data/nginx/cache</span> <span class="s">keys_zone=one:20m</span><span class="p">;</span> 
+    <span class="kn">proxy_cache_valid</span> <span class="mi">200</span> <span class="mi">60m</span><span class="p">;</span>
 
-    # Gzip settings
+    <span class="c1"># Gzip settings</span>
 
-    gzip_static on;
-    gzip on;
-    gzip_comp_level 5;
-    gzip_types application/javascript ...;
-    gzip_min_length 1000;
-    gzip_proxied expired no-cache no-store;
+    <span class="kn">gzip_static</span> <span class="no">on</span><span class="p">;</span>
+    <span class="kn">gzip</span> <span class="no">on</span><span class="p">;</span>
+    <span class="kn">gzip_comp_level</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="kn">gzip_types</span> <span class="s">application/javascript</span> <span class="s">...</span><span class="p">;</span>
+    <span class="kn">gzip_min_length</span> <span class="mi">1000</span><span class="p">;</span>
+    <span class="kn">gzip_proxied</span> <span class="s">expired</span> <span class="s">no-cache</span> <span class="s">no-store</span><span class="p">;</span>
 
-    server {
-        listen 80;
+    <span class="kn">server</span> <span class="p">{</span>
+        <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
 
-        # ...
+        <span class="c1"># ...</span>
 
-        location /_next/ {
-            proxy_pass http://application:8000;
-            gzip_proxied any;
-            proxy_cache one;
-            break;
-        }
+        <span class="kn">location</span> <span class="s">/_next/</span> <span class="p">{</span>
+            <span class="kn">proxy_pass</span> <span class="s">http://application:8000</span><span class="p">;</span>
+            <span class="kn">gzip_proxied</span> <span class="s">any</span><span class="p">;</span>
+            <span class="kn">proxy_cache</span> <span class="no">on</span><span class="s">e</span><span class="p">;</span>
+            <span class="kn">break</span><span class="p">;</span>
+        <span class="p">}</span>
 
-        # ...
+        <span class="c1"># ...</span>
 
-    }
-}</code></pre>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
 
 
 <h2>Conclusion</h2>

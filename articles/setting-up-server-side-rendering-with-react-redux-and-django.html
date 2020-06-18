@@ -76,7 +76,7 @@ My article on server side rendering originally published on Meural's <a href="ht
 <script src="https://gist.github.com/AlexanderRichey/96cdba8e8171d0a6bfa239b5a42db3f9.js"></script>
 
 <p>I recommend writing a simple <code>render</code> and <code>buildInitialState</code> functions for testing purposes that simply return some valid output of any kind. I also recommend testing this server with cURL before moving on to anything else.</p>
-<p>Now let’s wire up the Django app and test it’s interaction with the Node server.</p>
+<p>Now let’s wire up the Django app and test its interaction with the Node server.</p>
 <script src="https://gist.github.com/AlexanderRichey/109eb5d4730be1f88fb894c05e00df03.js"></script>
 
 <p>Here’s how we insert the rendered HTML payload into our Django template. Note that we use <a href="https://webpack.js.org/guides/getting-started/">Webpack</a> and <a href="https://github.com/ezhome/django-webpack-loader">django-webpack-loader</a> to handle our client-side JavaScript.</p>

@@ -37,7 +37,7 @@ Let’s begin by setting up the Node server. I decided to use Express.js because
 
 I recommend writing a simple `render` and `buildInitialState` functions for testing purposes that simply return some valid output of any kind. I also recommend testing this server with cURL before moving on to anything else.
 
-Now let’s wire up the Django app and test it’s interaction with the Node server.
+Now let’s wire up the Django app and test its interaction with the Node server.
 
 <script src="https://gist.github.com/AlexanderRichey/109eb5d4730be1f88fb894c05e00df03.js"></script>
 

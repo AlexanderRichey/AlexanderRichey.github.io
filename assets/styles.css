@@ -281,6 +281,10 @@ footer a {
   text-decoration: none;
 }
 
+sup {
+  vertical-align: super;
+  font-size: smaller;
+}
 
 /* Message */
 .message {
@@ -368,6 +372,11 @@ article {
   margin-top: 0rem;
   font-size: 0.9rem;
   color: #717171;
+}
+
+p.small {
+  font-size: small;
+  line-height: 1rem;
 }
 
 /* Pagination */

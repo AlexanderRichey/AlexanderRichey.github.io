@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ pageTitle }}</title>
+    <meta name="description" content="{{ pageDescription }}" />
+    <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
+    <link rel="stylesheet" href="{{ assets|key:'styles/styles.css' }}" />
+    <link
+      async
+      defer
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@openfonts/public-sans_latin@0.0.2/index.min.css"
+    />
+    <link
+      async
+      defer
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@openfonts/literata_latin@1.44.3/index.min.css"
+    />
+    <script
+      async
+      type="text/javascript"
+      src="https://plausible.io/js/analytics.js"
+    ></script>
+    <script 
+      async
+      type="text/javascript"
+      src="https://unpkg.com/@hotwired/turbo/dist/turbo.es5-umd.js"
+    ></script>
+  </head>
+  <body>
+    {% include 'header.html' %}
+    <main class="container">
+      {% block content %}{% endblock %}
+    </main>
+    {% include 'footer.html' %}
+  </body>
+</html>

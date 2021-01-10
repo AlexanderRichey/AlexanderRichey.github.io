@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<article>
+  <div class="article-header">
+    <h1 class="article-title">
+      {{ title }}
+    </h1>
+    <span class="article-date">{{ date|date:'2 January 2006' }}</span>
+  </div>
+  <div>
+    {{ content|safe }}
+  </div>
+</article>
+{% endblock %}

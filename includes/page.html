@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<article>
+  <div class="article-header">
+    <h1 class="article-title">
+      <a href="{{ url }}">
+        {{ title }}
+      </a>
+    </h1>
+  </div>
+  <div>
+    {{ content|safe }}
+  </div>
+</article>
+{% endblock %}

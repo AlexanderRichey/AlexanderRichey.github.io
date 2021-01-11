@@ -399,3 +399,8 @@ p.pagination-item a {
 p.pagination-item > a:hover, p.pagination-item > a:focus {
   text-decoration: underline;
 }
+
+.not-found {
+  text-align: center;
+  margin: 4rem auto;
+}

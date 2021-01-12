@@ -392,15 +392,56 @@ p.pagination-item {
   font-family: "Public Sans",-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
 }
 
-p.pagination-item a {
-  text-decoration: none;
-}
+/* p.pagination-item a { */
+/*   text-decoration: none; */
+/* } */
 
-p.pagination-item > a:hover, p.pagination-item > a:focus {
-  text-decoration: underline;
-}
+/* p.pagination-item > a:hover, p.pagination-item > a:focus { */
+/*   text-decoration: underline; */
+/* } */
 
 .not-found {
   text-align: center;
   margin: 4rem auto;
+}
+
+.aside-post-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: normal;
+  margin-top: 4rem;
+}
+
+.aside-post {
+  width: 50%;
+  padding: 0 1rem;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.aside-post.left {
+  text-align: left;
+  border-right: 1px solid #333;
+}
+
+.aside-post.right {
+  text-align: right;
+}
+
+.aside-post p {
+  font-size: 0.9rem;
+  font-family: "Public Sans",-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+}
+
+.aside-post-arrow {
+  margin-bottom: 0.4rem;
+}
+
+.aside-post-title {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.aside-post-title:hover {
+  text-decoration: underline;
 }

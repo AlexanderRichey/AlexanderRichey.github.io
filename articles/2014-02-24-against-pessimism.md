@@ -15,7 +15,7 @@ Pessimism is on the rise among members of the older generation. According to a 
 
 There are two ways of explaining this kind of negativity. According to the first view, it is understandable that such attitudes have formed, given both the political and economic turbulence of the last decade, and other long-term social and economic trends.
 
-Recent literature is replete with explanations of this sort. In Thomas Frank's article "Storybook Plutocracy," he classifies more than 30 recent books as members of what he has dubbed the "social-disintegration genre." This genre includes George Packer's *The Unwinding*,* Charles Murray's *Coming Apart*, and* Hedrick Smith's *Who Stole the American Dream?*, among many others.
+Recent literature is replete with explanations of this sort. In Thomas Frank's article "Storybook Plutocracy," he classifies more than 30 recent books as members of what he has dubbed the "social-disintegration genre." This genre includes George Packer's *The Unwinding*, Charles Murray's *Coming Apart*, and Hedrick Smith's *Who Stole the American Dream?*, among many others.
 
 Although the authors of these books may differ in political orientation and policy prescriptions, they agree in matters of methodology and share a basis of facts. Moreover, they tend to agree that, with the right policies, America's situation can be improved and that the general mood of the country can be ameliorated.
 

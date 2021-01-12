@@ -10,5 +10,23 @@
   <div>
     {{ content|safe }}
   </div>
+  <aside class="aside-post-container">
+    <div class="aside-post left">
+    {% if nextPost %}
+      <a href="{{ nextPost.Path }}">
+        <p class="aside-post-arrow">&#8592; Newer</p>
+        <p class="aside-post-title">{{ nextPost.Title }}</p>
+      </a>
+    {% endif %}
+    </div>
+    <div class="aside-post right">
+    {% if prevPost %}
+      <a href="{{ prevPost.Path }}">
+        <p class="aside-post-arrow">Older &#8594;</p>
+        <p class="aside-post-title">{{ prevPost.Title }}</p>
+      </a>
+    {% endif %}
+    </div>
+  </aside>
 </article>
 {% endblock %}

@@ -20,9 +20,11 @@ Understood in this way, I condemn looting not because it is philosophically unso
 
 The second way that looting may be understood is that it is a natural outcome of a broken social contract. If the agreement of the social contact is not being upheld, then those who are not being protected by the law have little incentive to follow the law. For example, if the enforcers of the law allow my home to be repeatedly burglarized and do not protect my life or the lives of my children, then the law is not a protective force, but an oppressive one. Under such conditions, I should be interested in securing my life and property only by my own hand and I should feel little compunction, under such conditions, in transgressing the law to benefit myself when I can get away with it.
 
-Understood in this second way, I condemn looting as well. Again, I do not do so because it is philosophically unsound; I do so because, in such a situation in which the social contract is breached, looting is a more-or-less aimless act that accepts and exploits the status quo rather than trying to ameliorate it. It is like looking away from wrongdoing to save oneself the time and trouble rather than doing one's duty to confront the wrongdoer.
+Understood in this second way, I condemn looting as well. Again, I do not do so because it is philosophically unsound; I do so because, in such a situation in which the social contract is breached, looting is a more-or-less aimless act that accepts and exploits the status quo instead of trying to ameliorate it. It is like looking away from wrongdoing to save oneself the time and trouble rather than doing one's duty to confront the wrongdoer.
 
 But what if reform is not feasible? If reform is truly not feasible, then the argument for my condemning looting understood in the second way does not stand. It does not stand because it would not be possible to ameliorate the situation and it is not fair to condemn people for failing to do what is impossible. In such a state of affairs, in which the social contract is broken but reform is not possible, then looting would be destructive and poisonous to the society in which it occurs. But it would also be a reflection, under such circumstances, of the destructive and poisonous nature of such a society that does not equally uphold the agreement of its social contract.
+
+<p class="small">Thanks to John Banks for comments on an earlier draft.</p>
 
 ___
 

@@ -47,7 +47,7 @@
   postsPerPage = 3 
   # The following two directives control the behavior of chroma, which
   # is used for syntax highlighting in markdown files.
-  chromaTheme = "tango"
+  chromaTheme = "dracula"
   chromaLineNumbers = false
   # When true, an rss.xml file is built containing information from the 
   # available posts.

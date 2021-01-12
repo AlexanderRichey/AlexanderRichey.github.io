@@ -208,7 +208,8 @@ pre {
   padding: 0.8rem;
   line-height: 1.4;
   white-space: pre;
-  background-color: #f8f8f8;
+  background-color: #282a36;
+  color: #f8f8f2;
   overflow: scroll;
   border-radius: 0.4rem;
 }

@@ -1,35 +1,35 @@
-<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Alex Richey | Blog | Docker Commands</title><meta name=description content="Software engineer based in Seattle, WA. I write about politics and code."><link rel=alternate type=application/rss+xml href=/rss.xml><link rel=stylesheet href=/styles/styles.3755f8c8.css><link async defer rel=stylesheet href=https://cdn.jsdelivr.net/npm/@openfonts/public-sans_latin@0.0.2/index.min.css><link async defer rel=stylesheet href=https://cdn.jsdelivr.net/npm/@openfonts/literata_latin@1.44.3/index.min.css><script async src=https://plausible.io/js/analytics.js></script><script async src=https://unpkg.com/@hotwired/turbo/dist/turbo.es5-umd.js></script></head><body><header class=top-header><div class=top-header-title><h1><a href=/>Alex Richey</a></h1><small>Software Engineer @ Amazon</small></div><nav class=top-header-nav><a class=top-header-nav-item href=/>Posts</a>
-<a class=top-header-nav-item href=/about.html>About</a></nav></header><main class=container><article><div class=article-header><h1 class=article-title>Docker Commands</h1><span class=article-date>30 October 2019</span></div><div><p>I use Docker all the time. But still I forget common commands constantly. Here are the commands I need to look up most often.</p><pre style=background-color:#f8f8f8><span style=color:#8f5902;font-style:italic># Build a container with the a tag</span>
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Alex Richey | Blog | Docker Commands</title><meta name=description content="Software engineer based in Seattle, WA. I write about politics and code."><link rel=alternate type=application/rss+xml href=/rss.xml><link rel=stylesheet href=/styles/styles.6509895f.css><link async defer rel=stylesheet href=https://cdn.jsdelivr.net/npm/@openfonts/public-sans_latin@0.0.2/index.min.css><link async defer rel=stylesheet href=https://cdn.jsdelivr.net/npm/@openfonts/literata_latin@1.44.3/index.min.css><script async src=https://plausible.io/js/analytics.js></script><script async src=https://unpkg.com/@hotwired/turbo/dist/turbo.es5-umd.js></script></head><body><header class=top-header><div class=top-header-title><h1><a href=/>Alex Richey</a></h1><small>Software Engineer @ Amazon</small></div><nav class=top-header-nav><a class=top-header-nav-item href=/>Posts</a>
+<a class=top-header-nav-item href=/about.html>About</a></nav></header><main class=container><article><div class=article-header><h1 class=article-title>Docker Commands</h1><span class=article-date>30 October 2019</span></div><div><p>I use Docker all the time. But still I forget common commands constantly. Here are the commands I need to look up most often.</p><pre style=color:#f8f8f2;background-color:#282a36><span style=color:#6272a4># Build a container with the a tag</span>
 docker build . -t &lt;CONTAINER_TAG&gt;
 
-<span style=color:#8f5902;font-style:italic># Run bash inside a running container</span>
-docker <span style=color:#204a87>exec</span> -it &lt;CONTAINER_ID&gt; bash
+<span style=color:#6272a4># Run bash inside a running container</span>
+docker <span style=color:#8be9fd;font-style:italic>exec</span> -it &lt;CONTAINER_ID&gt; bash
 
-<span style=color:#8f5902;font-style:italic># Run bash in a new container</span>
+<span style=color:#6272a4># Run bash in a new container</span>
 docker run -it &lt;CONTAINER_TAG&gt; bash
 
-<span style=color:#8f5902;font-style:italic># Run a container while mounting the current directory to</span>
-<span style=color:#8f5902;font-style:italic># `var/www` in the container</span>
-docker run -v <span style=color:#204a87;font-weight:700>$(</span><span style=color:#204a87>pwd</span><span style=color:#204a87;font-weight:700>)</span>:/var/www &lt;CONTAINER_TAG&gt;
+<span style=color:#6272a4># Run a container while mounting the current directory to</span>
+<span style=color:#6272a4># `var/www` in the container</span>
+docker run -v <span style=color:#ff79c6>$(</span><span style=color:#8be9fd;font-style:italic>pwd</span><span style=color:#ff79c6>)</span>:/var/www &lt;CONTAINER_TAG&gt;
 
-<span style=color:#8f5902;font-style:italic># Run a container while exposing a port to the host</span>
+<span style=color:#6272a4># Run a container while exposing a port to the host</span>
 docker run -p &lt;HOST_PORT&gt;:&lt;CONTAINER_PORT&gt; &lt;CONTAINER_TAG&gt;
 
-<span style=color:#8f5902;font-style:italic># Above two combined</span>
-docker run -v <span style=color:#204a87;font-weight:700>$(</span><span style=color:#204a87>pwd</span><span style=color:#204a87;font-weight:700>)</span>:/var/www -p &lt;HOST_PORT&gt;:&lt;CONTAINER_PORT&gt; &lt;CONTAINER_TAG&gt;
+<span style=color:#6272a4># Above two combined</span>
+docker run -v <span style=color:#ff79c6>$(</span><span style=color:#8be9fd;font-style:italic>pwd</span><span style=color:#ff79c6>)</span>:/var/www -p &lt;HOST_PORT&gt;:&lt;CONTAINER_PORT&gt; &lt;CONTAINER_TAG&gt;
 
-<span style=color:#8f5902;font-style:italic># Stop all of the containers</span>
-docker stop <span style=color:#204a87;font-weight:700>$(</span>docker ps -aq<span style=color:#204a87;font-weight:700>)</span>
+<span style=color:#6272a4># Stop all of the containers</span>
+docker stop <span style=color:#ff79c6>$(</span>docker ps -aq<span style=color:#ff79c6>)</span>
 
-<span style=color:#8f5902;font-style:italic># Remove all of the containers</span>
-docker rm <span style=color:#204a87;font-weight:700>$(</span>docker ps -aq<span style=color:#204a87;font-weight:700>)</span>
+<span style=color:#6272a4># Remove all of the containers</span>
+docker rm <span style=color:#ff79c6>$(</span>docker ps -aq<span style=color:#ff79c6>)</span>
 
-<span style=color:#8f5902;font-style:italic># Delete all of the images</span>
-docker rmi <span style=color:#204a87;font-weight:700>$(</span>docker images -aq<span style=color:#204a87;font-weight:700>)</span>
+<span style=color:#6272a4># Delete all of the images</span>
+docker rmi <span style=color:#ff79c6>$(</span>docker images -aq<span style=color:#ff79c6>)</span>
 
-<span style=color:#8f5902;font-style:italic># Delete all of the volumes</span>
-docker volume rm <span style=color:#204a87;font-weight:700>$(</span>docker volume ls -q<span style=color:#204a87;font-weight:700>)</span>
+<span style=color:#6272a4># Delete all of the volumes</span>
+docker volume rm <span style=color:#ff79c6>$(</span>docker volume ls -q<span style=color:#ff79c6>)</span>
 
-<span style=color:#8f5902;font-style:italic># Copy stuff from the container to the host</span>
+<span style=color:#6272a4># Copy stuff from the container to the host</span>
 docker cp &lt;CONTAINER_ID&gt;:&lt;CONTAINER_PATH&gt; &lt;HOST_PATH&gt;
 </pre></div><aside class=aside-post-container><div class="aside-post left"><a href=/articles/2020-06-05-on-looting.html><p class=aside-post-arrow>&#8592; Newer</p><p class=aside-post-title>On Looting</p></a></div><div class="aside-post right"><a href=/articles/2018-07-10-bringing-our-frontend-to-the-bleeding-edge.html><p class=aside-post-arrow>Older &#8594;</p><p class=aside-post-title>Bringing Meural's Frontend to the Bleeding Edge</p></a></div></aside></article></main><footer><small>© 2021. All rights reserved. <a rel=alternate type=application/rss+xml href=/rss.xml>RSS</a>.</small></footer></body></html>

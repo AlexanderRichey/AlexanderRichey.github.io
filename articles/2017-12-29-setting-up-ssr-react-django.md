@@ -37,17 +37,144 @@ Since our primary application server is a Django application, which cannot under
 
 Let’s begin by setting up the Node server. I decided to use Express.js because it is battle-tested and very easy to use. Note that we are reading our `NODE_HOST` and `NODE_PORT` variables from our runtime environment.
 
-<script src="https://gist.github.com/AlexanderRichey/96cdba8e8171d0a6bfa239b5a42db3f9.js"></script>
+```javascript
+// server.js
+
+import http from 'http'
+import express from 'express'
+import bodyParser from'body-parser'
+import morgan from 'morgan'
+import { buildInitalState } from './utils'
+import render from './render.jsx'
+
+const ADDRESS = process.env.NODE_HOST
+const PORT = process.env.NODE_PORT
+
+const app = express()
+const server = http.Server(app)
+
+// I've increased the limit of the max payload size in case a huge page
+// needs to be rendered
+app.use(bodyParser.json({ limit: '10mb' }))
+
+// Morgan is the very silly name of some logging middleware.
+// It logs requests to the console so that you can tell that
+// the server is doing anything.
+app.use(morgan('combined'))
+
+app.get('/', function (req, res) {
+  res.end('Render server here!')
+})
+
+app.post('/render', function (req, res) {
+  // We know we'll need a path and the data for our initial state,
+  // so let's save this stuff first
+  const url = req.body.url
+  // This function massages data into the shape of our Redux store
+  const initialState = buildInitialState(req.body)  
+  
+  // We haven't written this function yet, but we know what we want
+  // its signiture to be
+  const result = render(url, initialState)
+
+  res.json({
+    html: result.html,
+    finalState: result.finalState
+  })
+})
+
+server.listen(PORT, ADDRESS, function () {
+  console.log('Render server listening at http://' + ADDRESS + ':' + PORT)
+})
+```
 
 I recommend writing a simple `render` and `buildInitialState` functions for testing purposes that simply return some valid output of any kind. I also recommend testing this server with cURL before moving on to anything else.
 
 Now let’s wire up the Django app and test its interaction with the Node server.
 
-<script src="https://gist.github.com/AlexanderRichey/109eb5d4730be1f88fb894c05e00df03.js"></script>
+```python
+# views.py
+import requests
+from django.conf import settings
+from django.shortcuts import render
+from sandwich.models import Sandwich
+from sandwich.serializers import SandwichSerializer
+from user.serializers import UserSerializer
+
+
+def sandwich(request, id):
+    try:
+        sandwich = Sandwich.objects.get(id=id)
+        serializer = SandwichSerializer(sandwich)
+        sandwich_data = serializer.data
+    except Sandwich.DoesNotExist:
+        sandwich_data = {}
+    # The magic happens in our _react_render helper function
+    return _react_render({'sandwich': sandwich_data}, request)
+
+
+def _react_render(content, request):
+    # Let's grab our user's info if she has any
+    if request.user.is_authenticated():
+        serializer = UserSerializer(request.user)
+        user = serializer.data
+    else:
+        user = {}
+
+    # Here's what we've got so far
+    render_assets = {
+        'url': request.path_info,
+        'user': user
+    }
+    # Now we add the sandwich. We use the Dict#update method so that the
+    # key could be anything, like pizza or cake or burger.
+    render_assets.update(content)
+
+    try:
+        # All right, let's send it! Note that we set the content type to json.
+        res = requests.post(settings.RENDER_SERVER_BASE_URL + '/render',
+                            json=render_assets,
+                            headers={'content_type': 'application/json'})
+        rendered_payload = res.json()
+    except Exception as e:
+        ...
+    # Beautiful! Let's render this stuff into our base template
+    return render(request, 'base.html', rendered_payload)
+```
 
 Here’s how we insert the rendered HTML payload into our Django template. Note that we use [Webpack](https://webpack.js.org/guides/getting-started/) and [django-webpack-loader](https://github.com/ezhome/django-webpack-loader) to handle our client-side JavaScript.
 
-<script src="https://gist.github.com/AlexanderRichey/925151a5fa26bd076fe37263007ff60d.js"></script>
+{% verbatim %}
+```html
+<!-- base.html -->
+{% load render_bundle from webpack_loader %}
+{% load webpack_static from webpack_loader %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Finest Deli</title>
+
+    {% render_bundle 'bodega' 'css' %}
+    {% render_bundle 'bodega' 'js' attrs='async' %}
+  </head>
+  <body>
+
+    <!-- Root -->
+    <main id="root">{{ html|safe }}</main>
+
+    <!-- Redux State -->
+    <script>
+      window.__REDUX_STATE__ = {{ finalState|safe }}
+    </script>
+
+  </body>
+</html>
+```
+{% endverbatim %}
 
 We can now test the interaction between Node and Django. Let’s start the Node server and the Django server, open up a browser, and go to the url that corresponds to our sandwich view. To prevent our React frontend from taking over the page on load, we’ll disable JavaScript in DevTools. If you see a page with the output that you defined in your `render` and `buildInitialState` functions, then all is well.
 
@@ -55,7 +182,45 @@ We can now test the interaction between Node and Django. Let’s start the Node 
 
 It will be instructive to first look at the code of the `render` function and then to explain how it works.
 
-<script src="https://gist.github.com/AlexanderRichey/df4c27427936ae186b3725a8c1fee7d6.js"></script>
+```javascript
+// render.jsx
+
+import React from 'react'
+import { Provider } from 'react-redux'
+import { match, RouterContext } from 'react-router'
+import ReactDOMServer from 'react-dom/server'
+import configureStore from '../bodega/src/scripts/store/store'
+import getRoutes from '../bodega/src/scripts/components/routes'
+
+export default function render (url, initialState) {
+  const store = configureStore(initialState)
+
+  const routes = getRoutes(store)
+
+  let html, redirect
+  match({ routes, location: url }, (error, redirectLocation, renderProps) => {
+    if (redirectLocation) {
+      redirect = redirectLocation.pathname
+    } else if (renderProps) {
+      // Here's where the actual rendering happens
+      html = ReactDOMServer.renderToString(
+        <Provider store={store}>
+          <RouterContext {...renderProps} />
+        </Provider>
+      )
+    }
+  })
+
+  if (redirect) return render(redirect, initialState) // Fun recursion
+
+  const finalState = store.getState()
+
+  return {
+    html,
+    finalState
+  }
+}
+```
 
 The first thing the `render` function does is configure the Redux store. I used the same `configureStore` function that I had already defined in following the usual Redux API pattern.
 
@@ -83,7 +248,46 @@ When transpiling, I ran into some errors. Since this version of my React app wil
 
 Now that my server responds with a fully rendered page of my app, I need to adjust my client side JS to expect this. Here’s the code I wrote.
 
-<script src="https://gist.github.com/AlexanderRichey/c6f0bf438ff2f6c8b8a4fc74e41658c5.js"></script>
+```javascript
+// entry.js
+
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { match } from 'react-router'
+import { Provider } from 'react-redux'
+import { Router, browserHistory } from 'react-router'
+
+import configureStore from './bodega/store/store'
+import Root from './bodega/components/root'
+import getRoutes from './bodega/components/routes'
+
+import './styles/main.scss'
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeApp)
+} else {
+  initializeApp()
+}
+
+function initializeApp () {
+  const store = configureStore(window.__REDUX_STATE__)
+
+  const { pathname, search, hash } = window.location
+  const location = `${pathname}${search}${hash}`
+  const routes = getRoutes(store)
+
+  match({ routes, location }, () => {
+    ReactDOM.render(
+      <Provider store={store}>
+        <Router history={browserHistory}>
+          {routes}
+        </Router>
+      </Provider>,
+      document.getElementById('root')
+    )
+  })
+}
+```
 
 You might have noticed that I added an `async` attribute to my script tag in `base.html`. The `async` attribute makes the tag non-render-blocking, which means that the browser won’t wait for the entire script to download before rendering. This produces a considerable speed increase, especially with large JavaScript bundles. However, it also means that it is possible for the script to be executed at any time during the load process, which means that the standard procedure of waiting for `DOMContentLoaded` before rendering with ReactDOM might not always work, since `DOMContentLoaded` might have already fired, in which case, the React app would never get executed and the page would never become interactive. Therefore, I check the `document.readyState` when the bundle is initially executed. If the `readyState` is `complete` or `interactive`, I initialize my React app right away. Otherwise, I add listener for `DOMContentLoaded` and use my initialize function as the callback.
 

@@ -5,7 +5,13 @@ date: 2020-06-05
 ---
 
 <p>
-  <img src="{{ assets|key:'images/looting.jpg' }}" alt="Someone looting a pharmacy">
+  <div class="fixed-img-spreader sixty">
+    <div class="fixed-img-setter">
+      <img src="{{ assets|key:'images/looting.jpg' }}"
+        class="fixed-img"
+        alt="Someone looting a pharmacy">
+    </div>
+  </div>
 </p>
 
 It is in one’s interest to follow the law when one is also protected by the law. But if one is not protected by the law, then what interest does one have in following it?

@@ -4,7 +4,13 @@ title: Against Pessimism
 date: 2014-02-24
 ---
 <p>
-  <img src="{{ assets|key:'images/half-full-half-empty.jpg' }}" alt="One glass half full and another glass half empty">
+  <div class="fixed-img-spreader sixty">
+    <div class="fixed-img-setter">
+      <img src="{{ assets|key:'images/half-full-half-empty.jpg' }}"
+        alt="One glass half full and another glass half empty"
+        class="fixed-img">
+    </div>
+  </div>
 </p>
 
 <div class="message">

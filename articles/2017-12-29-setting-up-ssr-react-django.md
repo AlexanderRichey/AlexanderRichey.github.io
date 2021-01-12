@@ -182,7 +182,7 @@ We can now test the interaction between Node and Django. Let’s start the Node 
 
 It will be instructive to first look at the code of the `render` function and then to explain how it works.
 
-```javascript
+```react
 // render.jsx
 
 import React from 'react'
@@ -248,7 +248,7 @@ When transpiling, I ran into some errors. Since this version of my React app wil
 
 Now that my server responds with a fully rendered page of my app, I need to adjust my client side JS to expect this. Here’s the code I wrote.
 
-```javascript
+```react
 // entry.js
 
 import React from 'react'

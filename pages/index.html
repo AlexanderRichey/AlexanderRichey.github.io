@@ -1,19 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
+  <!-- <p class="intro">&#x1F44B; Hello, I'm Alex. Here are some articles I've written over the years about various things that interest me.</p> -->
+  <ul class="article-list">
   {% for article in posts %}
-    <article>
-      <div class="article-header">
-        <h1 class="article-title">
-          <a href="{{ article.Path }}">
-            {{ article.Title }}
-          </a>
-        </h1>
-        <span class="article-date">{{ article.Date|date:'2 January 2006' }}</span>
-      </div>
-      <div>
-        {{ article.Content|safe }}
-      </div>
-    </article>
+    <li class="article-list-item">
+      <h4 class="article-title">
+        <a href="{{ article.Path }}">
+          {{ article.Title }}
+        </a>
+      </h4>
+      <time class="article-date" datetime="{{ article.Date }}">{{ article.Date|date:'2 January 2006' }}</time>
+    </li>
   {% endfor %}
-  {% include 'pagination.html' %}
+  </ul>
 {% endblock %}

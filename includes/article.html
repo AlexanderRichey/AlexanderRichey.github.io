@@ -5,7 +5,7 @@
     <h1 class="article-title">
       {{ title }}
     </h1>
-    <span class="article-date">{{ date|date:'2 January 2006' }}</span>
+    <time class="article-date" datetime="{{ date }}">{{ date|date:'2 January 2006' }}</time>
   </div>
   <div>
     {{ content|safe }}

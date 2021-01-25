@@ -319,7 +319,7 @@ tbody tr:nth-child(odd) th {
 footer {
   display: flex;
   justify-content: center;
-  margin-bottom: 2rem;
+  padding: 2rem;
 }
 
 footer a {
@@ -359,16 +359,15 @@ sup {
 .top-header {
   display: flex;
   padding: 2rem;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
   width: 100%;
 }
 
-@media screen and (max-width: 568px) {
+@media screen and (max-width: 800px) {
   .top-header {
-    margin-bottom: 1rem;
     padding: 1rem;
   }
 }
@@ -398,7 +397,7 @@ sup {
 
 /* Articles */
 article {
-  margin-bottom: 4em;
+  margin-bottom: 2rem;
 }
 
 .article-header {
@@ -489,4 +488,8 @@ p.pagination-item {
 
 .aside-post-title:hover {
   text-decoration: underline;
+}
+
+.article-list-item {
+  margin-bottom: 1.4rem;
 }

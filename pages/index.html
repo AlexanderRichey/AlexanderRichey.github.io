@@ -4,11 +4,11 @@
   <ul class="article-list">
   {% for article in posts %}
     <li class="article-list-item">
-      <h4 class="article-title">
-        <a href="{{ article.Path }}">
+      <a href="{{ article.Path }}">
+        <h4 class="article-title">
           {{ article.Title }}
-        </a>
-      </h4>
+        </h4>
+      </a>
       <time class="article-date" datetime="{{ article.Date }}">{{ article.Date|date:'2 January 2006' }}</time>
     </li>
   {% endfor %}

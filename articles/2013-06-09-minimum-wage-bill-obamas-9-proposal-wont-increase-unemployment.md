@@ -4,7 +4,7 @@ title: "Minimum Wage Bill: Obama's $9 Proposal Won't Increase Unemployment"
 date: 2013-06-09
 ---
 <p>
-  <div class="fixed-img-spreader seventy">
+  <div class="fixed-img-spreader sixty">
     <div class="fixed-img-setter">
       <img src="{{ assets|key:'images/min-wage.jpg' }}"
         alt="Man working"

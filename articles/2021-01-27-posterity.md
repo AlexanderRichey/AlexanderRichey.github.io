@@ -17,7 +17,7 @@ I decided to shut down Convo last week, a project that I had labored on for more
 
 I'm going to keep the [code available on GitHub](https://github.com/hiconvo) and I'll probably take the site offline after the last couple events that people made pass.
 
-The original impetus for Convo was that I thought there was an opening in the market for events platforms. While there are many apps for creating public events such as Eventbrite and Meetup, there's only a few for private events like birthday or housewarming parties. Facebook remains the main solution, but many people—myself included—would prefer not to support Facebook if a decent alternative were available. So I thought there was an opportunity in the market that I could possibly seize I if built a decent app that focused on mid-sized private events—and had a little luck.
+The original impetus for Convo was that I thought there was an opening in the market for events platforms. While there are many apps for creating public events such as Eventbrite and Meetup, there's only a few for private events like birthday or housewarming parties. Facebook remains the main solution, but many people—myself included—would prefer not to support Facebook if a decent alternative were available. So I thought there was an opportunity in the market that I could possibly seize if I built a decent app that focused on mid-sized private events—and had a little luck.
 
 I also had a lot of time on my hands when I started the project. I had just moved to Seattle for a job at Amazon and didn't know anyone in the area when I arrived, so my weekends were open. At work, I hadn't proven myself yet, so I didn't have much to do there either. As a result of these circumstances, I had the time to undertake such a project.
 

@@ -7,7 +7,7 @@ date: 2021-04-01
 I watched Ben Orenstein's <a href="https://youtu.be/DC-pQPq0acs" target="_blank">talk "Refactoring from Good to Great"</a> at the beginning of my career and it made big and, I think, positive impact on how I write code. Here are some notes I took on the original talk to make its content easier to share.
 </div>
 
-Don't think of the following advise as absolute truth. Some advise may make sense in some cases. Some advise may not. Use your own best judgement.
+Don't think of the following advice as absolute truth. Some advice may make sense in some cases. Some advice may not. Use your own best judgement.
 
 ## Method Extraction
 

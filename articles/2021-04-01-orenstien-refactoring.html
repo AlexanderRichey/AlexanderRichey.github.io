@@ -1,0 +1,264 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Alex Richey | Blog | Notes on Ben Orenstein's "Refactoring from Good to Great"</title><meta name=description content="Software engineer based in Seattle, WA. I write about politics and code."><link rel=alternate type=application/rss+xml href=/rss.xml><link rel=stylesheet href=/styles/styles.9b49f37e.css><link async defer rel=stylesheet href=https://cdn.jsdelivr.net/npm/@openfonts/public-sans_latin@0.0.2/index.min.css><link async defer rel=stylesheet href=https://cdn.jsdelivr.net/npm/@openfonts/literata_latin@1.44.3/index.min.css><script async src=https://plausible.io/js/analytics.js></script><script async src=https://unpkg.com/@hotwired/turbo/dist/turbo.es5-umd.js></script><script src=/scripts/img-grow.3f34b1c6.js></script></head><body><header class=top-header><div class=top-header-title><h1><a href=/>Alex Richey</a></h1><small>Software Engineer @ Amazon</small></div><nav class=top-header-nav><a class=top-header-nav-item href=/>Posts</a>
+<a class=top-header-nav-item href=/about.html>About</a></nav></header><main class=container><article><div class=article-header><h1 class=article-title>Notes on Ben Orenstein's "Refactoring from Good to Great"</h1><time class=article-date datetime="2021-04-01 00:00:00 +0000 UTC">1 April 2021</time></div><div><div class=message>I watched Ben Orenstein's <a href=https://youtu.be/DC-pQPq0acs target=_blank>talk "Refactoring from Good to Great"</a> at the beginning of my career and it made big and, I think, positive impact on how I write code. Here are some notes I took on the original talk to make its content easier to share.</div><p>Don't think of the following advise as absolute truth. Some advise may make sense in some cases. Some advise may not. Use your own best judgement.</p><h2>Method Extraction</h2><p>Consider the following code. It's decent, but how could it be made better?</p><pre class=chroma><span class=nb>require</span> <span class=s1>&#39;date&#39;</span>
+<span class=nb>require</span> <span class=s1>&#39;ostruct&#39;</span>
+
+<span class=k>class</span> <span class=nc>OrdersReport</span>
+ <span class=k>def</span> <span class=nf>initialize</span><span class=p>(</span><span class=n>orders</span><span class=p>,</span> <span class=n>start_date</span><span class=p>,</span> <span class=n>end_date</span><span class=p>)</span>
+   <span class=vi>@orders</span> <span class=o>=</span> <span class=n>orders</span>
+   <span class=vi>@start_date</span> <span class=o>=</span> <span class=n>start_date</span>
+   <span class=vi>@end_date</span> <span class=o>=</span> <span class=n>end_date</span>
+ <span class=k>end</span>
+
+ <span class=k>def</span> <span class=nf>total_sales_within_date_range</span>
+   <span class=n>orders_within_range</span> <span class=o>=</span>
+     <span class=vi>@orders</span><span class=o>.</span><span class=n>select</span> <span class=p>{</span> <span class=o>|</span><span class=n>order</span><span class=o>|</span> <span class=n>order</span><span class=o>.</span><span class=n>placed_at</span> <span class=o>&gt;=</span> <span class=vi>@start_date</span> <span class=o>&amp;&amp;</span>
+                              <span class=n>order</span><span class=o>.</span><span class=n>placed_at</span> <span class=o>&lt;=</span> <span class=vi>@end_date</span> <span class=p>}</span>
+
+   <span class=n>orders_within_range</span><span class=o>.</span>
+     <span class=n>map</span><span class=p>(</span><span class=o>&amp;</span><span class=ss>:amount</span><span class=p>)</span><span class=o>.</span><span class=n>inject</span><span class=p>(</span><span class=mi>0</span><span class=p>)</span> <span class=p>{</span> <span class=o>|</span><span class=n>sum</span><span class=p>,</span> <span class=n>amount</span><span class=o>|</span> <span class=n>amount</span> <span class=o>+</span> <span class=n>sum</span> <span class=p>}</span>
+ <span class=k>end</span>
+<span class=k>end</span>
+
+<span class=k>class</span> <span class=nc>Order</span> <span class=o>&lt;</span> <span class=no>OpenStruct</span>
+<span class=k>end</span>
+</pre><p>One thing we can do is extract a new method, <code>orders_within_range()</code>, like so.</p><pre class=chroma><span class=nb>require</span> <span class=s1>&#39;date&#39;</span>
+<span class=nb>require</span> <span class=s1>&#39;ostruct&#39;</span>
+
+<span class=k>class</span> <span class=nc>OrdersReport</span>
+ <span class=k>def</span> <span class=nf>initialize</span><span class=p>(</span><span class=n>orders</span><span class=p>,</span> <span class=n>start_date</span><span class=p>,</span> <span class=n>end_date</span><span class=p>)</span>
+   <span class=vi>@orders</span> <span class=o>=</span> <span class=n>orders</span>
+   <span class=vi>@start_date</span> <span class=o>=</span> <span class=n>start_date</span>
+   <span class=vi>@end_date</span> <span class=o>=</span> <span class=n>end_date</span>
+ <span class=k>end</span>
+
+ <span class=k>def</span> <span class=nf>total_sales_within_date_range</span>
+<span class=hl>   <span class=n>orders_within_range</span><span class=o>.</span>
+</span>     <span class=n>map</span><span class=p>(</span><span class=o>&amp;</span><span class=ss>:amount</span><span class=p>)</span><span class=o>.</span><span class=n>inject</span><span class=p>(</span><span class=mi>0</span><span class=p>)</span> <span class=p>{</span> <span class=o>|</span><span class=n>sum</span><span class=p>,</span> <span class=n>amount</span><span class=o>|</span> <span class=n>amount</span> <span class=o>+</span> <span class=n>sum</span> <span class=p>}</span>
+  <span class=k>end</span>
+
+<span class=hl>  <span class=kp>private</span>
+</span><span class=hl>
+</span><span class=hl>  <span class=k>def</span> <span class=nf>orders_within_range</span>
+</span><span class=hl>    <span class=vi>@orders</span><span class=o>.</span><span class=n>select</span> <span class=p>{</span> <span class=o>|</span><span class=n>order</span><span class=o>|</span> <span class=n>order</span><span class=o>.</span><span class=n>placed_at</span> <span class=o>&gt;=</span> <span class=vi>@start_date</span> <span class=o>&amp;&amp;</span>
+</span><span class=hl>                             <span class=n>order</span><span class=o>.</span><span class=n>placed_at</span> <span class=o>&lt;=</span> <span class=vi>@end_date</span> <span class=p>}</span>
+</span><span class=hl>  <span class=k>end</span>
+</span><span class=k>end</span>
+
+<span class=k>class</span> <span class=nc>Order</span> <span class=o>&lt;</span> <span class=no>OpenStruct</span>
+<span class=k>end</span>
+</pre><p>There are three upshots to this refactor.</p><ul><li>We go from one method with two lines to two methods with just one line each. Changes like this aren't always improvements, but they usually are, since they result in methods that are more focused.</li><li>This refactor makes it more likely for this code to be reused rather than rewritten by another developer.</li><li>This refactor causes readers of this code to focus on business logic, rather than incidental details. It "gives a hint" to readers that <code>orders_within_range()</code> isn't important to what this report is about.</li></ul><p>These wins are small, but, in aggregate, they're worth doing.</p><h2>Tell; Don't Ask</h2><p>There's another problem with this code, which is that it violates the <em>tell-dont-ask</em> principle. This principle isn't a law. It's a maxim that, when followed, can sometimes (but not always) lead to better code. Here's the principle:</p><blockquote><p>It's generally better to send a message to an object and have it perform work than to ask an object about its internal state and decide what work to do on its behalf.</p></blockquote><p>We violate this principle in our new helper method when we ask <code>order</code> about its internal state.</p><pre class=chroma><span class=k>def</span> <span class=nf>orders_within_range</span>
+  <span class=vi>@orders</span><span class=o>.</span><span class=n>select</span> <span class=p>{</span> <span class=o>|</span><span class=n>order</span><span class=o>|</span> <span class=n>order</span><span class=o>.</span><span class=n>placed_at</span> <span class=o>&gt;=</span> <span class=vi>@start_date</span> <span class=o>&amp;&amp;</span>
+                           <span class=n>order</span><span class=o>.</span><span class=n>placed_at</span> <span class=o>&lt;=</span> <span class=vi>@end_date</span> <span class=p>}</span>
+<span class=k>end</span>
+</pre><p>This code can be improved by refactoring it in the following way.</p><pre class=chroma><span class=k>class</span> <span class=nc>OrdersReport</span>
+  <span class=o>...</span>
+  
+  <span class=k>def</span> <span class=nf>orders_within_range</span>
+<span class=hl>    <span class=vi>@orders</span><span class=o>.</span><span class=n>select</span> <span class=p>{</span> <span class=o>|</span><span class=n>order</span><span class=o>|</span> <span class=n>order</span><span class=o>.</span><span class=n>placed_between?</span><span class=p>(</span><span class=n>start_date</span><span class=p>,</span> <span class=n>end_date</span><span class=p>)</span> <span class=p>}</span>
+</span>  <span class=k>end</span>
+<span class=k>end</span>
+
+<span class=k>class</span> <span class=nc>Order</span> <span class=o>&lt;</span> <span class=no>OpenStruct</span>
+<span class=hl>  <span class=k>def</span> <span class=nf>placed_between?</span><span class=p>(</span><span class=n>start_date</span><span class=p>,</span> <span class=n>end_date</span><span class=p>)</span>
+</span><span class=hl>    <span class=n>placed_at</span> <span class=o>&gt;=</span> <span class=n>start_date</span> <span class=o>&amp;&amp;</span> <span class=n>placed_at</span> <span class=o>&lt;=</span> <span class=n>end_date</span>
+</span><span class=hl>  <span class=k>end</span>
+</span><span class=k>end</span>
+</pre><p>Now <code>order</code> handles the nuances of comparing dates and the internal details of this comparison don't leak out into code consuming it. This code better follows <em>tell-dont-ask</em> becuase <code>order</code> itself tells us whether it's in between two dates. What's more, in <code>orders_within_range()</code>, we don't ask <code>order</code> about its internal state anymore.</p><h2>Data Clump</h2><p>Now there's another code smell. <code>start_date</code> and <code>end_date</code> form a <em>data clump</em>. A data clump is when two or more pieces of information always appear together and are in some way dependent on each other. Another way to think about the idea is that, if one piece of information were removed, would the result be useful or even make sense? Does <code>start_date</code> make sense on its own?</p><p>We can create a new class <code>DateRange</code> to store this data clump and to make the mutual dependency between <code>start_date</code> and <code>end_date</code> explicit to readers.</p><pre class=chroma><span class=nb>require</span> <span class=s1>&#39;date&#39;</span>
+<span class=nb>require</span> <span class=s1>&#39;ostruct&#39;</span>
+
+<span class=k>class</span> <span class=nc>OrdersReport</span>
+  <span class=k>def</span> <span class=nf>initialize</span><span class=p>(</span><span class=n>orders</span><span class=p>,</span> <span class=n>date_range</span><span class=p>)</span>
+    <span class=vi>@orders</span> <span class=o>=</span> <span class=n>orders</span>
+<span class=hl>    <span class=vi>@date_range</span> <span class=o>=</span> <span class=n>date_range</span>
+</span>  <span class=k>end</span>
+
+  <span class=k>def</span> <span class=nf>total_sales_within_date_range</span>
+    <span class=n>orders_within_range</span><span class=o>.</span>
+      <span class=n>map</span><span class=p>(</span><span class=o>&amp;</span><span class=ss>:amount</span><span class=p>)</span><span class=o>.</span><span class=n>inject</span><span class=p>(</span><span class=mi>0</span><span class=p>)</span> <span class=p>{</span> <span class=o>|</span><span class=n>sum</span><span class=p>,</span> <span class=n>amount</span><span class=o>|</span> <span class=n>amount</span> <span class=o>+</span> <span class=n>sum</span> <span class=p>}</span>
+  <span class=k>end</span>
+
+  <span class=kp>private</span>
+
+  <span class=k>def</span> <span class=nf>orders_within_range</span>
+<span class=hl>    <span class=vi>@orders</span><span class=o>.</span><span class=n>select</span> <span class=p>{</span> <span class=o>|</span><span class=n>order</span><span class=o>|</span> <span class=n>order</span><span class=o>.</span><span class=n>placed_between?</span><span class=p>(</span><span class=vi>@date_range</span><span class=p>)</span> <span class=p>}</span>
+</span>  <span class=k>end</span>
+<span class=k>end</span>
+
+<span class=hl><span class=k>class</span> <span class=nc>DateRange</span> <span class=o>&lt;</span> <span class=no>Struct</span><span class=o>.</span><span class=n>new</span><span class=p>(</span><span class=ss>:start_date</span><span class=p>,</span> <span class=ss>:end_date</span><span class=p>)</span>
+</span><span class=hl><span class=k>end</span>
+</span>
+<span class=k>class</span> <span class=nc>Order</span> <span class=o>&lt;</span> <span class=no>OpenStruct</span>
+<span class=hl>  <span class=k>def</span> <span class=nf>placed_between?</span><span class=p>(</span><span class=n>date_range</span><span class=p>)</span>
+</span><span class=hl>    <span class=n>placed_at</span> <span class=o>&gt;=</span> <span class=n>date_range</span><span class=o>.</span><span class=n>start_date</span> <span class=o>&amp;&amp;</span>
+</span><span class=hl>    <span class=n>placed_at</span> <span class=o>&lt;=</span> <span class=n>date_range</span><span class=o>.</span><span class=n>end_date</span>
+</span><span class=hl>  <span class=k>end</span>
+</span><span class=k>end</span>
+</pre><p>Is this change worth it? Bob Martin says that</p><blockquote><p>Intermediate object oriented programmers are too reluctant to extract classes.</p></blockquote><p>We should be aggressive, according to Bob Martin, about extracting classes because of the clarity that such refactors produce. That is to say, it's worth it to make the relationship between <code>start_date</code> and <code>end_date</code> explicit.</p><h2>Coupling</h2><p>There are two more concrete reasons that make the above refactor worthwhile. First, we've made our code less <em>coupled</em>. Coupling occurs when changing one piece of software requires you to change another. In other words, when two components are coupled, it's hard to change one component without breaking the other. Low coupling is good because it makes it easier for maintainers to respond to change.</p><p>In the above refactor, we reduced <em>parameter coupling</em>. The argument here is that functions that have more arguments are worse than functions that have fewer. The reason for this is that, for every additional parameter, we introduce another bit of potential coupling. In other words, we make it easier for a caller to accidentally cause our function to "blow up." By reducing the number of arguments required above from three to two, we reduce this potential coupling.</p><h2>Cleaning Up</h2><p>The second reason the above refactor is worthwhile is that it creates an ideal place for us hang new behavior. This insight leads us to another refactor.</p><pre class=chroma><span class=nb>require</span> <span class=s1>&#39;date&#39;</span>
+<span class=nb>require</span> <span class=s1>&#39;ostruct&#39;</span>
+
+<span class=k>class</span> <span class=nc>OrdersReport</span>
+  <span class=k>def</span> <span class=nf>initialize</span><span class=p>(</span><span class=n>orders</span><span class=p>,</span> <span class=n>date_range</span><span class=p>)</span>
+    <span class=vi>@orders</span> <span class=o>=</span> <span class=n>orders</span>
+    <span class=vi>@date_range</span> <span class=o>=</span> <span class=n>date_range</span>
+  <span class=k>end</span>
+
+  <span class=k>def</span> <span class=nf>total_sales_within_date_range</span>
+    <span class=n>orders_within_range</span><span class=o>.</span>
+	  <span class=n>map</span><span class=p>(</span><span class=o>&amp;</span><span class=ss>:amount</span><span class=p>)</span><span class=o>.</span><span class=n>inject</span><span class=p>(</span><span class=mi>0</span><span class=p>)</span> <span class=p>{</span> <span class=o>|</span><span class=n>sum</span><span class=p>,</span> <span class=n>amount</span><span class=o>|</span> <span class=n>amount</span> <span class=o>+</span> <span class=n>sum</span> <span class=p>}</span>
+  <span class=k>end</span>
+
+  <span class=kp>private</span>
+
+  <span class=k>def</span> <span class=nf>orders_within_range</span>
+    <span class=vi>@orders</span><span class=o>.</span><span class=n>select</span> <span class=p>{</span> <span class=o>|</span><span class=n>order</span><span class=o>|</span> <span class=n>order</span><span class=o>.</span><span class=n>placed_between?</span><span class=p>(</span><span class=vi>@date_range</span><span class=p>)</span> <span class=p>}</span>
+  <span class=k>end</span>
+<span class=k>end</span>
+
+<span class=k>class</span> <span class=nc>DateRange</span> <span class=o>&lt;</span> <span class=no>Struct</span><span class=o>.</span><span class=n>new</span><span class=p>(</span><span class=ss>:start_date</span><span class=p>,</span> <span class=ss>:end_date</span><span class=p>)</span>
+<span class=hl>  <span class=k>def</span> <span class=nf>include?</span><span class=p>(</span><span class=n>date</span><span class=p>)</span>
+</span><span class=hl>    <span class=n>date</span> <span class=o>&gt;=</span> <span class=nb>self</span><span class=o>.</span><span class=n>start_date</span> <span class=o>&amp;&amp;</span> <span class=n>date</span> <span class=o>&lt;=</span> <span class=nb>self</span><span class=o>.</span><span class=n>end_date</span>
+</span><span class=hl>  <span class=k>end</span>
+</span><span class=k>end</span>
+
+<span class=k>class</span> <span class=nc>Order</span> <span class=o>&lt;</span> <span class=no>OpenStruct</span>
+  <span class=k>def</span> <span class=nf>placed_between?</span><span class=p>(</span><span class=n>date_range</span><span class=p>)</span>
+<span class=hl>    <span class=n>date_range</span><span class=o>.</span><span class=n>include?</span><span class=p>(</span><span class=nb>self</span><span class=o>.</span><span class=n>placed_at</span><span class=p>)</span>
+</span>  <span class=k>end</span>
+<span class=k>end</span>
+</pre><p>It makes more sense for <code>DateRange</code> to do the date comparison than for <code>order</code> to do it, since <code>DateRange</code> is intrinsically concerned with dates and their comparisons. <code>DateRange</code> is also now more useful and more likely to be reused. Moreover, concerns are now clearly separated across modules and the concerns of each module make sense.</p><h2>Null Object Pattern</h2><p>Consider the following code.</p><pre class=chroma><span class=nb>require</span> <span class=s1>&#39;ostruct&#39;</span>
+
+<span class=k>class</span> <span class=nc>JobSite</span>
+  <span class=kp>attr_reader</span> <span class=ss>:contact</span>
+
+  <span class=k>def</span> <span class=nf>initialize</span><span class=p>(</span><span class=n>location</span><span class=p>,</span> <span class=n>contact</span><span class=p>)</span>
+    <span class=vi>@location</span> <span class=o>=</span> <span class=n>location</span>
+    <span class=vi>@contact</span> <span class=o>=</span> <span class=n>contact</span>
+  <span class=k>end</span>
+
+  <span class=k>def</span> <span class=nf>contact_name</span>
+    <span class=k>if</span> <span class=n>contact</span>
+      <span class=n>contact</span><span class=o>.</span><span class=n>name</span>
+    <span class=k>else</span>
+      <span class=s1>&#39;no name&#39;</span>
+    <span class=k>end</span>
+  <span class=k>end</span>
+
+  <span class=k>def</span> <span class=nf>contact_phone</span>
+    <span class=k>if</span> <span class=n>contact</span>
+      <span class=n>contact</span><span class=o>.</span><span class=n>phone</span>
+    <span class=k>else</span>
+      <span class=s1>&#39;no phone&#39;</span>
+    <span class=k>end</span>
+  <span class=k>end</span>
+
+  <span class=k>def</span> <span class=nf>email_contact</span><span class=p>(</span><span class=n>email_body</span><span class=p>)</span>
+    <span class=k>if</span> <span class=n>contact</span>
+      <span class=n>contact</span><span class=o>.</span><span class=n>deliver_personalized_email</span><span class=p>(</span><span class=n>email_body</span><span class=p>)</span>
+    <span class=k>end</span>
+  <span class=k>end</span>
+<span class=k>end</span>
+
+<span class=k>class</span> <span class=nc>Contact</span> <span class=o>&lt;</span> <span class=no>OpenStruct</span>
+  <span class=k>def</span> <span class=nf>deliver_personalized_email</span><span class=p>(</span><span class=n>email</span><span class=p>)</span>
+    <span class=n>email</span><span class=o>.</span><span class=n>deliver</span><span class=p>(</span><span class=nb>name</span><span class=p>)</span>
+  <span class=k>end</span>
+<span class=k>end</span>
+</pre><p>The complexity of the above code is due to the way it handles the case when <code>contact</code> is null. There are several "ugly" conditionals. This code can be improved by refactoring it to follow the <em>null object pattern</em>.</p><pre class=chroma><span class=nb>require</span> <span class=s1>&#39;ostruct&#39;</span>
+
+<span class=k>class</span> <span class=nc>JobSite</span>
+  <span class=kp>attr_reader</span> <span class=ss>:contact</span>
+
+  <span class=k>def</span> <span class=nf>initialize</span><span class=p>(</span><span class=n>location</span><span class=p>,</span> <span class=n>contact</span><span class=p>)</span>
+    <span class=vi>@location</span> <span class=o>=</span> <span class=n>location</span>
+<span class=hl>    <span class=vi>@contact</span> <span class=o>=</span> <span class=n>contact</span> <span class=o>||</span> <span class=no>NullContact</span><span class=o>.</span><span class=n>new</span>
+</span>  <span class=k>end</span>
+
+  <span class=k>def</span> <span class=nf>contact_name</span>
+    <span class=n>contact</span><span class=o>.</span><span class=n>name</span>
+  <span class=k>end</span>
+
+  <span class=k>def</span> <span class=nf>contact_phone</span>
+    <span class=n>contact</span><span class=o>.</span><span class=n>phone</span>
+  <span class=k>end</span>
+
+  <span class=k>def</span> <span class=nf>email_contact</span><span class=p>(</span><span class=n>email_body</span><span class=p>)</span>
+    <span class=n>contact</span><span class=o>.</span><span class=n>deliver_personalized_email</span><span class=p>(</span><span class=n>email_body</span><span class=p>)</span>
+  <span class=k>end</span>
+<span class=k>end</span>
+
+<span class=hl><span class=k>class</span> <span class=nc>NullContact</span>
+</span><span class=hl>  <span class=k>def</span> <span class=nf>name</span>
+</span><span class=hl>    <span class=s1>&#39;no name&#39;</span>
+</span><span class=hl>  <span class=k>end</span>
+</span><span class=hl>
+</span><span class=hl>  <span class=k>def</span> <span class=nf>phone</span>
+</span><span class=hl>    <span class=s1>&#39;no phone&#39;</span>
+</span><span class=hl>  <span class=k>end</span>
+</span><span class=hl>
+</span><span class=hl>  <span class=k>def</span> <span class=nf>deliver_personalized_email</span><span class=p>(</span><span class=n>email_body</span><span class=p>)</span>
+</span><span class=hl>  <span class=k>end</span>
+</span><span class=hl><span class=k>end</span>
+</span>
+<span class=k>class</span> <span class=nc>Contact</span> <span class=o>&lt;</span> <span class=no>OpenStruct</span>
+  <span class=k>def</span> <span class=nf>deliver_personalized_email</span><span class=p>(</span><span class=n>email</span><span class=p>)</span>
+    <span class=n>email</span><span class=o>.</span><span class=n>deliver</span><span class=p>(</span><span class=nb>name</span><span class=p>)</span>
+  <span class=k>end</span>
+<span class=k>end</span>
+</pre><p>For the cost of <code>NullContact</code>, we've removed complex conditionals, about 12 lines of code, and made the methods of <code>JobSite</code> more obvious and direct to readers.</p><p>There's a problem with this refactor, however, which is that <code>NullContact</code> and <code>JobSite</code> are coupled. If we change <code>JobSite</code>, we might have to add new methods to <code>NullContact</code>. This is a valid concern. In this case, the simplicity we get in exchange is worth the cost, but in other cases, the cost might not be worth it.</p><h2>Depend Upon Abstractions</h2><p>Consider the following code, which is concerned with charging customers. <code>BraintreeGem</code> is a payment provider.</p><pre class=chroma><span class=k>class</span> <span class=nc>User</span>
+  <span class=no>SUBSCRIPTION_AMOUNT</span> <span class=o>=</span> <span class=mi>10</span><span class=o>.</span><span class=n>to_money</span>
+
+  <span class=k>def</span> <span class=nf>charge_for_subscription</span>
+    <span class=n>braintree_id</span> <span class=o>=</span> <span class=no>BraintreeGem</span><span class=o>.</span><span class=n>find_user</span><span class=p>(</span><span class=n>email</span><span class=p>)</span><span class=o>.</span><span class=n>braintree_id</span>
+    <span class=no>BraintreeGem</span><span class=o>.</span><span class=n>charge</span><span class=p>(</span><span class=n>braintree_id</span><span class=p>,</span> <span class=no>SUBSCRIPTION_AMOUNT</span><span class=p>)</span>
+  <span class=k>end</span>
+
+  <span class=k>def</span> <span class=nf>create_as_customer</span>
+    <span class=no>BraintreeGem</span><span class=o>.</span><span class=n>create_customer</span><span class=p>(</span><span class=n>email</span><span class=p>)</span>
+  <span class=k>end</span>
+<span class=k>end</span>
+
+<span class=k>class</span> <span class=nc>Refund</span>
+  <span class=k>def</span> <span class=nf>process!</span>
+    <span class=n>transaction_id</span> <span class=o>=</span> <span class=no>BraintreeGem</span><span class=o>.</span><span class=n>find_transaction</span><span class=p>(</span><span class=n>order</span><span class=o>.</span><span class=n>braintree_id</span><span class=p>)</span>
+    <span class=no>BraintreeGem</span><span class=o>.</span><span class=n>refund</span><span class=p>(</span><span class=n>transaction_id</span><span class=p>,</span> <span class=n>amount</span><span class=p>)</span>
+  <span class=k>end</span>
+<span class=k>end</span>
+</pre><p>This code is decent, but what if we switch payment providers? To do that, I'd need to do "shotgun surgery," where I'd have to open up many files and change every case where <code>BraintreeGem</code> is used. This is bad because it's labor intensive and error prone. It would be better if I could change <code>BraintreeGem</code> in one place and everything would still work.</p><p>What if I don't think it's likely for my payment provider to change? Keep in mind that any software dependency can change and their APIs can change. It's worthwhile to guard against such possibilities.</p><p>Here's another way of writing the code above.</p><pre class=chroma><span class=k>class</span> <span class=nc>User</span>
+  <span class=k>def</span> <span class=nf>charge_for_subscription</span>
+    <span class=no>PaymentGateway</span><span class=o>.</span><span class=n>new</span><span class=o>.</span><span class=n>charge_for_subscription</span><span class=p>(</span><span class=nb>self</span><span class=p>)</span>
+  <span class=k>end</span>
+
+  <span class=k>def</span> <span class=nf>create_as_customer</span>
+    <span class=no>PaymentGateway</span><span class=o>.</span><span class=n>new</span><span class=o>.</span><span class=n>create_customer</span><span class=p>(</span><span class=nb>self</span><span class=p>)</span>
+  <span class=k>end</span>
+<span class=k>end</span>
+
+<span class=k>class</span> <span class=nc>Refund</span>
+  <span class=k>def</span> <span class=nf>process!</span>
+    <span class=no>PaymentGateway</span><span class=o>.</span><span class=n>new</span><span class=o>.</span><span class=n>refund</span><span class=p>(</span><span class=nb>self</span><span class=p>)</span>
+  <span class=k>end</span>
+<span class=k>end</span>
+
+<span class=c1># lib/payment_gateway.rb</span>
+<span class=k>class</span> <span class=nc>PaymentGateway</span>
+  <span class=no>SUBSCRIPTION_AMOUNT</span> <span class=o>=</span> <span class=mi>10</span><span class=o>.</span><span class=n>to_money</span>
+
+  <span class=k>def</span> <span class=nf>initialize</span><span class=p>(</span><span class=n>gateway</span> <span class=o>=</span> <span class=no>BraintreeGem</span><span class=p>)</span>
+    <span class=vi>@gateway</span> <span class=o>=</span> <span class=n>gateway</span>
+  <span class=k>end</span>
+
+  <span class=k>def</span> <span class=nf>charge_for_subscription</span><span class=p>(</span><span class=n>user</span><span class=p>)</span>
+    <span class=n>braintree_id</span> <span class=o>=</span> <span class=vi>@gateway</span><span class=o>.</span><span class=n>find_user</span><span class=p>(</span><span class=n>user</span><span class=o>.</span><span class=n>email</span><span class=p>)</span><span class=o>.</span><span class=n>braintree_id</span>
+    <span class=vi>@gateway</span><span class=o>.</span><span class=n>charge</span><span class=p>(</span><span class=n>braintree_id</span><span class=p>,</span> <span class=no>SUBSCRIPTION_AMOUNT</span><span class=p>)</span>
+  <span class=k>end</span>
+
+  <span class=k>def</span> <span class=nf>create_customer</span><span class=p>(</span><span class=n>user</span><span class=p>)</span>
+    <span class=vi>@gateway</span><span class=o>.</span><span class=n>create_customer</span><span class=p>(</span><span class=n>user</span><span class=o>.</span><span class=n>email</span><span class=p>)</span>
+  <span class=k>end</span>
+
+  <span class=k>def</span> <span class=nf>refund</span><span class=p>(</span><span class=n>refund_model</span><span class=p>)</span>
+    <span class=n>transaction_id</span> <span class=o>=</span> <span class=vi>@gateway</span><span class=o>.</span><span class=n>find_transaction</span><span class=p>(</span><span class=n>order</span><span class=o>.</span><span class=n>braintree_id</span><span class=p>)</span>
+    <span class=vi>@gateway</span><span class=o>.</span><span class=n>refund</span><span class=p>(</span><span class=n>transaction_id</span><span class=p>,</span> <span class=n>order</span><span class=o>.</span><span class=n>amount</span><span class=p>)</span>
+  <span class=k>end</span>
+<span class=k>end</span>
+</pre><p>There's a number advantages to the above refactor.</p><ul><li>My business logic only knows about <code>PaymendGateway</code> and we're not directly dependent on third-party code.</li><li>If I change payment providers from <code>BraintreeGem</code>, all I need to do is update <code>PaymentGateway</code>. I don't need to do "shotgun surgery."</li><li>Testing is improved. I only need to test my code that depends on <code>PaymentGateway</code> which is easier to stub. I don't test my dependencies.</li></ul><h2>When to refactor?</h2><p>Kent Beck, author of <em>Extreme Programming</em> and other books, <a href="https://twitter.com/kentbeck/status/250733358307500032?lang=en">says</a></p><blockquote><p>for each desired change, make the change easy (warning: this may be hard), then make the easy change</p></blockquote><p>Good candidates for refactoring include "God" objects, high-churn files, and files with bugs.</p><ul><li>"God" objects are objects that many things depend on and which violate the single responsibility principle.</li><li>High-churn files are files that change a lot. This usually means that the ideas expressed in these files are not well understood.</li><li>The presence of one bug often indicates the presence of another.</li></ul></div><aside class=aside-post-container><div class="aside-post left"></div><div class="aside-post right"><a href=/articles/2021-01-27-posterity.html><p class=aside-post-arrow>Older &#8594;</p><p class=aside-post-title>Posterity</p></a></div></aside></article></main><footer><span>© 2021. All rights reserved. <a rel=alternate type=application/rss+xml href=/rss.xml>RSS</a>.</span></footer></body></html>

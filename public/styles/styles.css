@@ -504,17 +504,20 @@ article {
 .article-title a {
   color: #303030;
   margin-top: 0;
+  margin-bottom: 0.4rem;
   font-size: 1.3rem;
 }
 
 .article-date {
   display: block;
-  margin-top: 0rem;
+  margin-top: 0;
+  margin-bottom: 0.4rem;
   font-size: 0.9rem;
 }
 
 .article-description {
-  margin-top: 0.6rem;
+  margin-top: 0;
+  margin-bottom: 0.4rem;
 }
 
 p.small {
@@ -603,6 +606,10 @@ p.pagination-item > a:hover, p.pagination-item > a:focus {
 .article-list-item > a:hover > .article-title {
   text-decoration: underline;
   color: #000000;
+}
+
+.article-keep-reading {
+  font-size: 0.9rem;
 }
 
 .img-grow--flex-center {

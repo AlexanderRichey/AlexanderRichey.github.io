@@ -197,7 +197,6 @@ h6 {
 }
 
 h1 {
-  margin-top: 1.2rem;
   font-size: 2rem;
 }
 
@@ -467,6 +466,7 @@ sup {
 @media screen and (max-width: 800px) {
   .top-header {
     padding: 1rem;
+    margin-bottom: 0.5rem;
   }
 }
 
@@ -525,7 +525,6 @@ p.small {
 /* Pagination */
 .pagination {
   display: flex;
-  padding-bottom: 4rem;
 }
 
 p.pagination-item {

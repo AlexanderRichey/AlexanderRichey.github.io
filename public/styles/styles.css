@@ -458,7 +458,6 @@ sup {
 .top-header {
   display: flex;
   padding: 2rem;
-  margin-bottom: 1rem;
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
@@ -505,12 +504,17 @@ article {
 .article-title a {
   color: #303030;
   margin-top: 0;
+  font-size: 1.3rem;
 }
 
 .article-date {
   display: block;
   margin-top: 0rem;
   font-size: 0.9rem;
+}
+
+.article-description {
+  margin-top: 0.6rem;
 }
 
 p.small {
@@ -534,13 +538,13 @@ p.pagination-item {
     Roboto, Oxygen, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-/* p.pagination-item a { */
-/*   text-decoration: none; */
-/* } */
+p.pagination-item a {
+  text-decoration: none;
+}
 
-/* p.pagination-item > a:hover, p.pagination-item > a:focus { */
-/*   text-decoration: underline; */
-/* } */
+p.pagination-item > a:hover, p.pagination-item > a:focus {
+  text-decoration: underline;
+}
 
 .not-found {
   text-align: center;
@@ -589,18 +593,17 @@ p.pagination-item {
   text-decoration: underline;
 }
 
-.article-list {
-  margin-top: 2rem;
-}
-
-@media screen and (max-width: 800px) {
-  .article-list {
-    margin-top: unset;
-  }
-}
-
 .article-list-item {
-  margin-bottom: 1.4rem;
+  margin-bottom: 2rem;
+}
+
+.article-list-item a {
+  text-decoration: none;
+}
+
+.article-list-item > a:hover > .article-title {
+  text-decoration: underline;
+  color: #000000;
 }
 
 .img-grow--flex-center {

@@ -2,6 +2,7 @@
 layout: post
 title: Setting Up Server Side Rendering with React, Redux, and Django
 date: 2017-12-29
+description: At Meural, we decided to implement server side rendering in order to increase our SEO exposure and to make social media sharing more effective. In this post, I’ll talk about how server side rendering works and the implementation that I developed.
 ---
 <div class="message">
 My article on server side rendering originally published on Meural's <a href="https://medium.com/meural-product-development/setting-up-server-side-rendering-with-react-redux-and-django-4d6f4d2fd705">Product Blog</a>.

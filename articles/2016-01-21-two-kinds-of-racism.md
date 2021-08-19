@@ -2,6 +2,7 @@
 layout: post
 title: Two Kinds of Racism
 date: 2016-01-21
+description: A recent article conflates implicit and explicit racism.
 ---
 In George Yancy’s article “[Dear White America](http://opinionator.blogs.nytimes.com/2015/12/24/dear-white-america/),” he writes:
 

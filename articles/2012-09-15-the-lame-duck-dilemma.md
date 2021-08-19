@@ -2,6 +2,7 @@
 layout: post
 title: The Lame Duck Dilemma
 date: 2012-09-15
+description: Why is obstructionism in Congress so detrimental? I think that a surprising amount of insight can be gained from considering a famous ethical case called the prisoner’s dilemma.
 ---
 There has been no shortage of articles declaring that the lame duck congress is intransigent. Paul Krugman of the New York Times, for example, [writes](http://www.nytimes.com/2012/08/03/opinion/krugman-debt-depression-demarco.html?partner=rssnyt&amp;emc=rss) that the most striking feature of Obama’s presidency is not his management of the troubled economy, but “the scorched-earth opposition of Republicans.” Perhaps the most salient episode of Republican opposition occurred last summer, when Republicans threatened a government shut-down by posturing to deny raising the debt-ceiling and [reduced the nation’s credit rating](http://www.nytimes.com/2011/08/06/business/us-debt-downgraded-by-sp.html?ref=nationaldebtus) in the process.
 

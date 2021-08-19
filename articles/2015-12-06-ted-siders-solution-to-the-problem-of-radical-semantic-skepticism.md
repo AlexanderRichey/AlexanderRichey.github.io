@@ -2,6 +2,7 @@
 layout: post
 title: Ted Sider’s Solution to the Problem of Radical Semantic Skepticism
 date: 2015-12-06
+description: Ted Sider’s proposed solution to the problem of radical semantic skepticism doesn't really work.
 ---
 <a href="http://dx.doi.org/10.7916/D8RV0N61">Link</a> to a paper I wrote on Columbia Academic Commons. Here's the abstract:
 

@@ -2,6 +2,7 @@
 layout: post
 title: "Minimum Wage Bill: Obama's $9 Proposal Won't Increase Unemployment"
 date: 2013-06-09
+description: In the months following the State of the Union address, in which Obama called to raise the federal minimum wage from $7.25 to $9 an hour, a series of conservative arguments about the negative effects of minimum wage hikes has appeared. Most of these arguments are false or highly confused. They fail to accurately weigh the positive and negative effects of the minimum wage or they suffer from unawareness of the relevant facts.
 ---
 <p>
   <div class="fixed-img-spreader sixty">

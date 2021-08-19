@@ -2,6 +2,7 @@
 layout: post
 title: Against Pessimism
 date: 2014-02-24
+description: If the trends of history are prognostic, then optimism is the sounder view.
 ---
 <p>
   <div class="fixed-img-spreader sixty">
@@ -69,6 +70,6 @@ I do not mean to suggest that the western world is doing fine or to minimize the
 
 It seems to me that, in writing his article, Mamet started with a certain feeling and then formed a reading of history to justify it, picking out the facts that supported his view. That's shoddy reasoning. Sound reasoning moves in the opposite direction: You start by investigating the facts, form an interpretation that fits them, and then adjust your feeling accordingly.
 
-If the trends of history are in any way prognostic of the future, then optimism is the sounder view.
+If the trends of history are in any way prognostic, then optimism is the sounder view.
 
 (Image via [Evolllution](http://www.evolllution.com/distance_online_learning/a-glass-half-full-and-half-empty-the-pitfalls-and-possibilities-of-moocs/).)

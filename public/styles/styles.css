@@ -219,7 +219,6 @@ h6 {
 /* Body text */
 p {
   font-family: "Literata", Georgia, Times, Times New Roman, "serif";
-  letter-spacing: 0.01rem;
   margin-top: 0;
   margin-bottom: 1rem;
 }
@@ -511,13 +510,13 @@ article {
 .article-date {
   display: block;
   margin-top: 0;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.6rem;
   font-size: 0.9rem;
 }
 
 .article-description {
   margin-top: 0;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.6rem;
 }
 
 p.small {
@@ -597,6 +596,8 @@ p.pagination-item > a:hover, p.pagination-item > a:focus {
 
 .article-list-item {
   margin-bottom: 2rem;
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 2rem;
 }
 
 .article-list-item a {

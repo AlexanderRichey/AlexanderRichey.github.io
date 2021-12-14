@@ -17,8 +17,8 @@
 [build]
   postsIndexPage = "index.html"
   postsPerPage = 5
-  chromaTheme = "dracula"
+  chromaTheme = "github"
   chromaLineNumbers = false
-  chromaWithClasses = true
+  chromaWithClasses = false
   rss = true
   hash = [".js", ".css"]

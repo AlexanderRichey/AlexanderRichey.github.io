@@ -1,7 +1,7 @@
 ---
 title: Notes on Ben Orenstein's "Refactoring from Good to Great"
 date: 2021-04-01
-description: I watched Ben Orenstein's talk "Refactoring from Good to Great" at the beginning of my career and it made big and, I think, positive impact on how I write code. Here are some notes I took on the original talk to make its content easier to share.
+description: I watched Ben Orenstein's talk "Refactoring from Good to Great" at the beginning of my career and it made big and, I think, positive...
 ---
 
 <div class="message">

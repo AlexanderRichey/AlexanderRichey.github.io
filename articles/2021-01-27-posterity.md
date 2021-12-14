@@ -1,7 +1,7 @@
 ---
 title: Posterity
 date: 2021-01-27
-description: I decided to shut down Convo last week, a project that I had labored on for more than a year. What led me to this decision was that I finally realized that Convo lacked cohesion among its features—it wasn't sure what it was trying to be and I wasn't sure anymore either.
+description: I decided to shut down Convo last week, a project that I had labored on for more than a year. What led me to this decision was that I finally...
 ---
 
 <p>

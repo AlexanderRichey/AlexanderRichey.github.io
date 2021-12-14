@@ -2,7 +2,7 @@
 layout: post
 title: Bringing Meural's Frontend to the Bleeding Edge
 date: 2018-07-10
-description: When we decided to redesign our flagship web app at Meural, we took the opportunity to rethink our approach to React and other frontend infrastructure. We ultimately decided to migrate from our own home-cooked server side rendering solution to Next.js, to change our approach to data handling with Redux, and to adopt styled-components. These decisions enabled us to develop and deploy our new frontend in just two months. In this article, I’ll talk about the upshot of these choices and about how things have worked out in production.
+description: When we decided to redesign our flagship web app at Meural, we took the opportunity to rethink our approach to React...
 ---
 <div class="message">
 My article on <a href="https://my.meural.com">my.meural</a>'s redesign originally published on Meural's <a href="https://medium.com/meural-product-development/bringing-our-frontend-to-the-bleeding-edge-dc81b89f8d14">Product Blog</a>.

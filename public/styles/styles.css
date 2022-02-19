@@ -218,10 +218,12 @@ p {
   font-family: "Literata", Georgia, Times, Times New Roman, "serif";
   margin-top: 0;
   margin-bottom: 1rem;
+  line-height: 1.5em;
 }
 
 strong {
   color: #303030;
+  font-weight: bold;
 }
 
 em {
@@ -277,6 +279,7 @@ code,
 pre {
   font-family: Monaco, Menlo, "Courier New", monospace;
   font-size: 0.85rem;
+  line-height: 1em;
 }
 
 @media screen and (max-width: 568px) {

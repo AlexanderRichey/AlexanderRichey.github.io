@@ -1,7 +1,7 @@
 ---
 title: Why I Could Be Wrong
 date: 2022-03-04
-description: I maintain that there's always a possibility that, for almost anything I currently believe, it could be false.
+description: I maintain that there's a possibility that, for almost anything I currently believe, it could be false.
 
 ---
 
@@ -127,4 +127,4 @@ The argument I have given above, if successful and if they would hear it, should
 
 I want to caution that these reflections do not entail that one should become intellectually unmoored, losing confidence about all one's beliefs. Nor do they entail that one should doubt the advance of scientific knowledge or the efficacy of vaccines, for example. I also do not mean to suggest that one should hold her beliefs in abeyance indefinitely — in the course of life, one must eventually make one's best judgement, decide, and act. What these reflections do entail is that one should bring a degree of humility to her epistemic considerations. There is a degree of humility that respects the epistemological situation one finds herself in but which does not prevent due confidence in one's beliefs.
 
-I am urging one to give up on the fiction of certainty, to learn how to float in mid-air, to be sensitive to sound evidence from all sides, the way the lotus flower is sensitive to the direction of the shadows and the Sun.
+I am urging one to give up on the fiction of certainty, but not on independent truth. Even if certainty in it may always elude one's grasp, the aim of truth is the only one worth having.

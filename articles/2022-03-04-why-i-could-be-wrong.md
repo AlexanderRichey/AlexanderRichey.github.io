@@ -61,7 +61,7 @@ Basically, when I say of some domain that it's *real,* what I mean is that it is
 
 The language I choose to use can make a difference in the way I express facts, but it doesn't change the underlying facts themselves. For example, in binary, one plus one is ten, and not two. But whether I express myself in binary or decimal does not affect the fact in question, namely that one plus one is two in decimal and ten in binary. Such facts are, in this way, mind and language independent.
 
-Similar remarks apply to the claim that George Washington was the first president of the United States of America or that the speed of light is one hundred eighty-six thousand miles per hour. These facts are as they are regardless of my mental attitude toward them, or whatever language, theory, or concept I use to express them.
+Similar remarks apply to the claim that George Washington was the first president of the United States of America or that the speed of light is one hundred eighty-six thousand miles per second. These facts are as they are regardless of my mental attitude toward them, or whatever language, theory, or concept I use to express them.
 
 Not all domains are *"real"* in this sense. My taste in beer, for example, isn't *independent* of my own mind. In fact, it *just is* what I think about it or what I experience it to be. This is in part because I have direct epistemic access to my own mind, my own experiences and thoughts, or at least to some of them.
 

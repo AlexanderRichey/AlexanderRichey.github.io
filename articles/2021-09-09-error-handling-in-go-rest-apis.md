@@ -13,7 +13,7 @@ In writing a REST API, we have to deal with at least two types of errors.
 - **Internal errors:** These errors are not that fault of the user. As the author of the codebase in question, these errors *are my fault* or the fault of one or more of my dependencies. They often mean that there's a bug in the code that I wrote, or other code that I'm using, or that a dependent service is down. These errors are in the HTTP status range 500-599.
 
 
-The problem is that Go's standard library's `errors` package does not straightforwardly make it easy to distinguish these cases. Here's an example. Let's say I have a simple HTTP handler that validates the incoming request and returns an error if the validation fails and does some work if the validation succeeds.
+The problem is that Go's standard library's `errors` package does not make it easy to distinguish these cases. Here's an example. Let's say I have a simple HTTP handler that validates the incoming request and returns an error if the validation fails and does some work if the validation succeeds.
 
 ```go
 func MyHandler(w http.ResponseWriter, r *http.Request) {

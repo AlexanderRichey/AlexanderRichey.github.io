@@ -218,7 +218,7 @@ p {
   font-family: "Literata", Georgia, Times, Times New Roman, "serif";
   margin-top: 0;
   margin-bottom: 1rem;
-  line-height: 1.5em;
+  line-height: 1.55em;
 }
 
 strong {
@@ -239,6 +239,10 @@ article dl {
   margin-bottom: 1rem;
   margin-left: 2rem;
   list-style: unset;
+}
+
+article ol {
+  list-style: auto;
 }
 
 article li {
@@ -330,7 +334,7 @@ blockquote {
 blockquote p:last-child {
   margin-bottom: 0;
   letter-spacing: normal;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 }
 
 @media (min-width: 30em) {

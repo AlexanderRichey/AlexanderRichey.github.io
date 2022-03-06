@@ -41,17 +41,17 @@ If I were to answer *no,* then it seems to me that I would be incoherent. It wou
 
 The final component of my definition, (3), says that my belief in that p must be veridical. That is, my belief in that p must truly "reflect" or "correspond to" or "coincide with" reality. What I take this to mean, truth-functionally, is that my belief in any proposition p is veridical just when I believe that p and that p obtains. Therefore, if I believe that p and p, it then follows trivially that my belief is veridical. This claim is actually a theorem that is susceptible to logical formulation and derivation. Let B, P, and V stand for the sentences "I believe p," "p," and "My belief in p is veridical," respectively.
 
-1. B ∧ P ⟷ V (definition)
+1. (B ∧ P) ⟷ V (definition)
 2. B (assume)
 3. P (assume)
 
 Therefore,
 
-4. V (bi-conditional elimination by 1)
+4. V ([bi-conditional elimination](https://en.wikipedia.org/wiki/Biconditional_elimination) by 1)
 
 Leaving the formalism aside, I think that one can grasp this interpretation of veridicality intuitively. If my belief in that p is veridical just when that p obtains and I believe it, and we've already stipulated that, in all cases of certainty, that p does obtain and I do believe it, then, obviously, my belief *must* be veridical, since there's no possible case where it couldn't be.
 
-The next concept I'd like to setup is what philosophers call *realism,* which consists of the following two claims:
+The next concept I'd like to setup is what [philosophers call *realism,*](https://plato.stanford.edu/entries/realism-sem-challenge/#WhatMetaReal) which consists of the following two claims:
 
 > **Existence:** For any realist domain, the objects and relations of which it is composed exist.
 
@@ -73,7 +73,7 @@ Here's the argument:
 
 1. By *certainty,* if I am certain that p, then my belief in that p must be veridical.
 2. By *realism,* my belief in that p could fail to be veridical.
-3. Therefore, by *modes tollens,* I'm not certain that p.
+3. Therefore, by *[modus tollens](https://en.wikipedia.org/wiki/Modus_tollens),* I'm not certain that p.
 
 This argument says that I cannot be certain about anything about any realist domain. Realist domains, in my opinion, include math, physics, biology, logic, sociology, history, and more.
 
@@ -81,7 +81,7 @@ Is this conclusion too strong? I, for my part, don't think so. It is a commonpla
 
 ## Degrees of Belief
 
-In Tolstoy's novel *War and Peace,* he writes,
+In Tolstoy's novel *War and Peace,* [he writes](http://www.literaturepage.com/read/warandpeace-479.html),
 
 > All we can know is that we know nothing. And that's the height of human wisdom.
 
@@ -109,7 +109,7 @@ This is coherent, if a bit repetitive. The view, applied to itself, asserts the 
 
 Putting the question of coherence aside, there are two primary ways of pushing back against the argument I gave above. One is to revise what is meant by *certainty* in such a way that being certain that p does not entail that p is true, rejecting the first premise of my argument. This strategy could work, but it would necessitate such a transformation in our common-sense understanding of the way the word "certainty" is used that I don't think it's worth pursuing.
 
-The second way of pushing back is to revise or reject *realism,* specifically, its claim of *independence,* in order to reject the second premise of my argument. Many philosophers do reject *independence.* Berkeley, for example, famously claims that *all the world is in the mind.* And other philosophers make the same assertion, which enables some of them to say that we have direct epistemic access to the world and so we can't be wrong about it.
+The second way of pushing back is to revise or reject *realism,* specifically, its claim of *independence,* in order to reject the second premise of my argument. Many philosophers do reject *independence.* Berkeley, for example, famously claims that *[all the world is in the mind](https://plato.stanford.edu/entries/berkeley/#2).* And other philosophers make the same assertion, which enables some of them to say that we have direct epistemic access to the world and so we can't be wrong about it.
 
 In response to this strategy, I'd like to first reiterate that I'm not a realist about all domains, and so there may be some cases, such as the case of self-knowledge, which I mentioned above, where rejecting realism as stated is plausible. This would imply that certainty about such a domain may be possible — or, more accurately, that it is at least not ruled out by my argument.
 
@@ -125,6 +125,6 @@ In considering any practical question about what to do, in order to know what to
 
 The argument I have given above, if successful and if they would hear it, should induce sobriety among people with such confidence. I have argued that everyone is in principle fallible about any realist domain. What follows from this argument, if it is to be believed, is that certainty about any realist domain is impossible. All that can be achieved is confidence in one's beliefs.
 
-I want to caution that these reflections do not entail that one should become intellectually unmoored, losing confidence about all one's beliefs. Nor do they entail that one should doubt the advance of scientific knowledge or the efficacy of vaccines, for example. I also do not mean to suggest that one should hold her beliefs in abeyance indefinitely — in the course of life, one must eventually make one's best judgement, decide, and act. What these reflections do entail is that one should bring a degree of humility to her epistemic considerations. There is a degree of humility that respects the epistemological situation one finds herself in but which does not prevent due confidence in one's beliefs.
+I want to caution that these reflections do not entail that one should become intellectually unmoored, losing confidence about all one's beliefs. Nor do they entail that one should doubt the advance of scientific knowledge or the efficacy of vaccines, for example. I also do not mean to suggest that one should hold her beliefs in abeyance indefinitely, or raise the required level of confidence for action in any particular domain to something unreachable — in the course of life, one must eventually make one's best judgement, decide, and act. What these reflections do entail is that one should bring a degree of humility to her epistemic considerations. There is a degree of humility that respects the epistemological situation one finds herself in but which does not prevent due confidence in one's beliefs.
 
-I am urging one to give up on the fiction of certainty, but not on independent truth. Even if certainty in it may always elude one's grasp, the aim of truth is the only one worth having.
+I am urging one to give up on the fiction of certainty, but not on independent truth. In  one's epistemic considerations, even if certainty in it may always elude one's grasp, the aim of truth is the only one worth having.

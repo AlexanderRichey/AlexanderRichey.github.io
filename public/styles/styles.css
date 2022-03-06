@@ -249,6 +249,10 @@ article li {
   margin-bottom: 0.6rem;
 }
 
+article li a {
+  text-decoration: underline;
+}
+
 dt {
   font-weight: bold;
 }

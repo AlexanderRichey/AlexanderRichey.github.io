@@ -47,11 +47,11 @@ The final component of my definition, (3), says that my belief in that p must be
 
 Therefore,
 
-4. V ([bi-conditional elimination](https://en.wikipedia.org/wiki/Biconditional_elimination) by 1)
+4. V ([bi-conditional elimination](https://en.wikipedia.org/wiki/Biconditional_elimination) by 1, 2, and 3)
 
 Leaving the formalism aside, I think that one can grasp this interpretation of veridicality intuitively. If my belief in that p is veridical just when that p obtains and I believe it, and we've already stipulated that, in all cases of certainty, that p does obtain and I do believe it, then, obviously, my belief *must* be veridical, since there's no possible case where it couldn't be.
 
-The next concept I'd like to setup is what [philosophers call *realism,*](https://plato.stanford.edu/entries/realism-sem-challenge/#WhatMetaReal) which consists of the following two claims:
+The next concept I'd like to setup is what [philosophers call](https://plato.stanford.edu/entries/realism-sem-challenge/#WhatMetaReal) *realism,* which consists of the following two claims:
 
 > **Existence:** For any realist domain, the objects and relations of which it is composed exist.
 

@@ -77,7 +77,7 @@ func validateRequest(r *http.Request) error {
 		}
 		
 		return errors.E(op, err, http.StatusInternalServerError, map[string]string{
-			"message": "An internal error occured. Please try again.",
+			"message": "An internal error occurred. Please try again.",
 		})
 	}
 	
@@ -85,7 +85,7 @@ func validateRequest(r *http.Request) error {
 }
 ```
 
-Note that we've now distinguished between client and internal errors and provided a way to surface customer-facing error messages. The client error in this example is when a `session-id` cookie is missing from the incoming request. The internal error is when, for whatever reason, `r.Cookie()` returns an unexpected error. (In the [implementation of `r.Cookie()`](https://cs.opensource.google/go/go/+/refs/tags/go1.17:src/net/http/request.go;l=421-426), this isn't actually possible, but I think this example gets the point across if you pretend that `r.Cookie()` could return such an unexpected error. It may also be worth mentioning that this is a toy example whose only purpose is to demonstrate `errors.E()`—there may be better patterns for validating cookies.)
+Note that we've now distinguished between client and internal errors and provided a way to surface customer-facing error messages. The client error in this example occurs when a `session-id` cookie is missing from the incoming request. The internal error occurs when, for whatever reason, `r.Cookie()` returns an unexpected error. (In the [implementation of `r.Cookie()`](https://cs.opensource.google/go/go/+/refs/tags/go1.17:src/net/http/request.go;l=421-426), this isn't actually possible, but I think this example gets the point across if you pretend that `r.Cookie()` could return such an unexpected error. It may also be worth mentioning that this is a toy example whose only purpose is to demonstrate `errors.E()`—there may be better patterns for validating cookies.)
 
 Note that I also populated my project's `errors` package with other functions as well, such as `Is()`, `As()`, and `Unwrap()`, so that it can completely replace the standard library's `errors` package within the scope of my project.
 

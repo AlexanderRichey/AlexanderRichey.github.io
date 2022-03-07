@@ -15,7 +15,7 @@ description: In the months following the State of the Union address, in which Ob
 </p>
 
 <div class="message">
-  My article on <a href="http://www.policymic.com/articles/41325/minimum-wage-bill-obama-s-9-proposal-won-t-increase-unemployment">minimum wage</a>, originally published on <em>PolicyMic.</em>
+  My article on <a href="http://www.mic.com/articles/41325/minimum-wage-bill-obama-s-9-proposal-won-t-increase-unemployment">minimum wage</a>, originally published on <em>PolicyMic.</em>
 </div>
 
 In the months following the State of the Union address, in which Obama called to raise the federal minimum wage from $7.25 to $9 an hour, a series of conservative arguments about the negative effects of minimum wage hikes has appeared.

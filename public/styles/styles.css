@@ -242,7 +242,7 @@ article dl {
 }
 
 article ol {
-  list-style: auto;
+  list-style: decimal;
 }
 
 article li {
@@ -471,9 +471,12 @@ sup {
   width: 100%;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 756px) {
   .top-header {
-    padding: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     margin-bottom: 0.5rem;
   }
 }

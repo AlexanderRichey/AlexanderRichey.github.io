@@ -462,6 +462,12 @@ sup {
   margin-right: auto;
 }
 
+@media screen and (max-width: 756px) {
+  .container {
+    overflow: hidden;
+  }
+}
+
 /* Header */
 .top-header {
   display: flex;

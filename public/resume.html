@@ -94,15 +94,15 @@
     }
     h1 {
       font-size: 36px;
-      line-height: 40px;
+      line-height: 38px;
     }
     h2 {
-      font-size: 30px;
-      line-height: 40px;
+      font-size: 28px;
+      line-height: 30px;
     }
     h3 {
-      font-size: 24px;
-      line-height: 40px;
+      font-size: 22px;
+      line-height: 24px;
     }
     h1 small {
       font-size: 24px;
@@ -148,22 +148,36 @@
         padding-top: 0
       }
     }
+    .flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
   </style>
 </head>
 <body>
   <div class="container" id="content">
-    <h1><strong>Alexander Richey</strong> <small>Full Stack Web Developer</small></h1>
-    <h3><a href="mailto:alexander.richey@gmail.com">Email</a> | <a href="http://alexrichey.com">Homepage</a> | <a href="https://github.com/AlexanderRichey">GitHub</a> | <a href="https://linkedin.com/in/AlexanderRichey">LinkedIn</a></h3>
+    <div class="flex">
+      <h1><strong>Alexander Richey</strong></h1>
+      <h3><a href="mailto:alexander.richey@gmail.com">Email</a> | <a href="http://alexrichey.com">Homepage</a> | <a href="https://github.com/AlexanderRichey">GitHub</a> | <a href="https://linkedin.com/in/AlexanderRichey">LinkedIn</a></h3>
+    </div>
 
     <hr>
     <h2><strong>Experience</strong></h2>
 
     <h3>Amazon Web Services</h3>
-    <p><strong>Software Development Engineer</strong></p>
+    <p><strong>Senior Software Development Engineer</strong> (October 2021 - Present, Promotion), Software Development Engineer (January 2019 - September 2021)</p>
     <p>Jan 2019 – Present</p>
+    <ul>
+      <li>Authored original proposal, technical design, and API spec for <a href="https://aws.amazon.com/about-aws/whats-new/2020/11/announcing-amazon-lightsail-containers/">Lightsail Containers&#x2197;</a>, a new product within Amazon Lightsail that simplifies deployment of containerized applications</li>
+      <li>Led a team of eight engineers in developing Lightsail Containers by driving sprint planning and retro meetings, distributing tasks to team members, writing critical-path code, and by providing technical guidance to less experienced engineers</li>
+      <li>Participated in on-call roatation, responding to emergent issues in a timely manner, maintaining operational service health</li>
+      <li>Interviewed job candidates, mentored new hires and interns, and advised and signed-off on technical designs of junior team members</li>
+      <li>Delivered numerous other features across both backend and frontend, including an internal feature access control implementation, <a href="https://aws.amazon.com/about-aws/whats-new/2019/10/amazon-lightsail-now-provides-automatic-snapshots/">automatic backups for Lightsail Instances&#x2197;</a>, and <a href="https://aws.amazon.com/about-aws/whats-new/2021/05/amazon-lightsail-dns-supports-pointing-root-domains-lightsail-container-services/">other&#x2197;</a> <a href="https://aws.amazon.com/about-aws/whats-new/2022/01/lightsail-cdn-container-services/">features&#x2197;</a></li>
+    </ul>
 
     <h3>Meural</h3>
-    <p><strong>Senior Software Engineer, Technical Lead</strong> (July 2018 – December 2018), Software Engineer (May 2016 – June 2018)</p>
+    <p><strong>Senior Software Engineer, Technical Lead</strong> (July 2018 – December 2018, Promotion), Software Engineer (May 2016 – June 2018)</p>
     <p>May 2016 – December 2018</p>
     <p><em>Acquired by </em>Netgear<em> in September 2018, </em><a href='https://meural.com'>Meural&#x2197;</a> <em>is an art-tech company that produces a connected digital art frame and a platform for art discovery</em></p>
     <ul>
@@ -178,21 +192,16 @@
     <h3>Time Inc.</h3>
     <p><strong>Associate Manager, Digital Operations</strong></p>
     <p>May 2013 – July 2014</p>
-    <ul>
-      <li>Project managed twelve tablet and smartphone application launches among multiple teams</li>
-      <li>Devised process of updating webpages that reduced update time from two weeks to one day</li>
-      <li>Designed UX for authentication flows for all of Time Inc.’s 23 brands</li>
-      <li>Initiated and led revamp of customer service webpages to be mobile friendly</li>
-    </ul>
 
     <hr>
 
     <h2><strong>Skills</strong></h2>
     <ul>
-      <li><strong>Languages:</strong> Go, Python, Java, JavaScript (ES6, Webpack, Babel), Ruby, Shell Scripting, HTML5, CSS3</li>
-      <li><strong>Frameworks:</strong> Django, Rails, React, Next.js, Angular, Web Components, jQuery</li>
-      <li><strong>Databases:</strong> PostgreSQL, mySQL, MongoDB</li>
+      <li><strong>Languages:</strong> Go, Java, JavaScript (ES6, Webpack, Babel), Python, Ruby, Shell Scripting, HTML5, CSS3</li>
+      <li><strong>Frameworks:</strong> Django, Flask, Rails, React, Next.js, Angular, Web Components, jQuery</li>
+      <li><strong>Databases:</strong> DynamoDB, PostgreSQL, mySQL, MongoDB, GCP Datastore</li>
       <li><strong>DevOps:</strong> Docker, CI/CD, CircleCI, AWS, Terraform, Kubernetes</li>
+      <li><strong>Open Source:</strong> Author of <a href="https://github.com/AlexanderRichey/styled-react-modal">styled-react-modal&#x2197;</a>, which receives over 120k downloads per month on NPM</li>
     </ul>
 
     <hr>
@@ -200,13 +209,13 @@
     <h2><strong>Education</strong></h2>
 
     <h3>App Academy</h3>
-    <p><strong>Web Development</strong> | <em>February 2016 – May 2016</em></p>
+    <p><strong>Web Development</strong> | <em>May 2016</em></p>
 
     <h3>Columbia University, Graduate School of Arts and Science</h3>
-    <p><strong>M.A. Philosophy</strong> | <em>September 2013 – October 2015</em></p>
+    <p><strong>M.A. Philosophy</strong> | <em>October 2015</em></p>
 
     <h3>New York University, College of Arts and Science</h3>
-    <p><strong>B.A. Philosophy</strong> | <em>September 2009 – May 2012</em></p>
+    <p><strong>B.A. Philosophy</strong> | <em>May 2012</em></p>
 
   </div>
 </body>

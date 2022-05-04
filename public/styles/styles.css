@@ -94,6 +94,12 @@ video {
   vertical-align: baseline;
 }
 
+:root {
+  --serif-font-stack: "Source Serif Pro", Georgia, Times, Times New Roman, "serif";
+  --sans-font-stack: "Source Sans Pro", -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Oxygen, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
 /* HTML5 display-role reset for older browsers */
 article,
 aside,
@@ -141,8 +147,7 @@ table {
 /* Set default fonts */
 html {
   font: 1em/1.5 sans-serif;
-  font-family: "Public Sans", -apple-system, BlinkMacSystemFont, Segoe UI,
-    Roboto, Oxygen, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: var(--sans-font-stack);
   font-size: 18px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -151,7 +156,7 @@ html {
 
 /* Set default colors */
 body {
-  color: #333;
+  color: #000;
   background-color: #fff;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -159,7 +164,7 @@ body {
 
 /* Links */
 a {
-  color: #333;
+  color: #000;
   text-decoration: none;
 }
 
@@ -215,14 +220,13 @@ h6 {
 
 /* Body text */
 p {
-  font-family: "Literata", Georgia, Times, Times New Roman, "serif";
+  font-family: var(--serif-font-stack);
   margin-top: 0;
-  margin-bottom: 1rem;
-  line-height: 1.55em;
+  margin-bottom: 1.2rem;
+  line-height: 1.5em;
 }
 
 strong {
-  color: #303030;
   font-weight: bold;
 }
 
@@ -234,7 +238,7 @@ em {
 article ul,
 article ol,
 article dl {
-  font-family: "Literata", Georgia, Times, Times New Roman, "serif";
+  font-family: var(--serif-font-stack);
   margin-top: 0;
   margin-bottom: 1rem;
   margin-left: 2rem;
@@ -273,7 +277,6 @@ hr {
 abbr {
   font-size: 85%;
   font-weight: bold;
-  color: #555;
   text-transform: uppercase;
 }
 
@@ -330,8 +333,7 @@ pre code {
 /* Quotes */
 blockquote {
   padding: 0.5rem 1.5rem;
-  color: #333;
-  border-left: 0.1rem solid #333;
+  border-left: 0.1rem solid #000;
   margin: 1rem 0;
 }
 
@@ -364,9 +366,13 @@ img {
 .fixed-img-spreader {
   display: block;
   position: relative;
-  width: 100%;
+  width: 124%;
   overflow: hidden;
   border-radius: 0.4rem;
+  margin-left: -12%;
+  margin-right: -12%;
+  margin-top: 36px;
+  margin-bottom: 36px;
 }
 
 .fixed-img-spreader:before {
@@ -418,11 +424,6 @@ th {
   border: 1px solid #e5e5e5;
 }
 
-tbody tr:nth-child(odd) td,
-tbody tr:nth-child(odd) th {
-  background-color: #f9f9f9;
-}
-
 /* Footer */
 footer {
   display: flex;
@@ -437,6 +438,7 @@ footer a {
 sup {
   vertical-align: super;
   font-size: smaller;
+  line-height: 1em;
 }
 
 /* Message */
@@ -444,8 +446,7 @@ sup {
   margin-bottom: 1rem;
   font-size: 0.9rem;
   padding: 0.8rem 0.6rem;
-  color: #333;
-  border-left: 0.2rem solid #333;
+  border-left: 0.2rem solid #000;
 }
 
 .message a {
@@ -490,6 +491,7 @@ sup {
   font-size: 1rem;
   margin: 0;
   font-weight: 500;
+  font-family: var(--sans-font-stack);
 }
 
 .top-header-title small {
@@ -505,6 +507,8 @@ sup {
 /* Articles */
 article {
   margin-bottom: 2rem;
+  max-width: 70ch;
+  margin: auto;
 }
 
 .article-header {
@@ -513,10 +517,11 @@ article {
 
 .article-title,
 .article-title a {
-  color: #303030;
   margin-top: 0;
   margin-bottom: 0.4rem;
-  font-size: 1.3rem;
+  font-weight: 600;
+  font-size: 1.4rem;
+  font-family: var(--sans-font-stack);
 }
 
 .article-date {
@@ -544,11 +549,9 @@ p.small {
 p.pagination-item {
   margin-bottom: 0;
   width: 50%;
-  color: #767676;
   text-align: center;
   font: 1em/1.5 sans-serif;
-  font-family: "Public Sans", -apple-system, BlinkMacSystemFont, Segoe UI,
-    Roboto, Oxygen, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: var(--sans-font-stack);
 }
 
 p.pagination-item a {
@@ -580,7 +583,7 @@ p.pagination-item > a:hover, p.pagination-item > a:focus {
 
 .aside-post.left {
   text-align: left;
-  border-right: 1px solid #333;
+  border-right: 1px solid #000;
 }
 
 .aside-post.right {
@@ -589,8 +592,7 @@ p.pagination-item > a:hover, p.pagination-item > a:focus {
 
 .aside-post p {
   font-size: 0.9rem;
-  font-family: "Public Sans", -apple-system, BlinkMacSystemFont, Segoe UI,
-    Roboto, Oxygen, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: var(--sans-font-stack);
 }
 
 .aside-post-arrow {
@@ -627,7 +629,6 @@ p.pagination-item > a:hover, p.pagination-item > a:focus {
 
 .article-list-item > a:hover > .article-title {
   text-decoration: underline;
-  color: #000000;
 }
 
 .article-keep-reading {
@@ -660,4 +661,11 @@ p.pagination-item > a:hover, p.pagination-item > a:focus {
 
 .img-grow--target {
   cursor: zoom-in;
+}
+
+.disabled-link {
+  color: currentColor;
+  cursor: not-allowed;
+  opacity: 0.5;
+  text-decoration: none;
 }

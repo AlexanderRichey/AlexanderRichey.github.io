@@ -4,14 +4,18 @@
       <a href="{{ prev }}">&#8592; Newer</a>
     </p>
   {% else %}
-    <p class="pagination-item newer">&#8592; Newer</p>
+    <p class="pagination-item newer">
+      <a class="disabled-link">&#8592; Newer</a>
+    </p>
   {% endif %}
 
   {% if next %}
     <p class="pagination-item older">
-      <a href="{{ next }}">Older &#8594;</a>
+      <a disabled href="{{ next }}">Older &#8594;</a>
     </p>
   {% else %}
-    <p class="pagination-item older">Older &#8594;</p>
+    <p class="pagination-item older">
+      <a class="disabled-link">Older &#8594;</a>
+    </p>
   {% endif %}
 </div>

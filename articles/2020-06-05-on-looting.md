@@ -3,6 +3,7 @@ layout: post
 title: On Looting
 date: 2020-06-05
 description: It is in one’s interest to follow the law when one is also protected by the law. But if one is not protected by the law, then what interest...
+image: images/looting.jpg
 ---
 
 <p>

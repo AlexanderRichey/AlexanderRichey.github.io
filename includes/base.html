@@ -29,6 +29,13 @@
     ></script>
 
     <script src="{{ assets|key:'scripts/img-grow.js' }}"></script>
+
+    <meta property="og:site_name" content="Alex Richey">
+    <meta name="twitter:site" content="@AlexanderRichey">
+    <link href="https://twitter.com/AlexanderRichey" rel="me">
+    <link href="https://github.com/AlexanderRichey" rel="me">
+
+    {% block head %}{% endblock %}
   </head>
   <body>
     {% include 'header.html' %}

@@ -1,4 +1,20 @@
 {% extends 'base.html' %}
+
+{% block head %}
+  <meta property="og:title" content="{{ title }}" />
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="{{ pageDescription }}">
+
+  <meta name="twitter:title" content="{{ title }}">
+  <meta name="twitter:description" content="{{ pageDescription }}">
+
+  {% if frontMatter.image %}
+  <meta property="og:image" content="https://alexrichey.com/{{ frontMatter.image }}" />
+  <meta name="twitter:image" content="https://alexrichey.com/{{ frontMatter.image}}">
+  <meta name="twitter:card" content="summary_large_image">
+  {% endif %}
+{% endblock %}
+
 {% block content %}
 <article>
   <div class="article-header">

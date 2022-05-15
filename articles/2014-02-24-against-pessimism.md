@@ -3,6 +3,7 @@ layout: post
 title: Against Pessimism
 date: 2014-02-24
 description: If the trends of history are prognostic, then optimism is the sounder view.
+image: images/half-full-half-empty.jpg
 ---
 <p>
   <div class="fixed-img-spreader sixty">

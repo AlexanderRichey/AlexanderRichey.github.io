@@ -3,6 +3,7 @@ layout: post
 title: From Philosophy to Computer Science
 date: 2016-05-21
 description: When I say that I’m a software developer with a background in academic philosophy, many people react with surprise, as if I had jumped...
+image: images/philosophy.jpg
 ---
 <p>
   <div class="fixed-img-spreader fifty">

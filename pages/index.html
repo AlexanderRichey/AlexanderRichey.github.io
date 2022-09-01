@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
+
+{% block head %}
+  <link rel="canonical" href="https://alexrichey.com" />
+{% endblock %}
+
 {% block content %}
   <ul class="article-list">
   {% for article in posts %}

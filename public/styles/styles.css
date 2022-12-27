@@ -428,6 +428,7 @@ th {
 footer {
   display: flex;
   justify-content: center;
+  text-align: center;
   padding: 2rem;
 }
 
@@ -674,4 +675,8 @@ p.pagination-item > a:hover, p.pagination-item > a:focus {
   cursor: not-allowed;
   opacity: 0.5;
   text-decoration: none;
+}
+
+.nowrap {
+  white-space: nowrap;
 }

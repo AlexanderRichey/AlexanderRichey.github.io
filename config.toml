@@ -17,8 +17,8 @@
 [build]
   postsIndexPage = "index.html"
   postsPerPage = 5
-  chromaTheme = "github"
+  chromaTheme = "emacs"
   chromaLineNumbers = false
-  chromaWithClasses = false
+  chromaWithClasses = true
   rss = true
   hash = [".js", ".css"]

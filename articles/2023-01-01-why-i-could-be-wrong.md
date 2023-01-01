@@ -152,3 +152,5 @@ The argument I have given above, if successful and if they would hear it, should
 I want to caution that these reflections do not entail that one should abandon the pursuit of knowledge on the grounds that it is futile. Despite the fact that certainty may not be realizable, human knowledge advances. What these reflections do entail is that one should bring a degree of humility to her epistemic considerations. There is a degree of humility that respects the epistemological situation one finds herself in but which does not prevent due confidence in one’s beliefs.
 
 I am urging one to give up on the fiction of certainty, but not on independent truth. In one’s epistemic considerations, even if certainty in it may always elude one’s grasp, truth is the only thing worth striving for.
+
+<p class="small">Thanks to Said Saillant for comments on an earlier draft.</p>

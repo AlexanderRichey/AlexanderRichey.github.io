@@ -22,6 +22,30 @@ document.addEventListener("DOMContentLoaded", function () {
     };
   };
 
+  const initHeader = debounce(function () {
+    const header = document.getElementsByTagName("header")[0];
+
+    let lastPosition = 0;
+
+    document.addEventListener(
+      "scroll",
+      debounce(function () {
+        if (window.scrollY < 10) {
+          header.style.transform = "translateY(0rem)";
+          header.style.borderBottom = "1px solid #fff";
+        } else if (lastPosition < window.scrollY && window.scrollY > 10) {
+          header.style.transform = "translateY(-10rem)";
+          header.style.borderBottom = "1px solid #fff";
+        } else if (lastPosition > window.scrollY && window.scrollY > 10) {
+          header.style.transform = "translateY(0rem)";
+          header.style.borderBottom = "1px solid #eee";
+        }
+
+        lastPosition = window.scrollY;
+      }, 10)
+    );
+  }, 500);
+
   const initImgs = debounce(function () {
     const imgs = document.querySelectorAll("img");
     imgs.forEach(function (img) {
@@ -63,6 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
     for (const mutation of mutationsList) {
       if (mutation.type === "childList") {
         initImgs();
+        initHeader();
       }
     }
   });

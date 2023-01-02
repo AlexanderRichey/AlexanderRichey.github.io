@@ -457,6 +457,7 @@ sup {
 /* Container */
 .container {
   max-width: 40rem;
+  padding-top: 7rem;
   padding-left: 1rem;
   padding-right: 1rem;
   margin-left: auto;
@@ -466,17 +467,25 @@ sup {
 @media screen and (max-width: 756px) {
   .container {
     overflow: hidden;
+    padding-top: 5rem;
   }
 }
 
 /* Header */
 .top-header {
   display: flex;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
   padding: 2rem;
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
   width: 100%;
+  background-color: #fff;
+  transition: 0.2s ease;
+  border-bottom: 1px solid #fff;
 }
 
 @media screen and (max-width: 756px) {

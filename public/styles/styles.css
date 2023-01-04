@@ -484,7 +484,7 @@ sup {
   flex-direction: row;
   width: 100%;
   background-color: #fff;
-  transition: 0.2s ease;
+  transition: 0.4s;
   border-bottom: 1px solid #fff;
 }
 

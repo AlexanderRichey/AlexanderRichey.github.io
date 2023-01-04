@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
           header.style.transform = "translateY(0rem)";
           header.style.borderBottom = "1px solid #fff";
         } else if (lastPosition < window.scrollY && window.scrollY > 10) {
-          header.style.transform = "translateY(-10rem)";
+          header.style.transform = "translateY(-7rem)";
           header.style.borderBottom = "1px solid #fff";
         } else if (lastPosition > window.scrollY && window.scrollY > 10) {
           header.style.transform = "translateY(0rem)";

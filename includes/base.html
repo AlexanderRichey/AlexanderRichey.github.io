@@ -23,12 +23,16 @@
     <link rel="stylesheet" href="{{ assets|key:'styles/styles.css' }}" />
 
     <script
-      async
+      defer
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/@hotwired/turbo@7.0.0-rc.3/dist/turbo.es2017-umd.js"
     ></script>
 
-    <script src="{{ assets|key:'scripts/img-grow.js' }}"></script>
+    <script 
+      defer
+      type="text/javascript"
+      src="{{ assets|key:'scripts/img-grow.js' }}"
+    ></script>
 
     <meta property="og:site_name" content="Alex Richey">
     <meta name="twitter:site" content="@AlexanderRichey">

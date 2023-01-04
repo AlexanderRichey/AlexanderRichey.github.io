@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
   };
 
-  const initHeader = debounce(function () {
+  const initHeader = function () {
     const header = document.getElementsByTagName("header")[0];
 
     let lastPosition = 0;
@@ -44,9 +44,9 @@ document.addEventListener("DOMContentLoaded", function () {
         lastPosition = window.scrollY;
       }, 10)
     );
-  }, 500);
+  };
 
-  const initImgs = debounce(function () {
+  const initImgs = function () {
     const imgs = document.querySelectorAll("img");
     imgs.forEach(function (img) {
       if (img.dataset.imgGrow || img.id === "img-grow-img") {
@@ -80,21 +80,12 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       });
     });
-  }, 500);
+  };
 
-  const observer = new MutationObserver(function (mutationsList) {
-    // Use traditional 'for loops' for IE 11
-    for (const mutation of mutationsList) {
-      if (mutation.type === "childList") {
-        initImgs();
-        initHeader();
-      }
-    }
-  });
+  const initPage = function () {
+    initHeader();
+    initImgs();
+  };
 
-  observer.observe(document, {
-    attributes: false,
-    childList: true,
-    subtree: true,
-  });
+  window.addEventListener("turbo:load", initPage);
 });

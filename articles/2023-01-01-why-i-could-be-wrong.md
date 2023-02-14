@@ -15,11 +15,11 @@ image: images/lotus.jpg
   </div>
 </p>
 
-Not long ago, I got in a conversation with someone who expressed complete certainty in the truth of his political views. This person was so sure of himself that the mere consideration of any opposing view, or even views nearly identical to his own, was beyond the question. This person, so he seemed to me, thought he had direct access to the truth and could not conceive of any possibility that he could be wrong.
+Not long ago, I got in a conversation with someone who expressed complete certainty in the truth of his political views. This person was so sure of himself that the mere consideration of any opposing view, or even views nearly identical to his own, was beyond the question. He could not conceive of any possibility that he could be wrong — or at least he seemed that way to me.
 
-I want to explain why I think such an attitude is mistaken and, in some cases, even frightening. What I want to argue is that, given a few commonsense commitments about the world that I presume almost everyone would hold, such a level of certainty is unachievable in principle. More specifically, and with a bit of jargon, my position is that, for any domain that one is a metaphysical realist about, one cannot be certain about the facts of that domain, from a first-person perspective.
+I want to explain why I think that such an attitude is mistaken and, in some cases, even frightening. What I want to argue is that, given a few commonsense commitments about the world that I presume almost everyone would have, such a level of certainty is unachievable in principle. More specifically, and a bit more ponderously, my position is that, for any domain that one is a metaphysical realist about, one cannot be certain about the facts of that domain, from a first-person perspective.
 
-In the next few paragraphs, I’d like to explain the jargon that I just used and clarify what I mean. I’d like to advance an argument for my position and to discuss some of its implications, the main one being intellectual humility.
+In the next few paragraphs, I’d like to explain the jargon that I just used and clarify what I mean. I’d like to advance an argument for my position and discuss some of its implications, the main one being intellectual humility.
 
 ## Realism
 

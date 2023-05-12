@@ -1,12 +1,12 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const debounce = function (func, wait, immediate) {
+document.addEventListener("DOMContentLoaded", function() {
+  const debounce = function(func, wait, immediate) {
     let timeout;
 
-    return function () {
+    return function() {
       const context = this;
       const args = arguments;
 
-      const later = function () {
+      const later = function() {
         timeout = null;
         if (!immediate) func.apply(context, args);
       };
@@ -22,12 +22,12 @@ document.addEventListener("DOMContentLoaded", function () {
     };
   };
 
-  const initHeader = function () {
+  const initHeader = function() {
     const header = document.getElementsByTagName("header")[0];
 
     let lastPosition = 0;
 
-    const handleScroll = function () {
+    const handleScroll = function() {
       if (window.scrollY < 10) {
         header.style.transform = "translateY(0rem)";
         header.style.borderBottom = "1px solid #fff";
@@ -50,10 +50,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   };
 
-  const initImgs = function () {
+  const initImgs = function() {
     const imgs = document.querySelectorAll("img");
-    imgs.forEach(function (img) {
-      if (img.dataset.imgGrow || img.id === "img-grow-img") {
+    imgs.forEach(function(img) {
+      if (img.dataset.imgGrow || img.id === "img-grow-img" || img.dataset.nogrow) {
         return;
       }
 
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.body.appendChild(container);
         document.body.style.overflow = "hidden";
 
-        document.addEventListener("click", function () {
+        document.addEventListener("click", function() {
           container.remove();
           document.body.style.overflow = "auto";
           document.removeEventListener("click", this);
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   window.addEventListener(
     "turbo:load",
-    debounce(function () {
+    debounce(function() {
       initHeader();
       initImgs();
     }, 200)

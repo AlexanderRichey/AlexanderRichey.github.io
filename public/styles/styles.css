@@ -433,6 +433,33 @@ footer {
   flex-direction: column;
 }
 
+footer a {
+  text-decoration: none;
+}
+
+.footer-social {
+  margin-top: 1rem;
+}
+
+.footer-icon {
+  margin: 0 0.2rem;
+  display: inline-block;
+  width: 1.1rem;
+  height: 1.1rem;
+  transition: fill 0.2s ease-in-out;
+  transition: stroke 0.2s ease-in-out;
+}
+
+.footer-icon.twitter:hover {
+  fill: #1d9bf0;
+  transition: fill 0.2s ease-in-out;
+}
+
+.footer-icon.email:hover path {
+  stroke: #888;
+  transition: stroke 0.2s ease-in-out;
+}
+
 .subscribe {
   margin-bottom: 2rem;
   padding-bottom: 0rem;
@@ -458,18 +485,19 @@ footer {
   border-radius: 0.4rem;
   margin-bottom: 0.5rem;
   transition: border-color 0.2s ease-in-out;
+  outline-color: #000;
 }
 
 .subscribe input:hover {
   border-color: #aaa;
 }
 
-.subscribe-desc {
-  margin-bottom: 0.6rem;
+.subscribe-submit {
+  background-color: #eee;
 }
 
-footer a {
-  text-decoration: none;
+.subscribe-desc {
+  margin-bottom: 0.6rem;
 }
 
 sup {

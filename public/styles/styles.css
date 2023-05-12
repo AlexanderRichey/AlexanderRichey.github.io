@@ -486,6 +486,7 @@ footer a {
   margin-bottom: 0.5rem;
   transition: border-color 0.2s ease-in-out;
   outline-color: #000;
+  color: #000;
 }
 
 .subscribe input:hover {
@@ -494,6 +495,7 @@ footer a {
 
 .subscribe-submit {
   background-color: #eee;
+  color: #000;
 }
 
 .subscribe-desc {

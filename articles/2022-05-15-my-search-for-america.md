@@ -54,9 +54,9 @@ I should also add that there is a third reason I’m going, one less lofty than 
 2. John Steinbeck, *Travels with Charley: In Search of America* (New York, NY: Penguin Books, 2017), 1.
 3. Anne Case and Angus Deaton, *Deaths of Despair and the Future of Capitalism* (Princeton, NJ: Princeton University Press, 2020).
 4. Thomas Piketty, *Capital in the Twenty-First Century* (Cambridge Massachusetts, MA: The Belknap Press of Harvard University Press, 2017).
-5. “Fatal Force: Police Shootings Database,” The Washington Post (WP Company, January 22, 2020), https://www.washingtonpost.com/graphics/investigations/police-shootings-database/.
-6. “Mass Shootings in America,” Everytown Research &amp; Policy, March 4, 2022, https://everytownresearch.org/maps/mass-shootings-in-america/.
-7. “State of Homelessness: 2021 Edition,” National Alliance to End Homelessness, August 16, 2021, https://endhomelessness.org/homelessness-in-america/homelessness-statistics/state-of-homelessness-2021/.
-8. John Leland, “How Loneliness Is Damaging Our Health,” The New York Times (The New York Times, April 20, 2022), https://www.nytimes.com/2022/04/20/nyregion/loneliness-epidemic.html.
+5. “Fatal Force: Police Shootings Database,” The Washington Post (WP Company, January 22, 2020), [Link](https://www.washingtonpost.com/graphics/investigations/police-shootings-database/).
+6. “Mass Shootings in America,” Everytown Research &amp; Policy, March 4, 2022, [Link](https://everytownresearch.org/maps/mass-shootings-in-america/).
+7. “State of Homelessness: 2021 Edition,” National Alliance to End Homelessness, August 16, 2021, [Link](https://endhomelessness.org/homelessness-in-america/homelessness-statistics/state-of-homelessness-2021/).
+8. John Leland, “How Loneliness Is Damaging Our Health,” The New York Times (The New York Times, April 20, 2022), [Link](https://www.nytimes.com/2022/04/20/nyregion/loneliness-epidemic.html).
 
 </div>

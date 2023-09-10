@@ -15,9 +15,9 @@ image: images/lotus.jpg
   </div>
 </p>
 
-Not long ago, I got in a conversation with someone who expressed complete certainty in the truth of his political views. This person was so sure of himself that the mere consideration of any opposing view, or even views nearly identical to his own, was beyond the question. He could not conceive of any possibility that he could be wrong — or at least he seemed that way to me.
+Not long ago, I got in a conversation with someone who expressed complete certainty in the truth of his political views. This person was so sure of himself that the mere consideration of any opposing view, or even views nearly identical to his own, was beyond the question. He could not conceive of any possibility that he could be wrong.
 
-I want to explain why I think that such an attitude is mistaken and, in some cases, even frightening. What I want to argue is that, given a few commonsense commitments about the world that I presume almost everyone would have, such a level of certainty is unachievable in principle. More specifically, and a bit more ponderously, my position is that, for any domain that one is a metaphysical realist about, one cannot be certain about the facts of that domain, from a first-person perspective.
+I want to explain why I think that such an attitude is mistaken. What I want to argue is that, given a few commonsense commitments about the world that I presume almost everyone would have, such a level of certainty is unachievable in principle. More specifically, my position is that, for any domain that one is a metaphysical realist about, one cannot be certain about the facts of that domain, from a first-person perspective.
 
 In the next few paragraphs, I’d like to explain the jargon that I just used and clarify what I mean. I’d like to advance an argument for my position and discuss some of its implications, the main one being intellectual humility.
 
@@ -43,7 +43,7 @@ Realism implies that, for any domain that I’m a realist about, I could be wron
 
 The more remote of these possibilities do not personally trouble me. But the nearer possibilities do. I suspect that most everyone has had an experience of misremembering something, of making a mistake when doing a computation, of seeing one thing at a distance and discovering later, when up close, that it is another.
 
-To sum up, if I accept both *existence* and *independence* about some domain of discourse D, then it follows that
+To sum up, if I accept both *existence* and *independence* about some domain D, then it follows that
 
 > (1) Any of my beliefs about D could be wrong.
 > 

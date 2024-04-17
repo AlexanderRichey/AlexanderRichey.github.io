@@ -15,11 +15,11 @@ image: images/lotus.jpg
   </div>
 </p>
 
-Not long ago, I got in a conversation with someone who expressed complete certainty in the truth of his political views. This person was so sure of himself that the mere consideration of any opposing view, or even views nearly identical to his own, was beyond the question. He could not conceive of any possibility that he could be wrong.
+In my everyday life, I try to have intellectual humility. I try to give views different from my own a fair hearing because I acknowledge the possibility that I could be wrong. In this essay, I'm going to explain why I take this attitude.
 
-I would like to explain why I think that such an attitude is mistaken. What I want to argue is that, given a few commonsense commitments that I presume almost everyone would have, such a level of certainty is unachievable *in principle*. More specifically, and a bit more ponderously, my position is that, for any domain that one is a *realist* about, one cannot be certain about the facts of that domain, from a first-person perspective.
+My reason for trying to maintain a degree of intellectual humility is grounded in a conflict between two philosophical views. The first of these two views is called *realism,* which says, of any domain to which it is applied, that the facts of that domain are objective and independent. *Certainty,* on the other hand, refers to the state of having infallible knowledge about something. These two ideas, I'm going to argue, are fundamentally incompatible. By accepting realism, one acknowledges that her understanding of the world is limited and fallible. This fallibility, however, directly contradicts the notion of absolute certainty. In other words, the adoption of realism, for any domain, necessitates a more modest epistemic stance toward that domain, one that acknowledges the possibility of error.
 
-In the next few paragraphs, I’d like to explain the jargon that I just used and clarify what I mean. I’d like to advance an argument for my position and discuss some of its implications, the main one being intellectual humility.
+In the next few paragraphs, I'm going to clarify the concepts of realism and certainty, formulate my argument precisely, and discuss some of its implications. The reason this argument is important is that, in almost all matters of human life, we are concerned with realist domains. Questions of love, politics, and one's bank account balance, for example, are all concerned with realist domains. Therefore, if the adoption of realism, for any domain, necessitates a more modest epistemic stance toward that domain, then maintaining an attitude of intellectual humility towards almost all questions of importance in life becomes imperative.
 
 ## Realism
 

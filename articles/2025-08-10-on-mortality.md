@@ -178,7 +178,7 @@ To sum up what I’ve found in asking what kind of attitude I should take toward
 3. Homer (2007). *The Odyssey*. Translated by R. Lattimore. New York: Harper Perennial Modern Classics, p.180.
 4. Nagel, T. (1979). *Mortal Questions*. New York: Cambridge University Press, p.2.
 5. Feldman, F. (2000). The Termination Thesis. Midwest Studies in Philosophy, [online] 24(1), pp.98–115. doi:https://doi.org/10.1111/1475-4975.00024.
-6. Epicurus and Hicks, R.D. (1994). Letter to Menoeceus by Epicurus. [online] classics.mit.edu. Available at: https://classics.mit.edu/Epicurus/menoec.html.
+6. Epicurus (1994). Letter to Menoeceus. Translated by R.D. Hicks. [online] classics.mit.edu. Available at: https://classics.mit.edu/Epicurus/menoec.html.
 7. Matthew 5:3 (KJV).
 8. George, A. (2003). *The Epic of Gilgamesh*. Translated by A. George. London Penguin Books, p. 194.
-9. Epicurus and Hicks.
+9. Epicurus.

@@ -1,7 +1,7 @@
 ---
 title: Error Handling in Go REST APIs
 date: 2021-09-09
-description: A pattern for distinguishing and handling client and internal errors in Go that leverages the power of Go's interfaces.
+description: A pattern for distinguishing and handling client and internal errors in Go that leverages the power of Go’s interfaces.
 ---
 <aside class="message">
   This post is reblogged from <a href="https://linksort.com/blog/error-handling-in-go-rest-apis/">Linksort's blog</a> where it originally appeared.

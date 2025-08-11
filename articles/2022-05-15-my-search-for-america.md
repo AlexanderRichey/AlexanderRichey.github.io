@@ -1,7 +1,7 @@
 ---
 title: My Search for America
 date: 2022-05-15
-description: I'm going on a road trip across the country.
+description: I’m going on a road trip across the country.
 image: images/american-flag.jpg
 ---
 

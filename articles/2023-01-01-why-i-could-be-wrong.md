@@ -1,7 +1,7 @@
 ---
 title: Why I Could Be Wrong
 date: 2023-01-01
-description: Some people believe that certainty is achievable. I don't. My position is that, for almost anything I currently believe, there’s a possibility that it could be false.
+description: In principle, for anything I believe about any realist domain, there’s a possibility that it could be false.
 image: images/lotus.jpg
 ---
 

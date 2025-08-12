@@ -43,7 +43,7 @@ Other ancient writers take the view opposite Aurelius and emphasize the value of
 > man, one with no land allotted him and not much to live on,<br />
 > than be a king over all the perished dead.<sup>3</sup>
 
-What makes this passage surprising is that Achilles’ life and the circumstances of his death were ideal according to his tradition. In this tradition — the tradition of the ancient Greeks — the strong and especially those that die gloriously on the field of battle are exalted. Achilles does just that in the *Illiad,* the prequel to the *Odyssey*. He embodies everything in the Homeric world one could hope to achieve. It is therefore surprising that Achilles defies this tradition in saying, in effect, that it’s better to be a poor, unknown man who is alive, than to be a great man who is dead. It’s better, in other words, to *have* a meager life than to *have had* a great life.
+What makes this passage surprising is that Achilles’ life and the circumstances of his death were ideal according to his tradition. In this tradition — the tradition of the ancient Greeks — the strong and especially those that die gloriously on the field of battle are exalted. Achilles does just that in the *Iliad,* the prequel to the *Odyssey*. He embodies everything in the Homeric world one could hope to achieve. It is therefore surprising that Achilles defies this tradition in saying, in effect, that it’s better to be a poor, unknown man who is alive, than to be a great man who is dead. It’s better, in other words, to *have* a meager life than to *have had* a great life.
 
 A more recent expression of this kind of view can be found in the contemporary philosopher Tom Nagel's essay “Death.” There, he writes,
 
@@ -98,7 +98,7 @@ This conclusion is closed under my starting assumption, namely, that there isn�
 
 In many religious traditions, believers hold that there is a divinity whose power consists in its ability to set the conditions of the afterlife.
 
-In some cases, believers hold that, if one is morally good, then one will be rewarded the afterlife; if one is bad, then one will be punished. On this view, it is presupposed that there is a moral standard by which lives may be measured. One cares about meeting this standard because this will determine the content of one’s experience in the next life. One wants reward and pleasure in the afterlife and not pain — or, at least, one wants the absence of pain — so one is motivated to meet this moral standard in the pursuit of her own pleasure and in the avoidance of pain.
+In some cases, believers hold that, if one is morally good, then one will be rewarded in the afterlife; if one is bad, then one will be punished. On this view, it is presupposed that there is a moral standard by which lives may be measured. One cares about meeting this standard because this will determine the content of one’s experience in the next life. One wants reward and pleasure in the afterlife and not pain — or, at least, one wants the absence of pain — so one is motivated to meet this moral standard in the pursuit of her own pleasure and in the avoidance of pain.
 
 In other religious traditions, there isn’t a necessary connection between one’s moral behavior and her being rewarded or punished in the afterlife. Within the Christian tradition, for example, Calvinists believe in predestination — that God alone decides who is chosen and who isn’t and that there isn’t any necessary connection between one’s being chosen and her moral behavior in life.
 

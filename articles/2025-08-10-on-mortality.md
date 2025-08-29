@@ -17,7 +17,7 @@ image: images/youth-and-death.jpeg
 
 When the pandemic began, I started thinking more than I ordinarily would’ve about my own mortality. In particular, I  started thinking about the consequences of my belief that there isn’t an afterlife.
 
-I’m not strongly confident in my belief that there isn’t an afterlife. I could be wrong and part of myself hopes that I am. But my bet, given what I’ve learned about biology and philosophy and so forth, is that biological death is final. From my subjective perspective, death might be as if I were in  a dreamless sleep, or like how it was before I was born. But objectively, after I die, I won’t be anything at all. Or so I think.
+I’m not strongly confident in my belief that there isn’t an afterlife. [I could be wrong](https://alexrichey.com/articles/2023-01-01-why-i-could-be-wrong.html) and part of myself hopes that I am. But my bet, given what I’ve learned about biology and philosophy and so forth, is that biological death is final. From my subjective perspective, death might be as if I were in  a dreamless sleep, or like how it was before I was born. But objectively, after I die, I won’t be anything at all. Or so I think.
 
 If I take this claim as my starting point, what does it entail about the attitude I should take toward my life and toward my death, if it entails anything?
 
@@ -118,7 +118,7 @@ In the absence of such authorities, there is no compulsion for me or for anyone 
 
 Yet, in moments of personal reflection, I do judge my life. I ask myself if I have had a good life or a bad one; I question whether I’ve made the right decisions, and I suffer the consequences of my judgement. If I feel that the life I have lived is one I can affirm, then I feel happy and at peace; if, on the other hand, I feel regret over the way I have led my life, then I suffer such consequences. In a way, I am like the believer who feels joy at earning admission to Heaven, or despair at having been damned to Hell, in that I too feel such emotions, though perhaps to a lesser degree, but I feel them here on Earth, in this very life, as consequence of my own judgement and not that of any divinity.
 
-Practically speaking, what this entails is that, if, of all the judgements of my life, my own is the one I choose to prioritize, then I must live in a way that is consistent with my values and with the way reflect on my life, so that, in sum, I can feel satisfied and at peace in these moments rather than feel grief and regret.
+Practically speaking, what this entails is that, if, of all the judgements of my life, my own is the one I choose to prioritize, then I must live in a way that is consistent with my values and with the way I reflect on my life, so that, in sum, I can feel satisfied and at peace in these moments rather than feel grief and regret.
 
 ## Responsibility
 
@@ -167,7 +167,7 @@ To sum up what I’ve found in asking what kind of attitude I should take toward
 
 ---
 
-1. Aurelius, M. (2005). *Meditations*. New York: Penguin Books, p.18.
+1. Aurelius, M. (2005). *Meditations*. Translated by M. Staniforth. New York: Penguin Books, p.18.
 2. Ibid.
 3. Homer (2007). *The Odyssey*. Translated by R. Lattimore. New York: Harper Perennial Modern Classics, p.180.
 4. Nagel, T. (1979). *Mortal Questions*. New York: Cambridge University Press, p.2.

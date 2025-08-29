@@ -157,7 +157,7 @@ This epic tells the story of the king Gilgamesh who tries to escape death and to
 
 On my reading, the point of the tavern-keeper is that it is these magic moments in life, moments that we have here and now — of joy and love, courage and victory, great heartbreak and redemption — it is these experiences that make life’s meaning; and, through these experiences, one may find redemption in this life rather than in the afterlife.
 
-Gilgamesh’s quest for eternal life, in other words, like perhaps one’s one own quiet hope for some form of immortality, is futile. In accepting the futility of this desire, one must let it go and instead contend with life’s impermanence. In many cases, this may lead to greater enjoyment of life. Epicurus says,
+Gilgamesh’s quest for eternal life, in other words, like perhaps one’s one own quiet hope for some form of immortality, is futile. In accepting the futility of this desire, one must let it go and instead contend with life’s impermanence. Such acceptance may lead to greater enjoyment of life. Epicurus says,
 
 > The correct recognition that death is nothing to us, makes the mortality of life enjoyable, not by adding an infinite time, but by removing the longing for immortality.<sup>9</sup>
 

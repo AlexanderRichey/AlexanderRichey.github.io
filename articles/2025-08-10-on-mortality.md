@@ -110,16 +110,6 @@ To put the point another way: If there is no afterlife, then there is no evaluat
 
 This claim does not entail that there is no privileged evaluation, period. If there is a true and objective moral standard by which lives are to be measured, as some religious people believe, then the life-evaluation deriving from this standard would be privileged, even if nothing in one’s experience necessarily depends on it. This life-evaluation would be privileged by virtue of its being _true_ in an objective sense. Jewish believers who do not believe in an afterlife but who do believe in an objective moral standard, revealed through God’s prophets and acts, are an example of this case.
 
----
-
-For reasons outside the scope of this essay, I’m skeptical about any objective moral standard by which my life may be measured. I also don’t believe in any divinity. So I don’t believe that any evaluation of my life deriving from either of these standards is meaningfully privileged.
-
-In the absence of such authorities, there is no compulsion for me or for anyone else to render any judgement at all. If judgements are rendered, then no one is bound to listen to or accept them.
-
-Yet, in moments of personal reflection, I do judge my life. I ask myself if I have had a good life or a bad one; I question whether I’ve made the right decisions, and I suffer the consequences of my judgement. If I feel that the life I have lived is one I can affirm, then I feel happy and at peace; if, on the other hand, I feel regret over the way I have led my life, then I suffer such consequences. In a way, I am like the believer who feels joy at earning admission to Heaven, or despair at having been damned to Hell, in that I too feel such emotions, though perhaps to a lesser degree, but I feel them here on Earth, in this very life, as consequence of my own judgement and not that of any divinity.
-
-Practically speaking, what this entails is that, if, of all the judgements of my life, my own is the one I choose to prioritize, then I must live in a way that is consistent with my values and with the way I reflect on my life, so that, in sum, I can feel satisfied and at peace in these moments rather than feel grief and regret.
-
 ## Responsibility
 
 There is still another conclusion that I would like to draw out of the denial of the afterlife. It is that, if there cannot be any redemption in the afterlife, then all of the people who have suffered great tragedy in human history — all of the victims of great injustices and of natural disasters and disease and so on — all of these human lives will not be redeemed in the next life.
@@ -130,7 +120,7 @@ This conclusion exposes at least one assumption I was not aware I had. On some u
 
 But to believe that biological death is final is to deny this. It is to believe that there is no otherworldly redemption for those that have suffered such injustice. And it is also to believe that there is no poetic justice or punishment for those that perpetuate such disasters.
 
-These reflections cause me to believe that these injustices are even worse than they first seemed. If one believes in the afterlife, then one can console oneself with the idea that victims are “in a better place.” But if one does not believe, then there is no consolation. These reflections produce in me a sense of urgency — or even a sense of responsibility to prevent such loss of life and such suffering while I can.
+These reflections cause me to believe that these injustices are even worse than they first seemed. If one believes in the afterlife, then one can console oneself with the idea that victims are “in a better place.” But if one does not believe, then there is no consolation. These considerations produce in me a sense of urgency — or even a sense of responsibility to prevent such loss of life and such suffering while I can.
 
 ## Meaning
 
@@ -163,7 +153,7 @@ Gilgamesh’s quest for eternal life, in other words, like perhaps one’s one o
 
 In considering the shortness of my life, and my own impermanence, I feel a sense of gratefulness in my mere existence. When I walk in the park on a beautiful day and I feel the sun shine upon my face and feel the love in my heart, I tell myself that this is as good as it gets, that this is salvation if I should ever have it.
 
-To sum up what I’ve found in asking what kind of attitude I should take toward my life and my death, in view of my assumption that there isn’t an afterlife, I can now list five conclusions. I believe that life is a gift that cannot be compared to its absence; that, under the assumption that there is no afterlife, death is not to be feared. I believe that my own evaluation of my life is to be prioritized because I uniquely suffer its consequences. I find some sense of duty to help others get as close to salvation in this life as they can. And I find the meaning of my life in the simple but magic moments of daily life, moments of joy, of beauty, of meaning, and, most of all, of love.
+To sum up what I’ve found in asking what kind of attitude I should take toward my life and my death, in view of my assumption that there isn’t an afterlife, I can now list five conclusions. I believe that life is a gift that cannot be compared to its absence; that, under the assumption that there is no afterlife, death is not to be feared. I believe that no evaluation of my life is cosmically privileged in that it determines the conditions of the next life. I find some sense of duty to help others get as close to salvation in this life as they can. And I find the meaning of my life in the simple but magic moments of daily life, moments of joy, of beauty, of meaning, and, most of all, of love.
 
 ---
 

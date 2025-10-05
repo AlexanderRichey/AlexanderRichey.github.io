@@ -37,7 +37,7 @@ At another point, he says,
 
 When reading Aurelius, it’s important to recall that he was a great emperor of Rome who rose to the pinnacle of human achievement. His minimizing of life may have played a therapeutic role in keeping his ego in check and his judgement sound. But, for me, Aurelius’ observations bolster my sense of life’s specialness. In view of the “abysses of eternity before us and behind,” as he puts it, the fact that I am here now makes me think that these moments of being are even more special.
 
-Other ancient writers take the view opposite Aurelius and emphasize the value of life. In Homer’s *Odyssey,* when the main character Odysseus travels to the underworld and talks to the ghost of his friend Achilles, the ghost says that, in comparison with death, life’s value is immense. The ghost says,
+Other ancient writers take the view opposite Aurelius and emphasize the value of life. In Homer’s *Odyssey,* when the main character Odysseus travels to the underworld and talks to the ghost of his friend Achilles, the ghost says that life’s value is substantial.
 
 > I would rather follow the plow as thrall to another<br />
 > man, one with no land allotted him and not much to live on,<br />
@@ -45,7 +45,7 @@ Other ancient writers take the view opposite Aurelius and emphasize the value of
 
 What makes this passage surprising is that Achilles’ life and the circumstances of his death were ideal according to his tradition. In this tradition — the tradition of the ancient Greeks — the strong and especially those that die gloriously on the field of battle are exalted. Achilles does just that in the *Iliad,* the prequel to the *Odyssey*. He embodies everything in the Homeric world one could hope to achieve. It is therefore surprising that Achilles defies this tradition in saying, in effect, that it’s better to be a poor, unknown man who is alive, than to be a great man who is dead. It’s better, in other words, to *have* a meager life than to *have had* a great life.
 
-A more recent expression of this kind of view can be found in the contemporary philosopher Tom Nagel's essay “Death.” There, he writes,
+A more recent expression of this kind of view can be found in the contemporary philosopher Tom Nagel’s essay “Death.” There, he writes,
 
 > There are elements which, if added to one’s experience, make his life better; there are other elements which, if added to one’s experience, make life worse. But what remains when these are set aside is not merely *neutral*: it is emphatically positive. Therefore life is worth living even when the bad elements of life are plentiful, and the good ones too meager to outweigh the bad ones on their own. The additional positive weight is supplied by experience itself, rather than by any of its contents.<sup>4</sup>
 
@@ -53,15 +53,13 @@ The idea that Homer and Nagel have in common, and which I affirm, is that the ex
 
 ## Paradox
 
-There is an ancient Epicurean argument that purports to show that death is not to be feared which creates some tension for the idea that life has value. If this argument is correct, then one of its consequences is that the value of life cannot be analyzed in terms of any subjective comparison between life and death. Life can still have value, as both Homer and Nagel believe, but, counterintuitively, its value cannot consist in its being qualitatively better than being dead.
+There is an ancient Epicurean argument which purports to show that death is not to be feared that creates some tension for the idea that life has value. If this argument is correct, then one of its consequences is that the value of life cannot be analyzed in terms of any subjective comparison between life and death. Life can still have value, as both Homer and Nagel believe, but, counterintuitively, its value cannot consist in its being qualitatively better than being dead.
 
 Here's the argument. The first premise is:
 
 1. For anything, if it doesn’t exist, nothing could be good or bad for it.
 
-This assertion seems self-evident to me. While one might be able to make plausible claims about things that don’t exist — for example, that Santa wears a red hat — there is nothing or no one for whom these claims are good or bad from a first-person perspective. There may be third persons who would prefer that Santa wear a green hat, to continue the example, but there is no Santa from whose subjective perspective wearing a green or red hat could make any qualitative difference.
-
-Similar remarks apply to the already deceased. It may bother us when the legacy of a loved one is disparaged, but there is no subject of experience that is affected by such remarks. The *legacy* of our beloved may be affected, and that may bother survivors, but the beloved herself is not affected. Since she no longer exists, there is nothing that could be affected.
+This assertion seems self-evident to me. While one might be able to make plausible claims about things that don’t exist — for example, that Santa wears a red hat — there is nothing or no one for whom these claims are good or bad from a first-person perspective.
 
 The second premise of the Epicurean argument is sometimes called the *Termination Thesis*.<sup>5</sup>
 
@@ -82,9 +80,7 @@ There are some grammatical issues that make what I just said somewhat misleading
 
 If the argument that I have just given is valid, then we are left with the question of how being alive could be better than being dead when nothing could be good or bad for me when I’m dead. The problem is that there is no “me” for whom anything could be better or worse across these two states. There’s no way to compare these states because there’s nothing in virtue of which anything could be compared.
 
-The tension that this conclusion creates for the idea that life has value is that it upsets commonsense notions about the behavior of value. If I possess something of value, such as a lifelong friendship, for example, and I lose my lifelong friend, then one would believe that, in losing my lifelong friend, I have lost the corresponding value of this friendship. Schematically, there is a *subject*, that is, me, and an *object of value*, that is, this lifelong friendship. When I, the valuing subject, lose this object of value, then I suffer the loss of something that I valued. But in the case of my own death, both the subject and the object of value — that is, me as the subject and my own life as the object — drop out of existence together. There cannot be the same sense of loss, since the valuing subject, which is what usually endures the loss, does not exist and therefore cannot endure anything.
-
-These reflections do not entail that life does not have value, period — one can value his own life subjectively and desire it to go on; or one might adopt an absolutist view of life’s value — but what they do entail is that the subjective value of life cannot be understood by way of comparison between life and death. One cannot say that it is subjectively or qualitatively  any better to be alive than to be dead.
+This argument does not entail that life does not have value, period — one can value his own life and desire it to go on; or one might adopt an absolutist view of life’s value — but what it does entail is that the subjective value of life cannot be understood by way of comparison between life and death. One cannot say that it is subjectively or qualitatively any better to be alive than to be dead.
 
 In his *Letter to Menoeceus*, after presenting a version of the argument I just gave, Epicurus says,
 
@@ -126,9 +122,9 @@ These reflections cause me to believe that these injustices are even worse than 
 
 In bringing these reflections to a close, there is one more topic that I would like to discuss, which is whether the finality of death has any consequences to life’s meaning. In my opinion, it does. And the way it does is fairly straightforward: If one does not believe in the prospect of the afterlife, then one must make do with the contentments of this life — not for any grand reason, but simply because there isn’t any other option.
 
-This straightforward conclusion is the wisdom of the ages. In the Epic of Gilgamesh, an ancient poem of Mesopotamia that dates back roughly four-thousand years to 2000 B.C.E., the same message can be found. The fact that this message has been preserved for so long, and that its influence can be found in other world religions, suggests that there is something true in it — or, if not *true* exactly, something helpful or instructive to humankind.
+This straightforward conclusion is the wisdom of the ages. In the Epic of Gilgamesh, an ancient poem of Mesopotamia that dates back roughly four-thousand years to 2,000 B.C.E., the same message can be found. The fact that this message has been preserved for so long, and that its influence can be found in other world religions, suggests that there is something true in it — or, if not *true* exactly, something helpful or instructive to humankind.
 
-This epic tells the story of the king Gilgamesh who tries to escape death and to acquire immortality. During his journey, he comes upon a woman tavern-keeper that lives at the edge of the world who tells him this: 
+This epic tells the story of the king Gilgamesh who tries to escape death and to acquire immortality. During his journey, he comes upon a woman tavern-keeper that lives at the edge of the world who tells him this:
 
 > The life that you seek you will never find:<br />
 > when the gods created mankind<br />
@@ -147,7 +143,7 @@ This epic tells the story of the king Gilgamesh who tries to escape death and to
 
 On my reading, the point of the tavern-keeper is that it is these magic moments in life, moments that we have here and now — of joy and love, courage and victory, great heartbreak and redemption — it is these experiences that make life’s meaning; and, through these experiences, one may find redemption in this life rather than in the afterlife.
 
-Gilgamesh’s quest for eternal life, in other words, like perhaps one’s one own quiet hope for some form of immortality, is futile. In accepting the futility of this desire, one must let it go and instead contend with life’s impermanence. Such acceptance may lead to greater enjoyment of life. Epicurus says,
+Gilgamesh’s quest for eternal life, in other words, is futile. In accepting the futility of this desire, one must let it go and instead contend with life’s impermanence. Epicurus says that such acceptance may in fact lead to greater enjoyment of life.
 
 > The correct recognition that death is nothing to us, makes the mortality of life enjoyable, not by adding an infinite time, but by removing the longing for immortality.<sup>9</sup>
 

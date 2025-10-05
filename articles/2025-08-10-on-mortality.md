@@ -80,13 +80,13 @@ There are some grammatical issues that make what I just said somewhat misleading
 
 If the argument that I have just given is valid, then we are left with the question of how being alive could be better than being dead when nothing could be good or bad for me when I’m dead. The problem is that there is no “me” for whom anything could be better or worse across these two states. There’s no way to compare these states because there’s nothing in virtue of which anything could be compared.
 
-This argument does not entail that life does not have value, period — one can value his own life and desire it to go on; or one might adopt an absolutist view of life’s value — but what it does entail is that the subjective value of life cannot be understood by way of comparison between life and death. One cannot say that it is subjectively or qualitatively any better to be alive than to be dead.
-
 In his *Letter to Menoeceus*, after presenting a version of the argument I just gave, Epicurus says,
 
 > The wise person does not deprecate life nor does he fear the cessation of life. The thought of life is no offense to him, nor is the cessation of life regarded as an evil.<sup>6</sup>
 
 While I admit that these reflections strain the limits of my comprehension, Epicurus’ argument has had something like its desired effect on me. I still want to go on living, but, inasmuch as I believe that biological death is final, I feel somewhat more at ease about my own mortality. How could the prospect of my not existing be bad *for me?*
+
+This argument does not entail that life does not have value, period — one can value his own life in a subjective way and desire it to go on; or one might adopt an absolutist view of life’s value — but what it does entail is that the value of life cannot be understood by way of subjective comparison between life and death. One cannot say that it is subjectively or qualitatively any better to be alive than to be dead.
 
 This conclusion is closed under my starting assumption, namely, that there isn’t any afterlife. If I give up this assumption, then death remains a mystery. If, instead, there is an afterlife, then it could be better than what one experiences in this life, but it could also be much worse. This mystery, contra Epicurus, could give one reason to fear death.
 

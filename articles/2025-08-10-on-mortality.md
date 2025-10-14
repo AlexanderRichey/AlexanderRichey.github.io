@@ -55,7 +55,7 @@ The idea that Homer and Nagel have in common, and which I affirm, is that the ex
 
 There is an ancient Epicurean argument which purports to show that death is not to be feared that creates some tension for the idea that life has value. If this argument is correct, then one of its consequences is that the value of life cannot be analyzed in terms of any subjective comparison between life and death. Life can still have value, as both Homer and Nagel believe, but, counterintuitively, its value cannot consist in its being qualitatively better than being dead.
 
-Here's the argument. The first premise is:
+Here’s the argument. The first premise is:
 
 1. For anything, if it doesn’t exist, nothing could be good or bad for it.
 
@@ -143,7 +143,7 @@ This epic tells the story of the king Gilgamesh who tries to escape death and to
 
 On my reading, the point of the tavern-keeper is that it is these magic moments in life, moments that we have here and now — of joy and love, courage and victory, great heartbreak and redemption — it is these experiences that make life’s meaning; and, through these experiences, one may find redemption in this life rather than in the afterlife.
 
-Gilgamesh’s quest for eternal life, in other words, is futile. In accepting the futility of this desire, one must let it go and instead contend with life’s impermanence. Epicurus says that such acceptance may in fact lead to greater enjoyment of life.
+Gilgamesh’s quest for eternal life, like one’s own quiet hope for immortality, is futile. In accepting the futility of this desire, one must let it go and instead contend with life’s impermanence. Epicurus says that such acceptance may in fact lead to greater enjoyment of life.
 
 > The correct recognition that death is nothing to us, makes the mortality of life enjoyable, not by adding an infinite time, but by removing the longing for immortality.<sup>9</sup>
 

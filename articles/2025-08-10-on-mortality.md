@@ -104,7 +104,7 @@ To deny the afterlife does not, in fact, entail the denial of God, or of any oth
 
 To put the point another way: If there is no afterlife, then there is no evaluation of one’s life that is privileged by virtue of the fact that it determines the conditions of the next life.
 
-This claim does not entail that there is no privileged evaluation, period. If there is a true and objective moral standard by which lives are to be measured, as some religious people believe, then the life-evaluation deriving from this standard would be privileged, even if nothing in one’s experience necessarily depends on it. This life-evaluation would be privileged by virtue of its being _true_ in an objective sense. Jewish believers who do not believe in an afterlife but who do believe in an objective moral standard, revealed through God’s prophets and acts, are an example of this case.
+This claim does not entail that there cannot be any privileged evaluation. If there is a true and objective moral standard by which lives are to be measured, as some religious people believe, then the life-evaluation deriving from this standard would be privileged, even if nothing in one’s experience necessarily depends on it. This life-evaluation would be privileged by virtue of its being _true_ in an objective sense. Jewish believers who do not believe in an afterlife but who do believe in an objective moral standard, revealed through God’s prophets and acts, are an example of this case.
 
 ## Responsibility
 

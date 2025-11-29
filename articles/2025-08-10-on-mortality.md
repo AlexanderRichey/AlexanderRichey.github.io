@@ -35,15 +35,15 @@ At another point, he says,
 
 > Keep before your eyes the swift onset of oblivion, and the abysses of eternity before us and behind...<sup>2</sup>
 
-When reading Aurelius, it’s important to recall that he was a great emperor of Rome who rose to the pinnacle of human achievement. His minimizing of life may have played a therapeutic role in keeping his ego in check and his judgement sound. But, for me, Aurelius’ observations bolster my sense of life’s specialness. In view of the “abysses of eternity before us and behind,” as he puts it, the fact that I am here now makes me think that these moments of being are even more special.
+Aurelius’ observations actually bolster my sense of life’s specialness. In view of the “abysses of eternity before us and behind,” as he puts it, the fact that I am here now makes me think that these moments of being are even more special.
 
-Other ancient writers take the view opposite Aurelius and emphasize the value of life. In Homer’s *Odyssey,* when the main character Odysseus travels to the underworld and talks to the ghost of his friend Achilles, the ghost says that life’s value is substantial.
+Other ancient writers take the view opposite Aurelius and emphasize the value of life. In Homer’s *Odyssey,* when the main character Odysseus travels to the underworld and talks to the ghost of his friend Achilles, the ghost says that life’s value is substantial. He says,
 
 > I would rather follow the plow as thrall to another<br />
 > man, one with no land allotted him and not much to live on,<br />
 > than be a king over all the perished dead.<sup>3</sup>
 
-What makes this passage surprising is that Achilles’ life and the circumstances of his death were ideal according to his tradition. In this tradition — the tradition of the ancient Greeks — the strong and especially those that die gloriously on the field of battle are exalted. Achilles does just that in the *Iliad,* the prequel to the *Odyssey*. He embodies everything in the Homeric world one could hope to achieve. It is therefore surprising that Achilles defies this tradition in saying, in effect, that it’s better to be a poor, unknown man who is alive, than to be a great man who is dead. It’s better, in other words, to *have* a meager life than to *have had* a great life.
+What makes this passage surprising is that Achilles’ life and the circumstances of his death were ideal according to his tradition. In this tradition, the strong and especially those that die gloriously on the field of battle are exalted. Achilles does just that in the *Iliad,* the prequel to the *Odyssey*. He embodies everything in the Homeric world one could hope to achieve. It is therefore surprising that Achilles defies his tradition in saying, in effect, that it’s better to be a poor, unknown man who is alive, than to be a great man who is dead. It’s better, in other words, to *have* a meager life than to *have had* a great life.
 
 A more recent expression of this kind of view can be found in the contemporary philosopher Tom Nagel’s essay “Death.” There, he writes,
 
@@ -61,7 +61,7 @@ Here’s the argument. The first premise is:
 
 This assertion seems self-evident to me. While one might be able to make plausible claims about things that don’t exist — for example, that Santa wears a red hat — there is nothing or no one for whom these claims are good or bad from a first-person perspective.
 
-The second premise of the Epicurean argument is sometimes called the *Termination Thesis*.<sup>5</sup>
+The second premise is sometimes called the *Termination Thesis*.<sup>5</sup>
 
 2. When I die, I cease to exist.
 
@@ -100,7 +100,7 @@ In other religious traditions, there isn’t a necessary connection between one�
 
 In both kinds of tradition, however, one cares about God’s judgement because this judgement determines the conditions of the afterlife. But if one does not believe in the afterlife, then this would seem to weaken the force of God’s judgement. Why should one care what God’s judgement is if it has no effect on one’s experience?
 
-To deny the afterlife does not, in fact, entail the denial of God, or of any other divinity. It also does not entail the denial of a true and objective moral standard for human conduct. In fact, these three ideas — that is, the afterlife, the divine, and objective morality — come apart. Each one can be accepted or rejected independently of the others, without contradiction. But what denying the afterlife does entail is that, if one believes in any divinity, for whatever divinity one believes in, it does not have the power to set the conditions of the next life, since there is no next life.
+To deny the afterlife does not, in fact, entail the denial of God, or that of any other divinity. It also does not entail the denial of a true and objective moral standard for human conduct. In fact, these three ideas — that is, the afterlife, the divine, and objective morality — come apart. Each one can be accepted or rejected independently of the others, without contradiction. But what denying the afterlife does entail is that, if one believes in any divinity, for whatever divinity one believes in, it does not have the power to set the conditions of the next life, since there is no next life.
 
 To put the point another way: If there is no afterlife, then there is no evaluation of one’s life that is privileged by virtue of the fact that it determines the conditions of the next life.
 
@@ -116,13 +116,13 @@ This conclusion exposes at least one assumption I was not aware I had. On some u
 
 But to believe that biological death is final is to deny this. It is to believe that there is no otherworldly redemption for those that have suffered such injustice. And it is also to believe that there is no poetic justice or punishment for those that perpetuate such disasters.
 
-These reflections cause me to believe that these injustices are even worse than they first seemed. If one believes in the afterlife, then one can console oneself with the idea that victims are “in a better place.” But if one does not believe, then there is no consolation. These considerations produce in me a sense of urgency — or even a sense of responsibility to prevent such loss of life and such suffering while I can.
+These reflections cause me to believe that these injustices are even worse than they first seemed. If one believes in the afterlife, then one can console oneself with the idea that victims are “in a better place.” But if one does not believe, then there is no consolation. These considerations produce in me a sense of urgency — or even a sense of responsibility to prevent such loss of life and such suffering while I can. For if justice cannot be delivered in the afterlife, then it must be delivered now, in this life, if it is to be delivered at all.
 
 ## Meaning
 
 In bringing these reflections to a close, there is one more topic that I would like to discuss, which is whether the finality of death has any consequences to life’s meaning. In my opinion, it does. And the way it does is fairly straightforward: If one does not believe in the prospect of the afterlife, then one must make do with the contentments of this life — not for any grand reason, but simply because there isn’t any other option.
 
-This straightforward conclusion is the wisdom of the ages. In the Epic of Gilgamesh, an ancient poem of Mesopotamia that dates back roughly four-thousand years to 2,000 B.C.E., the same message can be found. The fact that this message has been preserved for so long, and that its influence can be found in other world religions, suggests that there is something true in it — or, if not *true* exactly, something helpful or instructive to humankind.
+This straightforward conclusion is the wisdom of the ages. In the *Epic of Gilgamesh,* an ancient poem of Mesopotamia that dates back roughly four-thousand years to 2,000 B.C.E., the same message can be found. The fact that this message has been preserved for so long, and that its influence can be found in other world religions, suggests that there is something true in it — or, if not *true* exactly, something helpful or instructive to humankind.
 
 This epic tells the story of the king Gilgamesh who tries to escape death and to acquire immortality. During his journey, he comes upon a woman tavern-keeper that lives at the edge of the world who tells him this:
 

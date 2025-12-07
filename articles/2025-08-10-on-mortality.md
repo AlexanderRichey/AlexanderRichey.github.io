@@ -53,7 +53,7 @@ The idea that Homer and Nagel have in common, and which I affirm, is that the ex
 
 ## Paradox
 
-There is an ancient Epicurean argument which purports to show that death is not to be feared that creates some tension for the idea that life has value. If this argument is correct, then one of its consequences is that the value of life cannot be analyzed in terms of any subjective comparison between life and death. Life can still have value, as both Homer and Nagel believe, but, counterintuitively, its value cannot consist in its being qualitatively better than being dead.
+There is an ancient Epicurean argument which purports to show that death is not to be feared that, if correct, constrains the sense in which life can have value. The argument shows, in a mind-bending and yet intuitive way, that the value of life cannot be analyzed in terms of any subjective comparison between life and death. This entails, in contrast with Homer’s poetic portrayal, that being dead cannot be any worse than being alive and, correspondingly, that being alive cannot be any better than being dead.
 
 Here’s the argument. The first premise is:
 
